@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Web Institucional — Museo Arquidiocesano de Arte Religioso de Popayán</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ── PALETA INSTITUCIONAL MANUAL DE MARCA ── */
+        :root {
+            --verde: #a8fcdf;
+            --morado: #842375;
+            --amarillo: #f9b218;
+            --azul: #2d2e86;
+            --vio-osc: #231d3e;
+            --vio-med: #4d3c6a;
+            --crema: #faf7f2;
+            --crema-osc: #f0ead8;
+            --blanco: #ffffff;
+            --gris: #8a8090;
+            --texto: #1a1428;
+            --texto-s: #4a3d5c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ── NAVEGACIÓN ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--vio-osc);
+            border-bottom: 2px solid var(--morado);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 54px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: var(--verde);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0 0.9rem;
+            height: 54px;
+            line-height: 54px;
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(168, 252, 223, 0.65);
+            text-decoration: none;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--verde);
+            background: rgba(168, 252, 223, 0.06);
+        }
+
+        /* ── PORTADA ── */
+        .portada {
+            min-height: 100vh;
+            background: var(--vio-osc);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portada::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 40%, rgba(132, 35, 117, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 60%, rgba(45, 46, 134, 0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 80%, rgba(168, 252, 223, 0.06) 0%, transparent 50%);
+        }
+
+        .portada::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 59px,
+                    rgba(132, 35, 117, 0.04) 59px,
+                    rgba(132, 35, 117, 0.04) 60px),
+                repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 59px,
+                    rgba(45, 46, 134, 0.03) 59px,
+                    rgba(45, 46, 134, 0.03) 60px);
+        }
+
+        .portada>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portada-ornamento {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--morado));
+            margin: 0 auto 2rem;
+        }
+
+        .portada-sello {
+            width: 88px;
+            height: 88px;
+            border: 1px solid var(--morado);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.5rem;
+            position: relative;
+        }
+
+        .portada-sello::before {
+            content: '';
+            position: absolute;
+            width: 76px;
+            height: 76px;
+            border: 1px solid rgba(132, 35, 117, 0.4);
+            border-radius: 50%;
+        }
+
+        .portada-sello svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        .portada-tipo {
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
+        }
+
+        .portada h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 5.5vw, 56px);
+            font-weight: 400;
+            color: var(--blanco);
+            line-height: 1.15;
+            max-width: 720px;
+            margin: 0 auto 1rem;
+        }
+
+        .portada h1 em {
+            font-style: italic;
+            color: var(--verde);
+        }
+
+        .portada-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.06em;
+            margin-bottom: 3rem;
+        }
+
+        .portada-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .badge {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border: 1px solid rgba(132, 35, 117, 0.6);
+            color: rgba(168, 252, 223, 0.8);
+            border-radius: 2px;
+        }
+
+        .portada-scroll {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .portada-scroll::after {
+            content: '';
+            width: 1px;
+            height: 44px;
+            background: linear-gradient(to bottom, rgba(168, 252, 223, 0.5), transparent);
+            animation: scrollPulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scaleY(1)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(0.7)
+            }
+        }
+
+        /* ── CONTENEDOR GENERAL ── */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .container-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--morado);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--morado);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.75rem;
+            color: var(--vio-osc);
+        }
+
+        h2 em {
+            font-style: italic;
+            color: var(--morado);
+        }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 23px;
+            font-weight: 500;
+            color: var(--azul);
+            margin-bottom: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            color: var(--texto-s);
+            font-size: 16px;
+        }
+
+        .divider {
+            width: 56px;
+            height: 2px;
+            background: var(--morado);
+            margin: 2rem 0;
+        }
+
+        /* ── PESTAÑAS MAPA ── */
+        #mapa {
+            background: var(--vio-osc);
+        }
+
+        #mapa h2 {
+            color: var(--verde);
+        }
+
+        #mapa .section-label {
+            color: var(--amarillo);
+        }
+
+        #mapa .section-label::before {
+            background: var(--amarillo);
+        }
+
+        #mapa p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .pestanas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1px;
+            background: rgba(132, 35, 117, 0.3);
+            margin: 2.5rem 0;
+        }
+
+        .pestana-card {
+            background: rgba(35, 29, 62, 0.8);
+            padding: 1.5rem;
+            border-top: 2px solid var(--morado);
+            transition: background 0.25s;
+        }
+
+        .pestana-card:hover {
+            background: rgba(132, 35, 117, 0.2);
+        }
+
+        .pestana-letra {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--morado);
+            margin-bottom: 0.4rem;
+            line-height: 1;
+        }
+
+        .pestana-nombre {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--verde);
+            margin-bottom: 0.4rem;
+        }
+
+        .pestana-func {
+            font-family: 'Jost', sans-serif;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.5;
+        }
+
+        /* ── CARPETA 01: IDENTIDAD ── */
+        #identidad {
+            background: var(--crema);
+        }
+
+        .descripcion-destacada {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--azul);
+            line-height: 1.7;
+            border-left: 3px solid var(--morado);
+            padding: 1rem 0 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .manifiesto-box {
+            background: var(--vio-osc);
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifiesto-box::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 220px;
+            color: rgba(132, 35, 117, 0.1);
+            line-height: 1;
+        }
+
+        .manifiesto-box blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(17px, 2.5vw, 24px);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--blanco);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .manifiesto-box blockquote .verde {
+            color: var(--verde);
+        }
+
+        .manifiesto-box .firma {
+            margin-top: 1.75rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--morado);
+            position: relative;
+            z-index: 1;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2rem 0;
+            background: var(--crema-osc);
+        }
+
+        .mv-card {
+            background: var(--crema);
+            padding: 2.5rem;
+        }
+
+        .mv-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--morado);
+            margin-bottom: 1rem;
+        }
+
+        .mv-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--texto-s);
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--crema-osc);
+            margin: 2rem 0;
+        }
+
+        .valor-card {
+            background: var(--crema);
+            padding: 2rem 1.5rem;
+            transition: background 0.3s, transform 0.2s;
+            cursor: default;
+        }
+
+        .valor-card:hover {
+            background: var(--vio-osc);
+            transform: translateY(-2px);
+        }
+
+        .valor-card:hover .valor-num {
+            color: var(--amarillo);
+        }
+
+        .valor-card:hover .valor-nom {
+            color: var(--verde);
+        }
+
+        .valor-card:hover .valor-desc {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .valor-num {
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--morado);
+            margin-bottom: 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .valor-nom {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--azul);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .valor-desc {
+            font-family: 'Jost', sans-serif;
+            font-size: 13px;
+            color: var(--gris);
+            line-height: 1.6;
+            transition: color 0.3s;
+        }
+
+        /* FICHA */
+        .ficha-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .ficha-tabla td {
+            padding: 0.7rem 0.9rem;
+            font-size: 13.5px;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.12);
+            vertical-align: top;
+        }
+
+        .ficha-tabla td:first-child {
+            color: var(--gris);
+            width: 200px;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+        }
+
+        .ficha-tabla td:last-child {
+            color: var(--texto);
+        }
+
+        .ficha-tabla td.pending {
+            color: var(--amarillo);
+            font-style: italic;
+        }
+
+        /* ── NOTA ── */
+        .nota {
+            border-left: 3px solid var(--amarillo);
+            padding: 0.75rem 1rem 0.75rem 1.2rem;
+            margin: 1.5rem 0;
+            background: rgba(249, 178, 24, 0.06);
+        }
+
+        .nota p {
+            font-size: 13px;
+            color: var(--texto-s);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* ── CARPETA 02: HISTORIA ── */
+        #historia {
+            background: var(--vio-osc);
+        }
+
+        #historia h2 {
+            color: var(--blanco);
+        }
+
+        #historia h2 em {
+            color: var(--verde);
+        }
+
+        #historia h3 {
+            color: var(--verde);
+        }
+
+        #historia p {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        #historia .section-label {
+            color: var(--amarillo);
+        }
+
+        #historia .section-label::before {
+            background: var(--amarillo);
+        }
+
+        #historia .divider {
+            background: var(--morado);
+        }
+
+        .historia-recuadro {
+            border: 1px solid rgba(132, 35, 117, 0.4);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            background: rgba(45, 46, 134, 0.12);
+        }
+
+        .historia-recuadro h3 {
+            margin-top: 0;
+            color: var(--amarillo);
+        }
+
+        .historia-recuadro p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--morado), rgba(132, 35, 117, 0.08));
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 2.75rem;
+            padding-bottom: 2.75rem;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.15);
+        }
+
+        .tl-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -3rem;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--morado);
+            border-radius: 50%;
+            background: var(--vio-osc);
+            transform: translateX(-4px);
+        }
+
+        .tl-anio {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.28em;
+            color: var(--morado);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .tl-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            font-weight: 500;
+            color: var(--blanco);
+            margin-bottom: 0.6rem;
+        }
+
+        .tl-texto {
+            font-family: 'Jost', sans-serif;
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.58);
+            line-height: 1.7;
+        }
+
+        .directoras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: rgba(132, 35, 117, 0.25);
+            margin: 2.5rem 0;
+        }
+
+        .directora-card {
+            background: rgba(35, 29, 62, 0.75);
+            padding: 2rem 1.75rem;
+            border-top: 2px solid var(--morado);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .directora-card:hover {
+            background: rgba(45, 46, 134, 0.2);
+        }
+
+        .directora-card.fundadora {
+            border-top-color: var(--amarillo);
+        }
+
+        .directora-card.actual {
+            border-top-color: var(--verde);
+        }
+
+        .dir-num {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            color: var(--morado);
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .directora-card.fundadora .dir-num {
+            color: var(--amarillo);
+        }
+
+        .directora-card.actual .dir-num {
+            color: var(--verde);
+        }
+
+        .dir-nombre {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--blanco);
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+
+        .dir-periodo {
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            color: var(--morado);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.85rem;
+        }
+
+        .directora-card.fundadora .dir-periodo {
+            color: var(--amarillo);
+        }
+
+        .directora-card.actual .dir-periodo {
+            color: var(--verde);
+        }
+
+        .dir-bio {
+            font-family: 'Jost', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.52);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .dir-tag {
+            display: inline-block;
+            font-size: 9.5px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border: 1px solid rgba(132, 35, 117, 0.5);
+            color: rgba(132, 35, 117, 0.9);
+            border-radius: 2px;
+        }
+
+        .directora-card.fundadora .dir-tag {
+            border-color: rgba(249, 178, 24, 0.4);
+            color: rgba(249, 178, 24, 0.85);
+        }
+
+        .directora-card.actual .dir-tag {
+            border-color: rgba(168, 252, 223, 0.5);
+            color: var(--verde);
+        }
+
+        .decreto-item {
+            border-left: 3px solid var(--morado);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(45, 46, 134, 0.1);
+        }
+
+        .decreto-titulo {
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: var(--amarillo);
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .decreto-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ── CARPETA 03: COLECCIÓN ── */
+        #coleccion {
+            background: var(--crema-osc);
+        }
+
+        .tecnicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+            gap: 1px;
+            background: var(--crema);
+            margin: 1.5rem 0;
+        }
+
+        .tecnica-item {
+            background: var(--crema-osc);
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: background 0.25s;
+        }
+
+        .tecnica-item:hover {
+            background: var(--vio-osc);
+        }
+
+        .tecnica-item:hover .tecnica-nom {
+            color: var(--verde);
+        }
+
+        .tecnica-item:hover .tecnica-desc {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .tecnica-icon {
+            font-size: 26px;
+            margin-bottom: 0.5rem;
+        }
+
+        .tecnica-nom {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--azul);
+            margin-bottom: 0.25rem;
+            transition: color 0.25s;
+        }
+
+        .tecnica-desc {
+            font-size: 11.5px;
+            color: var(--gris);
+            transition: color 0.25s;
+        }
+
+        .artistas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 1.5rem 0;
+        }
+
+        .artista-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.15);
+        }
+
+        .artista-num {
+            font-size: 10px;
+            color: var(--morado);
+            min-width: 22px;
+            margin-top: 3px;
+        }
+
+        .artista-nom {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: var(--azul);
+        }
+
+        .artista-escuela {
+            font-size: 11.5px;
+            color: var(--gris);
+        }
+
+        /* ── CARPETA 04: VISITAS ── */
+        #visita {
+            background: var(--crema);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            border: 1px solid rgba(132, 35, 117, 0.2);
+            padding: 2rem;
+        }
+
+        .info-card-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--morado);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.15);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.08);
+            font-size: 13.5px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-lbl {
+            color: var(--gris);
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .info-val {
+            color: var(--texto);
+            text-align: right;
+        }
+
+        .info-val.pend {
+            color: var(--amarillo);
+            font-style: italic;
+        }
+
+        .acceso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .acceso-item {
+            background: var(--crema-osc);
+            padding: 1.25rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .acceso-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .acceso-lbl {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--azul);
+            margin-bottom: 3px;
+        }
+
+        .acceso-txt {
+            font-size: 12.5px;
+            color: var(--texto-s);
+            line-height: 1.5;
+        }
+
+        /* ── CARPETA 05: PROGRAMACIÓN ── */
+        #programacion {
+            background: var(--azul);
+        }
+
+        #programacion h2 {
+            color: var(--blanco);
+        }
+
+        #programacion h2 em {
+            color: var(--verde);
+        }
+
+        #programacion h3 {
+            color: var(--amarillo);
+        }
+
+        #programacion p {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        #programacion .section-label {
+            color: var(--verde);
+        }
+
+        #programacion .section-label::before {
+            background: var(--verde);
+        }
+
+        #programacion .divider {
+            background: var(--verde);
+        }
+
+        .eje-card {
+            border-left: 3px solid var(--verde);
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.5rem;
+            background: rgba(168, 252, 223, 0.05);
+        }
+
+        .eje-num {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            color: var(--verde);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .eje-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--blanco);
+            margin-bottom: 0.75rem;
+        }
+
+        .eje-lista {
+            font-family: 'Jost', sans-serif;
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+        }
+
+        /* ── CARPETA 06: PATRIMONIO VIVO ── */
+        #patrimonio {
+            background: var(--crema-osc);
+        }
+
+        .proyecto-card {
+            background: var(--crema);
+            border-top: 3px solid var(--morado);
+            padding: 2.5rem;
+            margin-bottom: 2px;
+        }
+
+        .proyecto-tag {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--morado);
+            margin-bottom: 0.5rem;
+        }
+
+        .proyecto-nom {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--azul);
+            margin-bottom: 1rem;
+        }
+
+        .proyecto-nom em {
+            font-style: italic;
+            color: var(--morado);
+        }
+
+        /* ── CARPETA 07: INVESTIGACIÓN ── */
+        #investigacion {
+            background: var(--vio-osc);
+        }
+
+        #investigacion h2 {
+            color: var(--blanco);
+        }
+
+        #investigacion h2 em {
+            color: var(--verde);
+        }
+
+        #investigacion h3 {
+            color: var(--amarillo);
+        }
+
+        #investigacion p {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        #investigacion .section-label {
+            color: var(--verde);
+        }
+
+        #investigacion .section-label::before {
+            background: var(--verde);
+        }
+
+        .pub-card {
+            border-bottom: 1px solid rgba(132, 35, 117, 0.3);
+            padding: 1.25rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .pub-card:first-of-type {
+            border-top: 1px solid rgba(132, 35, 117, 0.3);
+        }
+
+        .pub-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pub-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: var(--blanco);
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-autoria {
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .pub-pend {
+            color: var(--amarillo);
+            font-size: 11px;
+            font-style: italic;
+        }
+
+        /* ── CARPETA 08: CONTACTO ── */
+        #contacto {
+            background: var(--vio-med);
+        }
+
+        #contacto h2 {
+            color: var(--blanco);
+        }
+
+        #contacto h2 em {
+            color: var(--verde);
+        }
+
+        #contacto .section-label {
+            color: var(--amarillo);
+        }
+
+        #contacto .section-label::before {
+            background: var(--amarillo);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: rgba(132, 35, 117, 0.3);
+            margin: 2rem 0;
+        }
+
+        .contacto-card {
+            background: rgba(35, 29, 62, 0.55);
+            padding: 2rem;
+        }
+
+        .contacto-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--verde);
+            margin-bottom: 1.25rem;
+        }
+
+        .contacto-dato {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(132, 35, 117, 0.2);
+        }
+
+        .contacto-dato:last-child {
+            border-bottom: none;
+        }
+
+        .contacto-tipo {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.38);
+            min-width: 90px;
+            margin-top: 2px;
+        }
+
+        .contacto-valor {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .contacto-valor.pend {
+            color: var(--amarillo);
+            font-style: italic;
+        }
+
+        .redes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(132, 35, 117, 0.3);
+            margin-top: 2rem;
+        }
+
+        .red-card {
+            background: rgba(35, 29, 62, 0.4);
+            padding: 1.5rem;
+            text-align: center;
+            transition: background 0.25s;
+            cursor: pointer;
+        }
+
+        .red-card:hover {
+            background: rgba(132, 35, 117, 0.25);
+        }
+
+        .red-icon {
+            font-size: 22px;
+            margin-bottom: 0.5rem;
+        }
+
+        .red-nom {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+
+        .red-handle {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        .alerta-estrategica {
+            border: 1px solid rgba(249, 178, 24, 0.4);
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            background: rgba(249, 178, 24, 0.07);
+        }
+
+        .alerta-estrategica p {
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 0;
+        }
+
+        .alerta-estrategica strong {
+            color: var(--amarillo);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--vio-osc);
+            border-top: 2px solid var(--morado);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .footer-sello {
+            width: 54px;
+            height: 54px;
+            border: 1px solid var(--morado);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+
+        .footer-sello svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-nota {
+            font-family: 'Jost', sans-serif;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1.7;
+        }
+
+        /* ── ARZOBISPOS ── */
+        #arzobispos {
+            background: var(--vio-osc);
+        }
+
+        #arzobispos h2 {
+            color: var(--blanco);
+        }
+
+        #arzobispos h2 em {
+            color: var(--verde);
+        }
+
+        #arzobispos .section-label {
+            color: var(--amarillo);
+        }
+
+        #arzobispos .section-label::before {
+            background: var(--amarillo);
+        }
+
+        #arzobispos p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .arzo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: rgba(132, 35, 117, 0.25);
+            margin: 2.5rem 0;
+        }
+
+        .arzo-card {
+            background: rgba(35, 29, 62, 0.75);
+            padding: 2rem 1.75rem;
+            border-top: 2px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+            position: relative;
+        }
+
+        .arzo-card:hover {
+            background: rgba(45, 46, 134, 0.2);
+            border-top-color: var(--morado);
+        }
+
+        .arzo-card.fundador {
+            border-top-color: var(--amarillo);
+        }
+
+        .arzo-card.actual {
+            border-top-color: var(--verde);
+        }
+
+        .arzo-num {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            color: var(--morado);
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .arzo-card.fundador .arzo-num {
+            color: var(--amarillo);
+        }
+
+        .arzo-card.actual .arzo-num {
+            color: var(--verde);
+        }
+
+        .arzo-nombre {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--blanco);
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+
+        .arzo-periodo {
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            color: var(--morado);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .arzo-card.fundador .arzo-periodo {
+            color: var(--amarillo);
+        }
+
+        .arzo-card.actual .arzo-periodo {
+            color: var(--verde);
+        }
+
+        .arzo-bio {
+            font-family: 'Jost', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.52);
+            line-height: 1.65;
+        }
+
+        .arzo-tag {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 9.5px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border: 1px solid rgba(168, 252, 223, 0.3);
+            color: rgba(168, 252, 223, 0.6);
+            border-radius: 2px;
+        }
+
+        .arzo-tag.fundador-tag {
+            border-color: rgba(249, 178, 24, 0.4);
+            color: rgba(249, 178, 24, 0.8);
+        }
+
+        .arzo-tag.actual-tag {
+            border-color: rgba(168, 252, 223, 0.5);
+            color: var(--verde);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 720px) {
+
+            .mv-grid,
+            .info-grid,
+            .contacto-grid,
+            .artistas-grid,
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .redes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            .pestanas-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .arzo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAV ── -->
+    <nav>
+        <div class="nav-logo">Museo Arquidiocesano · Popayán</div>
+        <ul class="nav-links">
+            <li><a href="#mapa">Estructura</a></li>
+            <li><a href="#identidad">Identidad</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#arzobispos">Arzobispos</a></li>
+            <li><a href="#coleccion">Colección</a></li>
+            <li><a href="#visita">Visitas</a></li>
+            <li><a href="#programacion">Programación</a></li>
+            <li><a href="#patrimonio">Patrimonio Vivo</a></li>
+            <li><a href="#investigacion">Investigación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── PORTADA ── -->
+    <header class="portada">
+        <div class="portada-ornamento"></div>
+        <div class="portada-sello">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="18" y1="3" x2="18" y2="33" stroke="#842375" stroke-width="1" />
+                <line x1="3" y1="18" x2="33" y2="18" stroke="#842375" stroke-width="1" />
+                <circle cx="18" cy="18" r="9" stroke="#842375" stroke-width="0.8" />
+                <circle cx="18" cy="18" r="4" stroke="#a8fcdf" stroke-width="0.6" />
+            </svg>
+        </div>
+        <p class="portada-tipo">Arquidiócesis de Popayán · Documento Institucional 2026</p>
+        <h1>Museo Arquidiocesano<br>de <em>Arte Religioso</em><br>de Popayán</h1>
+        <p class="portada-sub">Dossier Web Institucional · Versión 1.0</p>
+        <div class="portada-badges">
+            <span class="badge">Bien de Interés Cultural de la Nación</span>
+            <span class="badge">Decreto 2248 · 1996</span>
+            <span class="badge">Arte Colonial · Siglos XVI–XIX</span>
+            <span class="badge">Escuelas Quiteña y Payanesa</span>
+            <span class="badge">Est. 1972</span>
+        </div>
+        <div class="portada-scroll">Explorar</div>
+    </header>
+
+
+    <!-- Módulo 00 eliminado: mapa del sitio removido -->
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 01 — IDENTIDAD INSTITUCIONAL
+════════════════════════════════════════ -->
+    <section id="identidad">
+        <div class="container">
+            <div class="section-label">Carpeta 01 · Pestaña Identidad</div>
+            <h2>Identidad <em>Institucional</em></h2>
+
+            <h3>Descripción institucional — versión corta</h3>
+            <div class="descripcion-destacada">
+                Guardián de la memoria visual del suroccidente colombiano, el Museo Arquidiocesano de Arte Religioso de
+                Popayán custodia cuatro siglos de producción artística latinoamericana en una casona del siglo XVIII
+                proyectada por Marcelino Pérez de Arroyo, declarada Bien de Interés Cultural de la Nación. Sus
+                colecciones de pintura, escultura, orfebrería y textiles de los siglos XVI al XIX abren conversaciones
+                entre el pasado colonial y los presentes plurales de nuestra región.
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Descripción institucional — versión completa</h3>
+            <p>En el corazón de Popayán, ciudad patrimonio del suroccidente colombiano, el Museo Arquidiocesano de Arte
+                Religioso custodia una de las colecciones de arte colonial latinoamericano más significativas del país.
+                Sus salas albergan más de cuatro siglos de producción artística y cultural: pinturas al óleo, esculturas
+                talladas y policromadas en madera, piezas de orfebrería y platería, ornamentos litúrgicos y textiles
+                bordados que narran la historia de una región desde los primeros años de la evangelización hasta los
+                albores del siglo XX.</p>
+            <p>El Museo tiene su sede en una casona del siglo XVIII de estilo neoclásico, proyectada por el arquitecto y
+                fraile dominico Marcelino Pérez de Arroyo y Valencia —uno de los principales exponentes del denominado
+                "Estilo Popayán"— y que fuera propiedad de la familia Arboleda. Este inmueble es en sí mismo patrimonio
+                material declarado Bien de Interés Cultural de la Nación por el Decreto 2248 de 1996 y la Resolución
+                0395 de 2006.</p>
+            <p>Las obras que hoy resguarda el Museo provienen de los catorce templos históricos de Popayán y representan
+                las escuelas quiteña y payanesa del barroco latinoamericano, con influencias españolas y flamencas. En
+                sus salas conviven obras de maestros como Bernardo de Legarda, Manuel Chili Caspicara, Vicente Albán,
+                Bernardo Rodríguez, Manuel Sepúlveda y los hermanos Cortés de Alcocer.</p>
+            <p>El Museo Arquidiocesano es, ante todo, un espacio para todos y para todas: un lugar donde el arte
+                colonial se convierte en punto de partida para conversaciones sobre identidad, memoria y pertenencia
+                desde el sur global.</p>
+
+            <div class="divider"></div>
+
+            <!-- MANIFIESTO -->
+            <div class="manifiesto-box">
+                <blockquote>
+                    Cuatro siglos de pincel y gubia hablan en estas paredes. No como monumentos congelados, sino como
+                    <span class="verde">preguntas abiertas</span>: ¿quién nombró estas imágenes? ¿A quiénes sirvieron?
+                    ¿Qué dicen hoy, desde el sur, desde lo colectivo, desde lo que aún no ha sido dicho? El Museo es el
+                    lugar donde esas preguntas tienen espacio, donde el patrimonio deja de ser propiedad de unos pocos y
+                    se convierte en conversación de muchos.
+                </blockquote>
+                <div class="firma">Propósito cultural — Museo Arquidiocesano de Arte Religioso · Popayán</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- MISIÓN Y VISIÓN -->
+            <h3>Misión y Visión</h3>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-label">Misión</div>
+                    <p>El Museo Arquidiocesano de Arte Religioso de Popayán es una institución de la Arquidiócesis de
+                        Popayán con fines culturales y sociales, cuyo objetivo es preservar, conservar, restaurar,
+                        difundir y exhibir las obras de Arte Religioso procedentes de ambientes eclesiásticos de esta
+                        Arquidiócesis, permitiendo que el Patrimonio histórico, artístico y cultural del suroccidente
+                        colombiano aquí conservado sea instrumento de formación para el fomento de la identidad cultural
+                        y la historia regional.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-label">Visión</div>
+                    <p>El Museo Arquidiocesano de Arte Religioso de Popayán será una institución líder en la promoción,
+                        defensa y conservación del patrimonio artístico de la región; así como en el fomento de la
+                        cultura a través de la formación de valores estéticos, críticos y de apropiación del arte
+                        colonial latinoamericano, en beneficio de las presentes y futuras generaciones.</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- VALORES -->
+            <h3>Valores institucionales</h3>
+            <p>El Museo Arquidiocesano es un espacio de todos y para todos, abierto a la diversidad del suroccidente
+                colombiano, con una práctica cultural incluyente y contemporánea.</p>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <div class="valor-num">01</div>
+                    <div class="valor-nom">Preservación</div>
+                    <div class="valor-desc">Cuidamos el patrimonio como documento vivo de nuestra historia colectiva,
+                        con responsabilidad frente a las generaciones que vendrán.</div>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-num">02</div>
+                    <div class="valor-nom">Identidad</div>
+                    <div class="valor-desc">Reconocemos que el arte que custodiamos es resultado de múltiples voces
+                        —indígenas, africanas, europeas y mestizas— que se entretejieron en este territorio. Somos
+                        guardianes de esa complejidad abigarrada.</div>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-num">03</div>
+                    <div class="valor-nom">Apertura</div>
+                    <div class="valor-desc">El patrimonio conservado aquí pertenece a todos los pueblos del
+                        suroccidente. Abrimos nuestras puertas sin exclusiones a la comunidad, las escuelas, los
+                        investigadores y el mundo.</div>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-num">04</div>
+                    <div class="valor-nom">Rigor</div>
+                    <div class="valor-desc">Aplicamos los más altos estándares en conservación, investigación y
+                        mediación, dialogando con las mejores prácticas museológicas nacionales e internacionales.</div>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-num">05</div>
+                    <div class="valor-nom">Educación</div>
+                    <div class="valor-desc">Formamos sensibilidades, despertamos curiosidades y creamos puentes entre el
+                        pasado colonial y los presentes diversos de nuestra región.</div>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-num">06</div>
+                    <div class="valor-nom">Memoria y diálogo</div>
+                    <div class="valor-desc">Entendemos el patrimonio como conversación entre épocas: lo que estas obras
+                        dicen hoy, desde las comunidades que las habitan, es tan importante como lo que dijeron ayer.
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Ficha institucional</h3>
+            <table class="ficha-tabla">
+                <tr>
+                    <td>Nombre oficial</td>
+                    <td>Museo Arquidiocesano de Arte Religioso de Popayán</td>
+                </tr>
+                <tr>
+                    <td>Tipo de institución</td>
+                    <td>Persona Jurídica sin ánimo de lucro · dependencia de la Arquidiócesis de Popayán</td>
+                </tr>
+                <tr>
+                    <td>Entidad administradora</td>
+                    <td>Arquidiócesis de Popayán</td>
+                </tr>
+                <tr>
+                    <td>Decreto de creación</td>
+                    <td>Decreto Arzobispal No. 386 · 10 de octubre de 1972 · Mons. Miguel Ángel Arce Vivas</td>
+                </tr>
+                <tr>
+                    <td>Estatutos vigentes</td>
+                    <td>Decreto No. 1.306 · 25 de marzo de 2017 · Mons. Iván Antonio Marín López</td>
+                </tr>
+                <tr>
+                    <td>Declaratoria patrimonial</td>
+                    <td>Ver sección <a href="#historia">Marco legal</a></td>
+                </tr>
+                <tr>
+                    <td>Inauguración</td>
+                    <td>21 de septiembre de 1979</td>
+                </tr>
+                <tr>
+                    <td>Sede</td>
+                    <td>Casona del siglo XVIII, planos de Marcelino Pérez de Arroyo · Calle 4A No. 4-56, Centro
+                        Histórico, Popayán</td>
+                </tr>
+                <tr>
+                    <td>Directora actual</td>
+                    <td>Yenifer Andrea Castaño Vargas · Lic. y Mgtr. en Educación · desde marzo 2022</td>
+                </tr>
+                <tr>
+                    <td>Contacto</td>
+                    <td>Ver sección <a href="#contacto">Contacto y Canales Digitales</a></td>
+                </tr>
+                <tr>
+                    <td>Logo vectorial</td>
+                    <td class="pending">⚠ Solicitar formato SVG o AI a la Arquidiócesis de Popayán</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 02 — HISTORIA
+════════════════════════════════════════ -->
+    <section id="historia">
+        <div class="container">
+            <div class="section-label">Carpeta 02 · Pestaña Historia</div>
+            <h2>Historia del <em>Museo</em></h2>
+
+            <p>Desde 1546, cuando la Santa Sede erigió la Diócesis de Popayán, los templos de la ciudad comenzaron a
+                recibir obras de arte de talleres españoles, flamencos y quiteños. Durante más de cuatro siglos, las
+                catorce iglesias históricas de Popayán atesoraron pinturas, esculturas, ornamentos y piezas de
+                orfebrería que narran la historia de un territorio forjado en el cruce entre tradiciones europeas,
+                andinas y africanas.</p>
+
+            <div class="divider"></div>
+
+            <!-- EDIFICIO -->
+            <div class="historia-recuadro">
+                <h3>La sede: la casa de Marcelino Pérez de Arroyo</h3>
+                <p>La casona que alberga el Museo es uno de los testimonios más elocuentes del denominado "Estilo
+                    Popayán": una síntesis arquitectónica entre lo colonial, lo barroco y lo neoclásico. El inmueble,
+                    sobre la Calle de Santo Domingo frente al templo que le da nombre, perteneció originalmente a la
+                    familia Arboleda y fue proyectado por el arquitecto y fraile dominico <strong
+                        style="color:var(--amarillo)">Marcelino Pérez de Arroyo y Valencia</strong>, nacido en Popayán
+                    el 20 de abril de 1764.</p>
+                <p>Formado en los cánones de Vitruvio y Vignola, Arroyo regresó a Popayán desde Bogotá y Cartagena
+                    trayendo el influjo de los grandes diseños neoclásicos. Adaptó esos referentes a los materiales
+                    locales —ladrillo cortado, arcadas en orden toscano, patios jerarquizados— consolidando un estilo
+                    propio que su biógrafo reconoció como "Estilo Popayán". La casa fue construida en el marco de la
+                    reconstrucción tras el terremoto de 1736: una de las primeras viviendas de dos pisos con portada
+                    doble enmarcada por pilastras de orden jónico en la fachada sobre la Calle de Santo Domingo.</p>
+                <p>Sus arcadas interiores en ladrillo a la vista y su patio principal jerarquizado son documentos
+                    arquitectónicos de primera importancia para entender la Popayán del siglo XVIII.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Línea de tiempo</h3>
+            <div class="timeline">
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">1546</div>
+                    <div class="tl-titulo">El origen más remoto</div>
+                    <div class="tl-texto">El Papa Paulo III crea la Diócesis de Popayán y nombra al presbítero Juan del
+                        Valle como primer Obispo. Desde ese momento, los templos de la ciudad comienzan a recibir obras
+                        de arte sacro provenientes de España, Flandes y los talleres quiteños, formando el acervo que
+                        siglos más tarde daría origen al Museo.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">Siglo XVIII — Tras el terremoto de 1736</div>
+                    <div class="tl-titulo">Proyección de la casona</div>
+                    <div class="tl-texto">En el marco de la reconstrucción arquitectónica de Popayán, Marcelino Pérez de
+                        Arroyo y Valencia proyecta la casa que hoy alberga el Museo. Originalmente propiedad de la
+                        familia Arboleda, el inmueble es una de las obras más representativas del "Estilo Popayán":
+                        portada doble en pilastras jónicas, arcadas en ladrillo a la vista, patio interior jerarquizado.
+                    </div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">17 de abril de 1972</div>
+                    <div class="tl-titulo">Decreto No. 365 — Nace la Junta Pro Museo</div>
+                    <div class="tl-texto">El Arzobispo Miguel Ángel Arce Vivas expide el Decreto No. 365, por el cual
+                        constituye la "Junta Arquidiocesana Pro Museo de Arte Religioso" y encarga a sus integrantes
+                        reunir, catalogar y gestionar los objetos dignos de ser exhibidos que se encontraban en las
+                        iglesias de la ciudad. Entre sus miembros figuraban representantes de la sociedad civil,
+                        sacerdotes y personalidades culturales de Popayán.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">10 de octubre de 1972</div>
+                    <div class="tl-titulo">Decreto No. 386 — Creación oficial del Museo</div>
+                    <div class="tl-texto">Mediante el Decreto Arzobispal No. 386, se crea formalmente el Museo
+                        Arquidiocesano de Arte Religioso como entidad con fines culturales y sociales, persona moral
+                        eclesiástica con patrimonio propio y autonomía administrativa. El mismo año, el Instituto
+                        Colombiano de Cultura transfiere un millón de pesos para la compra de la sede, y la Gobernación
+                        del Cauca otorga la Personería Jurídica No. 304 el 20 de noviembre de 1972.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">1972 – 1979</div>
+                    <div class="tl-titulo">La casona y la primera directora</div>
+                    <div class="tl-texto">El Museo adquiere su sede en una casona del siglo XVIII de estilo neoclásico,
+                        construida con planos del arquitecto Marcelino Pérez de Arroyo y que fuera hasta entonces
+                        propiedad de la familia Arboleda, ubicada en el centro histórico de Popayán. De 1976 a 1979 se
+                        adelantan las obras de restauración y adaptación del inmueble para su uso museístico, bajo la
+                        dirección fundacional de la señora Silvia Ayerbe de Caicedo, primera directora del Museo.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">21 de septiembre de 1979</div>
+                    <div class="tl-titulo">Inauguración</div>
+                    <div class="tl-texto">El Museo abre sus puertas al público con una valiosa colección inicial de
+                        obras de arte sacro, ornamentos litúrgicos, tallas en madera, piezas de orfebrería y platería de
+                        los siglos XVI, XVII, XVIII y XIX. Las obras provienen de los templos históricos de Popayán,
+                        recogidas con el asentimiento de los distintos Arzobispos. El Museo comienza a funcionar como la
+                        ventana del arte religioso del suroccidente colombiano hacia el mundo.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">31 de marzo de 1983</div>
+                    <div class="tl-titulo">El terremoto de Popayán</div>
+                    <div class="tl-texto">Un devastador terremoto sacude la Ciudad Blanca. La sede del Museo queda
+                        gravemente averiada y debe cerrar sus puertas. Las obras de arte son prontamente rescatadas y
+                        depositadas en el Banco de la República para garantizar su seguridad. Este momento de crisis
+                        marcó el inicio de una recuperación que demostraría la importancia nacional del Museo y la
+                        solidaridad de las instituciones colombianas con su patrimonio.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">15 de junio de 1988</div>
+                    <div class="tl-titulo">Comité de Restauración — Renacimiento</div>
+                    <div class="tl-texto">Se instala formalmente el Comité Regional de Restauración del Museo, presidido
+                        por el Arzobispo Samuel S. Buitrago Trujillo, con la participación del Banco de la República y
+                        la Fundación para la Conservación y Restauración del Patrimonio Cultural Colombiano. Expertos
+                        restauradores del Banco y del Centro de Restauración Santa Clara llevan a cabo la restauración
+                        de casi todas las obras de arte, mientras la casa es igualmente rehabilitada por la misma
+                        Fundación.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">11 de diciembre de 1996</div>
+                    <div class="tl-titulo">Monumento Nacional · Decreto 2248</div>
+                    <div class="tl-texto">Mediante el Decreto 2248, el Estado colombiano declara como Monumento Nacional
+                        el inmueble del Museo Arquidiocesano y la colección de bienes muebles que alberga, localizados
+                        en el Centro Histórico de Popayán.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">2006</div>
+                    <div class="tl-titulo">Resolución 0395 — Bien de Interés Cultural de la Nación</div>
+                    <div class="tl-texto">La colección y el inmueble del Museo reciben protección especial: son
+                        declarados Bien de Interés Cultural de la Nación, consolidando la tutela jurídica del patrimonio
+                        cultural mueble e inmueble de la época colonial conservado en el Museo.</div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-anio">2022 — Presente</div>
+                    <div class="tl-titulo">Una nueva etapa</div>
+                    <div class="tl-texto">Bajo el liderazgo pastoral de Monseñor Omar Alberto Sánchez Cubillos O.P.,
+                        Arzobispo de Popayán y máximo custodio del Museo, la institución consolida una nueva dirección
+                        orientada hacia la educación patrimonial, la apertura comunitaria y la proyección digital. El
+                        Museo reafirma su rol como espacio de transformación cultural y diálogo desde el suroccidente
+                        colombiano, honrando el legado de sus colecciones y abriéndose a los presentes diversos de su
+                        comunidad.</div>
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Las directoras del Museo</h3>
+            <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem;">Desde su fundación en 1972, el Museo
+                Arquidiocesano de Arte Religioso ha sido dirigido de manera ininterrumpida por mujeres. Son ellas
+                quienes han sostenido, reconstruido y transformado la institución día a día, a lo largo de más de cinco
+                décadas.</p>
+            <div class="directoras-grid">
+
+                <div class="directora-card fundadora">
+                    <div class="dir-num">Primera directora · Fundadora</div>
+                    <div class="dir-nombre">Silvia Ayerbe<br>de Caicedo</div>
+                    <div class="dir-periodo">1972 – 1989</div>
+                    <div class="dir-bio">Asumió la dirección del Museo desde su nacimiento institucional en 1972, siendo
+                        parte del grupo fundacional que transformó la visión del Arzobispo Arce Vivas en una realidad
+                        museística. Acompañó la adquisición de la sede, la restauración del inmueble entre 1976 y 1979,
+                        y la inauguración oficial en septiembre de 1979. Vivió también el momento más crítico de la
+                        institución: el terremoto del 31 de marzo de 1983, que dejó la sede gravemente averiada. Bajo su
+                        dirección, las obras fueron rescatadas y depositadas en el Banco de la República para garantizar
+                        su salvaguarda.</div>
+                    <span class="dir-tag">Directora fundadora · 17 años al frente</span>
+                </div>
+
+                <div class="directora-card">
+                    <div class="dir-num">Segunda directora</div>
+                    <div class="dir-nombre">María Eugenia Valencia<br>de Redondo</div>
+                    <div class="dir-periodo">1989 – 2003</div>
+                    <div class="dir-bio">Ingresó al Museo como secretaria de Silvia Ayerbe de Caicedo y asumió la
+                        dirección en 1989, en pleno proceso de recuperación postsísmica. Lideró la etapa más exigente de
+                        la institución: la restauración de la colección, el retorno de las obras desde el Banco de la
+                        República y la reapertura del Museo al público. Bajo su conducción, el Museo volvió a ser un
+                        espacio vivo para la comunidad payanesa, consolidando su papel cultural y patrimonial en el
+                        suroccidente colombiano. Su labor es el puente entre el Museo que fue y el Museo que es hoy.
+                    </div>
+                    <span class="dir-tag">Etapa de renacimiento · 14 años al frente</span>
+                </div>
+
+                <div class="directora-card">
+                    <div class="dir-num">Tercera directora</div>
+                    <div class="dir-nombre">Carmen Elisa<br>Hernández</div>
+                    <div class="dir-periodo">Secretaria 1992 · Subdirectora 2002 · Directora 2004 – 2022</div>
+                    <div class="dir-bio">Ingresó al Museo en 1992 como secretaria, cargo desde el cual conoció a fondo
+                        cada aspecto de la institución. Nombrada Subdirectora por el Arzobispo Iván Antonio Marín en
+                        2002, y Directora en 2004. Condujo el Museo durante 18 años, el período más extenso de dirección
+                        en su historia. Su gestión abarcó la declaratoria como Bien de Interés Cultural de la Nación
+                        (Resolución 0395 de 2006), la actualización de los estatutos institucionales (Decreto 1.306 de
+                        2017) y el fortalecimiento de la colección. Ejerció el cargo hasta marzo de 2022.</div>
+                    <span class="dir-tag">Etapa de consolidación · 18 años al frente</span>
+                </div>
+
+                <div class="directora-card actual">
+                    <div class="dir-num">Directora actual</div>
+                    <div class="dir-nombre">Yenifer Andrea<br>Castaño Vargas</div>
+                    <div class="dir-periodo">Marzo 2022 — Presente</div>
+                    <div class="dir-bio">Licenciada en Educación Artística y Cultural y magíster en Educación de la
+                        Universidad del Cauca. Asumió la dirección en marzo de 2022, inaugurando una nueva etapa marcada
+                        por la educación patrimonial crítica, la apertura comunitaria y la proyección digital del Museo.
+                        Impulsora del Plan Educativo institucional, el Laboratorio de Guías, el Seminario de Arte y
+                        Cultura Colonial y el proyecto VOCES DEL PATRIMONIO. Autora del libro Museos como espacios de
+                        transformación cultural: estrategias para la Educación Patrimonial (2025), publicación que
+                        recoge su investigación de maestría y posiciona al Museo como referente educativo nacional.
+                    </div>
+                    <span class="dir-tag">Educación patrimonial · Proyección digital</span>
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Marco legal y patrimonial</h3>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Decreto No. 365 · 17 de abril de 1972</div>
+                <div class="decreto-desc">Constitución de la Junta Arquidiocesana Pro Museo de Arte Religioso. Firmado
+                    por el Arzobispo Miguel Ángel Arce Vivas.</div>
+            </div>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Decreto Arzobispal No. 386 · 10 de octubre de 1972</div>
+                <div class="decreto-desc">Creación formal del Museo como entidad con fines culturales y sociales. Primer
+                    estatuto fundacional.</div>
+            </div>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Decreto Arzobispal No. 026 · 12 de julio de 1977</div>
+                <div class="decreto-desc">Primeras modificaciones estatutarias. Arzobispo Samuel Silverio Buitrago
+                    Trujillo.</div>
+            </div>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Decreto 2248 · 11 de diciembre de 1996 · Gobierno Nacional</div>
+                <div class="decreto-desc">Declaratoria como Monumento Nacional del inmueble y la colección de bienes
+                    muebles del Museo.</div>
+            </div>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Resolución 0395 · 2006</div>
+                <div class="decreto-desc">Declaratoria del inmueble y la colección como Bien de Interés Cultural de la
+                    Nación.</div>
+            </div>
+            <div class="decreto-item">
+                <div class="decreto-titulo">Decreto No. 1.306 · 25 de marzo de 2017 · Arzobispo Iván Antonio Marín López
+                </div>
+                <div class="decreto-desc">Estatutos vigentes del Museo. Configura su estructura actual como dependencia
+                    de la Arquidiócesis de Popayán con Consejo Directivo.</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     ARZOBISPOS QUE HAN CUSTODIADO EL MUSEO
+════════════════════════════════════════ -->
+    <section id="arzobispos">
+        <div class="container">
+            <div class="section-label">Historia · Arzobispos de Popayán</div>
+            <h2>Los custodios del <em>Patrimonio</em></h2>
+            <p>Desde su fundación en 1972, el Museo Arquidiocesano de Arte Religioso ha estado bajo el cuidado pastoral
+                y la representación legal de los Arzobispos de Popayán. Cada uno ha dejado su huella en la historia de
+                la institución.</p>
+
+            <div class="arzo-grid">
+
+                <div class="arzo-card fundador">
+                    <div class="arzo-num">32.° Arzobispo · Fundador del Museo</div>
+                    <div class="arzo-nombre">Mons. Miguel Ángel<br>Arce Vivas</div>
+                    <div class="arzo-periodo">1965 – 1976</div>
+                    <div class="arzo-bio">Nacido en Popayán el 1 de marzo de 1904, hijo predilecto de la ciudad.
+                        Arzobispo de Popayán desde 1965 hasta 1976. Visionario fundador del Museo en 1972 mediante los
+                        Decretos Arzobispales 365 y 386, impulsado por su profundo amor al patrimonio artístico de la
+                        ciudad. También fue promotor del Instituto Don Bosco, del Instituto Catequístico Arquidiocesano
+                        y de la Fundación Juan del Valle. Falleció el 27 de mayo de 1987. Sus pertenencias personales
+                        reposan en una vitrina del Museo como homenaje a su legado.</div>
+                    <span class="arzo-tag fundador-tag">Fundador del Museo · 1972</span>
+                </div>
+
+                <div class="arzo-card">
+                    <div class="arzo-num">33.° Arzobispo</div>
+                    <div class="arzo-nombre">Mons. Samuel Silverio<br>Buitrago Trujillo, C.M.</div>
+                    <div class="arzo-periodo">1976 – 1990</div>
+                    <div class="arzo-bio">Nacido el 21 de junio de 1930, miembro de la Congregación de la Misión. Asumió
+                        el arzobispado en el momento del mayor desafío del Museo: el terremoto del 31 de marzo de 1983,
+                        que sacudió a Popayán en 18 segundos. Su respuesta fue inmediata: junto a las instituciones
+                        nacionales, lideró el rescate de las obras del Museo y su depósito en el Banco de la República.
+                        En 1988, presidió el Comité Regional de Restauración que permitió la recuperación de la
+                        colección y del inmueble. Falleció el 11 de abril de 1990.</div>
+                    <span class="arzo-tag">Restauración del Museo · 1988</span>
+                </div>
+
+                <div class="arzo-card">
+                    <div class="arzo-num">34.° Arzobispo</div>
+                    <div class="arzo-nombre">Mons. Alberto Giraldo<br>Jaramillo, P.S.S.</div>
+                    <div class="arzo-periodo">1990 – 1997</div>
+                    <div class="arzo-bio">Natural de Manizales, ordenado obispo en 1974 como auxiliar del Arzobispo Arce
+                        Vivas. Designado Arzobispo de Popayán en diciembre de 1990, recibió el palio arzobispal de manos
+                        del Papa Juan Pablo II en 1991. Durante su gestión se consolidó la reapertura y normalización
+                        del Museo en la posguerra del terremoto. Fue presidente de la Conferencia Episcopal de Colombia
+                        (1996–2002). Trasladado a Medellín en 1997. Firmó los documentos de personería del Museo en 1992
+                        y 1996.</div>
+                    <span class="arzo-tag">Consolidación patrimonial · 1996</span>
+                </div>
+
+                <div class="arzo-card">
+                    <div class="arzo-num">35.° Arzobispo</div>
+                    <div class="arzo-nombre">Mons. Iván Antonio<br>Marín López</div>
+                    <div class="arzo-periodo">1997 – 2018</div>
+                    <div class="arzo-bio">Nacido en Jardín, Antioquia, el 13 de mayo de 1938. Licenciado en Teología por
+                        la Pontificia Universidad Javeriana. Ordenado sacerdote en 1964. El más longevo de los
+                        Arzobispos en el período del Museo: 21 años de gestión pastoral. En 2006 gestionó la Resolución
+                        0395 que declaró el Museo Bien de Interés Cultural de la Nación. En 2017 expidió el Decreto No.
+                        1.306, estatutos vigentes del Museo. Nombró Subdirectora a Carmen Elisa Hernández en 2002 y
+                        Directora en 2004. Arzobispo emérito desde 2018.</div>
+                    <span class="arzo-tag">Bien de Interés Cultural · 2006</span>
+                </div>
+
+                <div class="arzo-card">
+                    <div class="arzo-num">36.° Arzobispo</div>
+                    <div class="arzo-nombre">Mons. Luis José<br>Rueda Aparicio</div>
+                    <div class="arzo-periodo">2018 – 2020</div>
+                    <div class="arzo-bio">Nacido en San Gil, Santander, el 3 de marzo de 1962. Ordenado sacerdote en
+                        1989. Licenciado en Teología Moral por la Academia Alfonsiana de Roma. Arzobispo de Popayán
+                        desde julio de 2018 hasta abril de 2020, cuando el Papa Francisco lo designó Arzobispo de Bogotá
+                        y Primado de Colombia. Creado Cardenal por el Papa Francisco en septiembre de 2023. Su breve
+                        paso por la Arquidiócesis mantuvo el compromiso institucional con el Museo.</div>
+                    <span class="arzo-tag">Hoy Cardenal Arzobispo de Bogotá</span>
+                </div>
+
+                <div class="arzo-card actual">
+                    <div class="arzo-num">37.° Arzobispo · Custodio actual</div>
+                    <div class="arzo-nombre">Mons. Omar Alberto<br>Sánchez Cubillos, O.P.</div>
+                    <div class="arzo-periodo">2020 — Presente</div>
+                    <div class="arzo-bio">Nacido en Cogua, Cundinamarca, el 20 de septiembre de 1963. Miembro de la
+                        Orden de Predicadores (dominicos). Ordenado sacerdote en 1990. Doctor en Teología Dogmática por
+                        la Pontificia Universidad Santo Tomás de Roma. Nombrado Arzobispo de Popayán por el Papa
+                        Francisco el 12 de octubre de 2020; tomó posesión canónica el 12 de diciembre de 2020. Como
+                        representante legal del Museo y máximo custodio de su colección, acompaña la nueva etapa de
+                        apertura cultural, educación patrimonial y proyección digital de la institución.</div>
+                    <span class="arzo-tag actual-tag">Representante legal · Custodio del Museo</span>
+                </div>
+
+            </div>
+
+            <div class="nota" style="border-left-color:var(--amarillo); background:rgba(249,178,24,0.05);">
+                <p style="color:rgba(255,255,255,0.5);">💡 Se recomienda gestionar fotografías oficiales de cada
+                    Arzobispo para ilustrar esta sección en la versión web definitiva. Las imágenes de Monseñores
+                    Giraldo Jaramillo, Marín López, Rueda Aparicio y Sánchez Cubillos están disponibles en Wikimedia
+                    Commons y en los archivos de la Arquidiócesis.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 03 — COLECCIÓN (MULTIMEDIA)
+════════════════════════════════════════ -->
+    <section id="coleccion">
+        <div class="container">
+            <div class="section-label">Carpeta 03 · Pestaña Multimedia</div>
+            <h2>Salas y <em>Colección</em></h2>
+
+            <p>La colección del Museo Arquidiocesano es una de las más importantes de Colombia en arte colonial
+                latinoamericano. Bajo el concepto de barroco latinoamericano —con presencia central de las escuelas
+                quiteña y payanesa— reúne un conjunto excepcional de obras de los siglos XVI al XIX, provenientes de los
+                catorce templos históricos de Popayán.</p>
+            <p>La colección es producto de un proceso histórico complejo: producida y transportada como instrumento de
+                evangelización, pero también apropiada y resignificada por comunidades locales. Verla hoy implica
+                reconocer esa doble historia.</p>
+
+            <div class="divider"></div>
+
+            <h3>Técnicas y tipologías</h3>
+            <div class="tecnicas-grid">
+                <div class="tecnica-item">
+                    <div class="tecnica-icon">🎨</div>
+                    <div class="tecnica-nom">Pintura al óleo</div>
+                    <div class="tecnica-desc">Sobre tela, madera y otros soportes</div>
+                </div>
+                <div class="tecnica-item">
+                    <div class="tecnica-icon">🪵</div>
+                    <div class="tecnica-nom">Talla en madera</div>
+                    <div class="tecnica-desc">Policromada y dorada</div>
+                </div>
+                <div class="tecnica-item">
+                    <div class="tecnica-icon">⚱️</div>
+                    <div class="tecnica-nom">Orfebrería y platería</div>
+                    <div class="tecnica-desc">Piezas litúrgicas y devocionales · Exposición especial Semana Santa</div>
+                </div>
+                <div class="tecnica-item">
+                    <div class="tecnica-icon">🧵</div>
+                    <div class="tecnica-nom">Textiles bordados</div>
+                    <div class="tecnica-desc">Ornamentos sagrados y vestiduras litúrgicas</div>
+                </div>
+                <div class="tecnica-item">
+                    <div class="tecnica-icon">📜</div>
+                    <div class="tecnica-nom">Documentos</div>
+                    <div class="tecnica-desc">Archivos y manuscritos eclesiásticos históricos</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Artistas representados</h3>
+            <div class="artistas-grid">
+                <div class="artista-row">
+                    <span class="artista-num">01</span>
+                    <div>
+                        <div class="artista-nom">Bernardo de Legarda</div>
+                        <div class="artista-escuela">Escuela Quiteña · Escultura · Siglo XVIII</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">02</span>
+                    <div>
+                        <div class="artista-nom">Manuel Chili "Caspicara"</div>
+                        <div class="artista-escuela">Escuela Quiteña · Escultura · Siglo XVIII</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">03</span>
+                    <div>
+                        <div class="artista-nom">Vicente Albán</div>
+                        <div class="artista-escuela">Escuela Quiteña · Pintura · Siglo XVIII</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">04</span>
+                    <div>
+                        <div class="artista-nom">Bernardo Rodríguez</div>
+                        <div class="artista-escuela">Escuela Payanesa · Pintura · Siglo XVIII</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">05</span>
+                    <div>
+                        <div class="artista-nom">Manuel Sepúlveda</div>
+                        <div class="artista-escuela">Pintura colonial</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">06</span>
+                    <div>
+                        <div class="artista-nom">Hermanos Cortés de Alcocer</div>
+                        <div class="artista-escuela">Arte sacro colonial</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">07</span>
+                    <div>
+                        <div class="artista-nom">Rafael Troya</div>
+                        <div class="artista-escuela">Pintura · Siglo XIX</div>
+                    </div>
+                </div>
+                <div class="artista-row">
+                    <span class="artista-num">08</span>
+                    <div>
+                        <div class="artista-nom">Maestros anónimos</div>
+                        <div class="artista-escuela">Escuelas española, flamenca y local · Siglos XVI–XIX</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nota">
+                <p>⚠ Pendiente: fichas técnicas individuales de obras destacadas (nombre, autor, año/siglo, técnica,
+                    material, dimensiones, procedencia e historia). Fotografía profesional de alta resolución y
+                    recorridos 360° de cada sala.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 04 — VISITAS
+════════════════════════════════════════ -->
+    <section id="visita">
+        <div class="container">
+            <div class="section-label">Carpeta 04 · Pestaña Visitas</div>
+            <h2>Planea tu <em>Visita</em></h2>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-label">Horarios de atención</div>
+                    <div class="info-row"><span class="info-lbl">Lunes – Viernes</span><span class="info-val">8:00 a.m.
+                            – 12:30 p.m.<br>2:00 p.m. – 5:00 p.m.</span></div>
+                    <div class="info-row"><span class="info-lbl">Sábados</span><span class="info-val">9:00 a.m. – 2:00
+                            p.m.</span></div>
+                    <div class="info-row"><span class="info-lbl">Domingos y festivos</span><span
+                            class="info-val">Cerrado</span></div>
+                    <div class="info-row"><span class="info-lbl">Semana Santa</span><span class="info-val">Dom. de Ramos
+                            – Dom. de Resurrección<br>9:00 a.m. – 5:00 p.m. (jornada continua)</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">Tarifas de ingreso</div>
+                    <div class="info-row"><span class="info-lbl">Público general</span><span class="info-val">$8.000
+                            COP</span></div>
+                    <div class="info-row"><span class="info-lbl">Niños &lt; 8 años</span><span class="info-val">Gratuito
+                            acompañados de padres<br>(En grupos escolares aplica tarifa)</span></div>
+                    <div class="info-row"><span class="info-lbl">Grupos escolares · Guiado</span><span
+                            class="info-val">$8.000 COP por estudiante</span></div>
+                    <div class="info-row"><span class="info-lbl">Grupos escolares · Taller</span><span
+                            class="info-val">$15.000 COP por estudiante<br>(incluye guía + actividad +
+                            materiales)</span></div>
+                    <div class="info-row"><span class="info-lbl">Días gratuitos</span><span class="info-val">Día
+                            Internacional de los Museos<br>+ eventos especiales del Museo</span></div>
+                </div>
+            </div>
+
+            <div class="info-card" style="margin-bottom:1.5rem">
+                <div class="info-card-label">Cómo llegar</div>
+                <div class="info-row"><span class="info-lbl">Dirección</span><span class="info-val">Calle 4A No. 4-56,
+                        Centro Histórico, Popayán, Cauca – Colombia</span></div>
+                <div class="info-row"><span class="info-lbl">Referencias</span><span class="info-val">Frente al Templo
+                        de Santo Domingo · A una cuadra del Parque Caldas</span></div>
+                <div class="info-row"><span class="info-lbl">Transporte</span><span class="info-val">Taxi · Uber ·
+                        Transporte público urbano</span></div>
+                <div class="info-row"><span class="info-lbl">Estacionamiento</span><span class="info-val">Sin
+                        parqueadero propio · Zona disponible en el centro histórico</span></div>
+            </div>
+
+            <div class="info-card" style="margin-bottom:2rem">
+                <div class="info-card-label">Reglamento de visita</div>
+                <div class="info-row"><span class="info-lbl">Fotografía</span><span class="info-val">Consultar
+                        autorización en taquilla</span></div>
+                <div class="info-row"><span class="info-lbl">Alimentos y bebidas</span><span class="info-val">No
+                        permitidos en las salas</span></div>
+                <div class="info-row"><span class="info-lbl">Grupos</span><span class="info-val">Reserva previa
+                        recomendada · Máx. 20 personas por sala</span></div>
+                <div class="info-row"><span class="info-lbl">Mascotas</span><span class="info-val">No permitidas</span>
+                </div>
+            </div>
+
+            <h3>Accesibilidad</h3>
+            <p>El Museo trabaja progresivamente en el fortalecimiento de estrategias de accesibilidad e inclusión. Su
+                condición de Bien de Interés Cultural de la Nación implica restricciones para modificar la
+                infraestructura, pero el equipo organiza con antelación las herramientas necesarias para garantizar
+                experiencias positivas a todas las personas visitantes.</p>
+            <div class="acceso-grid">
+                <div class="acceso-item">
+                    <div class="acceso-icon">♿</div>
+                    <div>
+                        <div class="acceso-lbl">Movilidad reducida</div>
+                        <div class="acceso-txt">Sin rampas en algunos sectores del recorrido · Consultar previamente
+                        </div>
+                    </div>
+                </div>
+                <div class="acceso-item">
+                    <div class="acceso-icon">👁</div>
+                    <div>
+                        <div class="acceso-lbl">Discapacidad visual</div>
+                        <div class="acceso-txt">Señalética braille disponible para visitas guiadas</div>
+                    </div>
+                </div>
+                <div class="acceso-item">
+                    <div class="acceso-icon">🦻</div>
+                    <div>
+                        <div class="acceso-lbl">Discapacidad auditiva</div>
+                        <div class="acceso-txt">Sin guías en lengua de señas actualmente · En proceso de implementación
+                        </div>
+                    </div>
+                </div>
+                <div class="acceso-item">
+                    <div class="acceso-icon">🧒</div>
+                    <div>
+                        <div class="acceso-lbl">Familias y colegios</div>
+                        <div class="acceso-txt">Programas educativos y recorridos pedagógicos adaptados para niños y
+                            jóvenes</div>
+                    </div>
+                </div>
+                <div class="acceso-item">
+                    <div class="acceso-icon">🏛</div>
+                    <div>
+                        <div class="acceso-lbl">Escaleras</div>
+                        <div class="acceso-txt">Cuentan con pasamanos · Acceso a segundo piso por escalera</div>
+                    </div>
+                </div>
+                <div class="acceso-item">
+                    <div class="acceso-icon">🚪</div>
+                    <div>
+                        <div class="acceso-lbl">Puertas y pasillos</div>
+                        <div class="acceso-txt">Puertas de amplia dimensión y pasillos que permiten circulación sin
+                            dificultades</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nota">
+                <p>La información sobre accesibilidad puede variar según actividades o condiciones del edificio
+                    patrimonial. Se recomienda consultar con el equipo del Museo antes de la visita.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 05 — PROGRAMACIÓN
+════════════════════════════════════════ -->
+    <section id="programacion">
+        <div class="container">
+            <div class="section-label">Carpeta 05 · Pestaña Programación</div>
+            <h2>Programación, Eventos <em>y Talleres</em></h2>
+
+            <p>El Museo Arquidiocesano se entiende como un espacio de transformación cultural: no solo conserva y
+                exhibe, sino que genera experiencias de aprendizaje, diálogo y creación colectiva. Su programación
+                educativa se organiza en tres ejes:</p>
+            <div class="divider"></div>
+
+            <div class="eje-card">
+                <div class="eje-num">Eje 01</div>
+                <div class="eje-titulo">Formación académica de públicos</div>
+                <div class="eje-lista">
+                    · <strong style="color:rgba(255,255,255,0.85)">Seminario de Arte y Cultura Colonial</strong> —
+                    encuentro académico anual (desde 2022) que congrega historiadores, expertos en arte,
+                    artistas-investigadores y profesionales del patrimonio.<br>
+                    · <strong style="color:rgba(255,255,255,0.85)">Charlas y Talleres</strong> — eventos presenciales y
+                    virtuales sobre historia del arte, patrimonio colonial, museología y conservación.<br>
+                    · <strong style="color:rgba(255,255,255,0.85)">Laboratorio de Guías</strong> — programa anual de
+                    formación de mediadores culturales desde el enfoque del aprendizaje situado.
+                </div>
+            </div>
+
+            <div class="eje-card">
+                <div class="eje-num">Eje 02</div>
+                <div class="eje-titulo">Escuela y Museo</div>
+                <div class="eje-lista">
+                    · EducArte en el Museo (niños, jóvenes, adulto mayor) · Descubriendo Tesoros (preescolar) ·
+                    Pre-visitas para docentes · Visitas guiadas para grupos · Visita-taller · El Museo como Cátedra ·
+                    Voluntariado · Espacio de prácticas universitarias.<br><br>
+                    <strong style="color:rgba(255,255,255,0.75)">Condiciones:</strong> Grupos mínimo 5 personas ·
+                    Duración aprox. 90 min · Acompañamiento docente obligatorio para grupos escolares · Material
+                    didáctico disponible para 8–15 años (costo adicional, solicitar con reserva).
+                </div>
+            </div>
+
+            <div class="eje-card">
+                <div class="eje-num">Eje 03</div>
+                <div class="eje-titulo">El Museo como Centro Cultural</div>
+                <div class="eje-lista">
+                    · Noches de Museo · Visitas guiadas para turistas · Conciertos (música barroca y contemporánea) ·
+                    Cine Club · Inauguraciones de exposiciones temporales · Otras muestras artísticas.
+                </div>
+            </div>
+
+            <div class="nota" style="border-left-color:var(--verde); background:rgba(168,252,223,0.06);">
+                <p style="color:rgba(255,255,255,0.55);">⚠ Pendiente: completar calendario trimestral de actividades
+                    para publicar en la web.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 06 — PATRIMONIO VIVO
+════════════════════════════════════════ -->
+    <section id="patrimonio">
+        <div class="container">
+            <div class="section-label">Carpeta 06 · Pestaña Patrimonio Vivo</div>
+            <h2>Patrimonio <em>Vivo</em></h2>
+
+            <p>"Patrimonio Vivo" es el espacio donde el Museo muestra su dimensión más contemporánea: los proyectos de
+                mediación, los recursos pedagógicos y los procesos de creación colectiva que convierten el patrimonio en
+                recurso de las comunidades del presente.</p>
+
+            <div class="divider"></div>
+
+            <div class="proyecto-card">
+                <div class="proyecto-tag">Recurso educativo</div>
+                <div class="proyecto-nom">Maleta <em>Pedagógica</em></div>
+                <p>Recurso educativo diseñado para instituciones de educación básica y media, disponible para alquiler.
+                    Contiene materiales y actividades que permiten preparar la visita al Museo en el aula: fichas de
+                    obras, juegos de reconocimiento de técnicas, actividades de análisis iconográfico y propuestas de
+                    creación artística inspiradas en la colección.</p>
+                <p>Se articula con la Cátedra Popayán y con los programas de arte, ciencias sociales e historia. Puede
+                    solicitarse directamente al Museo.</p>
+                <table class="ficha-tabla" style="margin-top:1rem">
+                    <tr>
+                        <td>Público</td>
+                        <td>Instituciones educativas · Docentes de básica y media</td>
+                    </tr>
+                    <tr>
+                        <td>Modalidad</td>
+                        <td>Préstamo y alquiler · Requiere reserva previa</td>
+                    </tr>
+                    <tr>
+                        <td>Contacto</td>
+                        <td>Consultar en <a href="#contacto">Sección Contacto</a></td>
+                    </tr>
+                    <tr>
+                        <td>Materiales digitales</td>
+                        <td class="pending">En proceso de digitalización para acceso abierto</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="proyecto-card">
+                <div class="proyecto-tag">Proyecto 2026 · Programa Nacional de Concertación Cultural</div>
+                <div class="proyecto-nom"><em>Voces del Patrimonio</em><br>Serie de pódcast y creación colectiva</div>
+                <p>VOCES DEL PATRIMONIO es una serie de producciones sonoras y visuales creadas colectivamente con
+                    jóvenes universitarios de Popayán, que articula la memoria comunitaria con el patrimonio artístico y
+                    cultural de la ciudad. El proyecto resignifica las obras de la colección del Museo desde voces
+                    contemporáneas, diversas y situadas en el sur global.</p>
+                <p>Produce seis cápsulas sonoras/pódcast y seis piezas visuales con códigos QR, que circulan en radios
+                    comunitarias, plataformas digitales y el espacio público de Popayán mediante intervenciones urbanas
+                    con fotografías sonoras.</p>
+                <table class="ficha-tabla" style="margin-top:1rem">
+                    <tr>
+                        <td>Modalidad</td>
+                        <td>Pódcast · Cápsulas sonoras · Piezas visuales con QR · Intervenciones urbanas</td>
+                    </tr>
+                    <tr>
+                        <td>Aliados</td>
+                        <td>U. del Cauca · FUP · SENA · Emisoras comunitarias · Colectivos artísticos locales</td>
+                    </tr>
+                    <tr>
+                        <td>Micrositio digital</td>
+                        <td class="pending">En desarrollo · Repositorio de acceso público con todos los productos</td>
+                    </tr>
+                    <tr>
+                        <td>Acceso actual</td>
+                        <td class="pending">Próximamente disponible en redes del Museo</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="proyecto-card">
+                <div class="proyecto-tag">Publicación institucional</div>
+                <div class="proyecto-nom">Plan Educativo del <em>Museo Arquidiocesano</em></div>
+                <p><em>Museos como espacios de transformación cultural: estrategias para la Educación Patrimonial.</em>
+                    Autoría: Yenifer Andrea Cataño Vargas. Una publicación de la Arquidiócesis de Popayán desde el Museo
+                    Arquidiocesano de Arte Religioso. Con dirección de investigación del Dr. Gerardo Hernán Jiménez
+                    López (Universidad del Cauca). 2025.</p>
+                <p>El libro presenta el Plan Educativo del Museo en tres ejes: Formación académica de públicos, Escuela
+                    y Museo, y El Museo como Centro Cultural. Propone entender la educación patrimonial como un prisma
+                    que transforma el "patrimonio potencial" en "patrimonio efectivo".</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 07 — INVESTIGACIÓN
+════════════════════════════════════════ -->
+    <section id="investigacion">
+        <div class="container">
+            <div class="section-label">Carpeta 07 · Pestaña Investigación</div>
+            <h2>Investigación y <em>Publicaciones</em></h2>
+
+            <p>El Museo Arquidiocesano es también un centro de investigación sobre el arte colonial latinoamericano.
+                Esta sección reúne publicaciones, artículos e informes producidos por investigadoras e investigadores
+                que han estudiado la colección, el inmueble y los procesos culturales del Museo.</p>
+
+            <div class="divider"></div>
+
+            <h3>Publicaciones institucionales propias</h3>
+            <div class="pub-card">
+                <div class="pub-icon">📗</div>
+                <div>
+                    <div class="pub-titulo">Museos como espacios de transformación cultural: estrategias para la
+                        Educación Patrimonial</div>
+                    <div class="pub-autoria">Yenifer Andrea Cataño Vargas · Arquidiócesis de Popayán · Museo
+                        Arquidiocesano · 2025</div>
+                </div>
+            </div>
+            <div class="pub-card">
+                <div class="pub-icon">📄</div>
+                <div>
+                    <div class="pub-titulo">Guía de Lineamientos para Actividades Académicas y de Exhibición</div>
+                    <div class="pub-autoria">Yenifer Andrea Cataño Vargas · Documento institucional vigente · Museo
+                        Arquidiocesano · 2025</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Investigaciones externas — verificación de permisos pendiente</h3>
+            <p>Se cuenta con investigaciones académicas externas sobre la colección y el inmueble. Antes de publicarlas
+                en la web es necesario verificar con cada investigador los derechos de publicación y permisos de
+                reproducción.</p>
+            <div class="pub-card">
+                <div class="pub-icon">🏛</div>
+                <div>
+                    <div class="pub-titulo">Las casas rojas de la Ciudad Blanca: aportes desde lo patrimonial<br><small
+                            style="color:rgba(255,255,255,0.4)">(incluye análisis de la sede del Museo y el papel de
+                            Marcelino Pérez de Arroyo)</small></div>
+                    <div class="pub-autoria">Publicación académica · <span class="pub-pend">Permiso pendiente</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pub-card">
+                <div class="pub-icon">♿</div>
+                <div>
+                    <div class="pub-titulo">Accesibilidad PcD en el Museo Arquidiocesano de Arte Religioso</div>
+                    <div class="pub-autoria">Tania Marcela Ibarra Ruano · Universidad del Cauca · Programa de Turismo ·
+                        2024 · <span class="pub-pend">Permiso pendiente</span></div>
+                </div>
+            </div>
+            <div class="pub-card">
+                <div class="pub-icon">📚</div>
+                <div>
+                    <div class="pub-titulo">Artículos y estudios sobre obras de la colección</div>
+                    <div class="pub-autoria">Investigadores de Universidad del Cauca, Unicolmayor y otras instituciones
+                        · <span class="pub-pend">Permisos pendientes</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+     CARPETA 08 — CONTACTO
+════════════════════════════════════════ -->
+    <section id="contacto">
+        <div class="container">
+            <div class="section-label">Carpeta 08 · Pestaña Contacto</div>
+            <h2>Contacto y <em>Canales Digitales</em></h2>
+
+            <div class="contacto-grid">
+                <div class="contacto-card">
+                    <div class="contacto-label">Información de contacto</div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Dirección</span>
+                        <span class="contacto-valor">Calle 4A No. 4-56<br>Centro Histórico, Popayán, Cauca</span>
+                    </div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Teléfono / WA</span>
+                        <span class="contacto-valor">+57 312 788 7309</span>
+                    </div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Email</span>
+                        <span class="contacto-valor">museo@arquidiocesisdepopayan.org</span>
+                    </div>
+                </div>
+                <div class="contacto-card">
+                    <div class="contacto-label">Entidad administradora</div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Institución</span>
+                        <span class="contacto-valor">Arquidiócesis de Popayán</span>
+                    </div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Web</span>
+                        <span class="contacto-valor">www.arquidiocesisdepopayan.org</span>
+                    </div>
+                    <div class="contacto-dato">
+                        <span class="contacto-tipo">Dirección Curia</span>
+                        <span class="contacto-valor">Popayán, Cauca – Colombia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="redes-grid">
+                <div class="red-card">
+                    <div class="red-icon">📘</div>
+                    <div class="red-nom">Facebook</div>
+                    <div class="red-handle">Agregar enlace oficial</div>
+                </div>
+                <div class="red-card">
+                    <div class="red-icon">📸</div>
+                    <div class="red-nom">Instagram</div>
+                    <div class="red-handle">Agregar @usuario</div>
+                </div>
+                <div class="red-card">
+                    <div class="red-icon">▶️</div>
+                    <div class="red-nom">YouTube</div>
+                    <div class="red-handle">Activar canal</div>
+                </div>
+                <div class="red-card">
+                    <div class="red-icon">📍</div>
+                    <div class="red-nom">Google Maps</div>
+                    <div class="red-handle">Optimizar perfil</div>
+                </div>
+            </div>
+
+            <div class="alerta-estrategica">
+                <p>💡 <strong>Recomendación prioritaria:</strong> Activar y optimizar el perfil de Google Business con
+                    fotografías profesionales, horarios actualizados y descripción institucional. Es la herramienta de
+                    mayor impacto para la visibilidad turística en Popayán, sin costo alguno.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-sello">
+                <svg viewBox="0 0 28 28" fill="none">
+                    <line x1="14" y1="2" x2="14" y2="26" stroke="#842375" stroke-width="0.8" />
+                    <line x1="2" y1="14" x2="26" y2="14" stroke="#842375" stroke-width="0.8" />
+                    <circle cx="14" cy="14" r="7" stroke="#842375" stroke-width="0.6" />
+                    <circle cx="14" cy="14" r="3" stroke="#a8fcdf" stroke-width="0.5" />
+                </svg>
+            </div>
+            <div class="footer-logo">Museo Arquidiocesano de Arte Religioso · Popayán</div>
+            <div class="footer-nota">
+                Dossier Web Institucional · Versión 1.0 · 2026<br>
+                Documento de trabajo para el desarrollo de la plataforma digital institucional<br>
+                Arquidiócesis de Popayán · Bien de Interés Cultural de la Nación · Decreto 2248 de 1996
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
