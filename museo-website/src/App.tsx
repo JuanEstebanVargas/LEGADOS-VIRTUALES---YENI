@@ -27,7 +27,10 @@ const getPreviewText = (text: string, maxLength = 110) => {
     return text
   }
 
-  return `${text.slice(0, maxLength).trimEnd()}...`
+  const lastWhitespace = text.lastIndexOf(' ', maxLength)
+  const cutoff = lastWhitespace > Math.floor(maxLength * 0.75) ? lastWhitespace : maxLength
+
+  return `${text.slice(0, cutoff).trimEnd()}...`
 }
 
 type SectionSummaryProps = {
@@ -54,6 +57,51 @@ const SectionSummary = ({ title, what, audience, action }: SectionSummaryProps) 
     </ul>
   </article>
 )
+
+const TechniqueIcon = ({ icon }: { icon?: string }) => {
+  switch (icon) {
+    case 'palette':
+      return (
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <path d="M12 3.5c-5 0-9 3.6-9 8.1 0 2.4 1.8 4.4 4.1 4.4h2.1c.8 0 1.5.7 1.5 1.5v.1c0 1.7 1.4 3.1 3.1 3.1h.6c3.9 0 6.6-3 6.6-6.8C21 8.4 17 3.5 12 3.5Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+          <circle cx="8" cy="10" r="1" fill="currentColor" />
+          <circle cx="11.5" cy="8" r="1" fill="currentColor" />
+          <circle cx="15" cy="9" r="1" fill="currentColor" />
+          <circle cx="16.5" cy="12.5" r="1" fill="currentColor" />
+        </svg>
+      )
+    case 'wood':
+      return (
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <path d="M6.5 4.5h11a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18V6a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M9 7.5c1.8 1.2 1.8 3 0 4.2s-1.8 3 0 4.3" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M13 7.5c1.8 1.2 1.8 3 0 4.2s-1.8 3 0 4.3" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      )
+    case 'chalice':
+      return (
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <path d="M7 5h10v1.3c0 2.9-2.3 5.2-5.2 5.2h-.6C8.3 11.5 6 9.2 6 6.3V5h1Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+          <path d="M10.5 11.5v3.1c0 .6-.4 1.1-1 1.3L7.6 16.6v1.9h8.8v-1.9l-1.9-.7c-.6-.2-1-.7-1-1.3v-3.1" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8.2 20h7.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      )
+    case 'textile':
+      return (
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <path d="M6.5 4.5h11a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18V6a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M8 8h8M8 12h8M8 16h8" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M9.4 7.1v9.8M12 7.1v9.8M14.6 7.1v9.8" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" opacity=".75" />
+        </svg>
+      )
+    default:
+      return (
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <path d="M12 3.8l2.2 4.5 5 .7-3.6 3.6.8 5-4.4-2.3-4.4 2.3.8-5-3.6-3.6 5-.7L12 3.8Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        </svg>
+      )
+  }
+}
 
 function App() {
   const whatsappPhone = '573127887309'
@@ -128,7 +176,6 @@ function App() {
 
         <section className="content-section" id="identidad">
           <div className="section-heading section-heading-compact">
-            <p className="section-label"> 01 - Pestaña El Museo</p>
             <h2>Identidad Institucional</h2>
 
           </div>
@@ -191,9 +238,8 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section content-section-dark" id="historia">
+        <section className="content-section" id="historia">
           <div className="section-heading section-heading-compact">
-            <p className="section-label section-label-inverse"> 02 - Pestaña El Museo</p>
             <h2>Historia del museo</h2>
             <p className="section-intro section-intro-inverse">
               Síntesis del recorrido histórico, la sede, la dirección institucional, el marco legal y los custodios del patrimonio.
@@ -255,7 +301,7 @@ function App() {
                     <span className="dir-tag">{entry.tag}</span>
                     <span className="accordion-action">Ver perfil</span>
                   </summary>
-                  <div className="dir-bio dir-bio-compact">{entry.description}</div>
+                  <div className="dir-bio-compact">{entry.description}</div>
                 </details>
               ))}
             </div>
@@ -299,7 +345,6 @@ function App() {
 
         <section className="content-section" id="coleccion">
           <div className="section-heading section-heading-compact">
-            <p className="section-label">03 - Pestaña Multimedia</p>
             <h2>Colección, técnicas, obras destacadas y navegación visual.</h2>
             <p className="section-intro">
               La colección del Museo Arquidiocesano destaca como una de las más importantes de arte colonial en Colombia. Reúne obras de los siglos XVI al XIX, centradas en el barroco latinoamericano, especialmente de las escuelas quiteña y payanesa, provenientes de templos históricos de Popayán. Además, refleja una doble historia: fue creada como herramienta de evangelización, pero también reinterpretada por las comunidades locales.
@@ -310,7 +355,9 @@ function App() {
           <div className="tecnicas-grid">
             {collectionTechniques.map((technique) => (
               <article className="tecnica-item" key={technique.title}>
-                <div className="tecnica-icon" aria-hidden="true">{technique.icon ?? '✦'}</div>
+                <div className="tecnica-icon" aria-hidden="true">
+                  <TechniqueIcon icon={technique.icon} />
+                </div>
                 <div className="tecnica-nom">{technique.title}</div>
                 <div className="tecnica-desc">{technique.description}</div>
               </article>
@@ -324,9 +371,8 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section content-section-dark" id="visita">
+        <section className="content-section" id="visita">
           <div className="section-heading section-heading-compact">
-            <p className="section-label section-label-inverse"> 04 - Pestaña Visitas</p>
             <h2>Horarios, ubicación, accesibilidad y planificación de la visita.</h2>
             <p className="section-intro section-intro-inverse">
               La información práctica se conserva y se presenta como un bloque de orientación claro y responsivo.
@@ -497,7 +543,6 @@ function App() {
 
         <section className="content-section" id="programacion">
           <div className="section-heading section-heading-compact">
-            <p className="section-label"> 05 - Pestaña Programación</p>
             <h2>Programación educativa, cultural y académica del Museo.</h2>
             <p className="section-intro">
               Esta sección organiza la oferta formativa del Museo por ejes para facilitar decisiones rápidas según perfil, objetivo y tiempo disponible.
@@ -550,9 +595,8 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section content-section-dark" id="patrimonio">
+        <section className="content-section" id="patrimonio">
           <div className="section-heading section-heading-compact">
-            <p className="section-label section-label-inverse"> 06 - Pestaña Patrimonio Vivo</p>
             <h2>Patrimonio Vivo.</h2>
           </div>
 
@@ -644,7 +688,6 @@ function App() {
 
         <section className="content-section" id="investigacion">
           <div className="section-heading section-heading-compact">
-            <p className="section-label"> 07 - Pestaña Investigación</p>
             <h2>Investigación y Publicaciones</h2>
             <p className="section-intro">
               El Museo Arquidiocesano es también un centro de investigación sobre el arte colonial latinoamericano. Esta sección reúne publicaciones, artículos e informes producidos por investigadoras e investigadores que han estudiado la colección, el inmueble y los procesos culturales del Museo.
@@ -713,9 +756,8 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section contact-section content-section-dark" id="contacto">
+        <section className="content-section contact-section" id="contacto">
           <div className="section-heading section-heading-compact">
-            <p className="section-label section-label-inverse"> 08 - Pestaña Contacto</p>
             <h2>Canales digitales, redes sociales y atención institucional.</h2>
           </div>
 

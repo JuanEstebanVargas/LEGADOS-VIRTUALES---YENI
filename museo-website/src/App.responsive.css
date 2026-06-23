@@ -71,8 +71,8 @@ video {
   }
 
   .header-nav__link {
-    padding: 0.76rem 0.88rem;
-    font-size: 0.82rem;
+    padding: 0.28rem 0.42rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -170,7 +170,8 @@ video {
 
   .dir-bio-compact,
   .custodio-bio {
-    padding: 0.2rem 0.8rem 0.72rem;
+    max-width: 100%;
+    padding: 0.5rem 0.95rem 1rem;
   }
 
   .directora-row-compact .dir-tag,
@@ -205,7 +206,13 @@ video {
     right: 0;
     z-index: 30;
     padding: 0.5rem 0 0.4rem;
-    background: linear-gradient(180deg, rgba(31, 18, 53, 0.96), rgba(31, 18, 53, 0.26));
+    background: linear-gradient(180deg, rgba(31, 18, 53, 0.97) 0%, rgba(45, 27, 76, 0.8) 58%, rgba(88, 69, 126, 0.2) 100%);
+  }
+
+  .header-bar::after {
+    bottom: -1.9rem;
+    height: 2.1rem;
+    background: linear-gradient(180deg, rgba(44, 27, 74, 0.22) 0%, rgba(84, 66, 122, 0.09) 52%, rgba(255, 255, 255, 0) 100%);
   }
 
   .header-inner {
@@ -274,10 +281,10 @@ video {
   }
 
   .header-nav a {
-    min-height: 44px;
+    min-height: 34px;
     text-align: center;
-    border-radius: 11px;
-    font-size: 0.86rem;
+    border-radius: 9px;
+    font-size: 0.68rem;
     white-space: normal;
     line-height: 1.1;
     background: rgba(255, 255, 255, 0.08);
@@ -303,6 +310,11 @@ video {
     margin-bottom: 0.95rem;
   }
 
+  .section-page-main .section-heading h1 {
+    font-size: clamp(2rem, 8.4vw, 2.85rem);
+    line-height: 1.06;
+  }
+
   /* Hero */
   .portada {
     min-height: calc(72svh - 32px);
@@ -326,9 +338,7 @@ video {
   }
 
   .site-shell::before,
-  .site-shell::after,
-  .portada::before,
-  .portada::after {
+  .site-shell::after {
     display: none;
   }
 
@@ -421,7 +431,7 @@ video {
   }
 
   .timeline-compact {
-    margin: 0.8rem 0;
+    margin: 1.1rem 0 1.25rem;
   }
 
   .tl-dot {
@@ -429,8 +439,8 @@ video {
   }
 
   .tl-item-compact {
-    margin-bottom: 0.6rem;
-    padding-bottom: 0.6rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.9rem;
   }
 
   .tl-titulo {
@@ -438,12 +448,12 @@ video {
   }
 
   .historia-subtitle {
-    margin-top: 0.3rem;
+    margin-top: 0.9rem;
     font-size: 0.94rem;
   }
 
   .custodios-toggle {
-    padding: 0.58rem 0.65rem;
+    padding: 0.82rem 0.88rem;
   }
 
   .custodios-toggle summary h3 {
@@ -451,7 +461,8 @@ video {
   }
 
   .custodio-bio {
-    font-size: 0.7rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
   }
 
   /* Visitas y mapas */
@@ -528,6 +539,10 @@ video {
     font-size: clamp(1.45rem, 8vw, 1.95rem);
   }
 
+  .section-page-main .section-heading h1 {
+    font-size: clamp(1.82rem, 8.8vw, 2.35rem);
+  }
+
   .section-label,
   .program-axis-id,
   .accordion-action,
@@ -553,9 +568,7 @@ video {
 
 @media (max-width: 979px) {
   .site-shell::before,
-  .site-shell::after,
-  .portada::before,
-  .portada::after {
+  .site-shell::after {
     display: none;
   }
 

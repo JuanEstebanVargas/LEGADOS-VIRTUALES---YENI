@@ -268,22 +268,22 @@ export const leadershipEntries: LeadershipEntry[] = [
 
 export const collectionTechniques: HighlightCard[] = [
   {
-    icon: '🎨',
+    icon: 'palette',
     title: 'Pintura al óleo',
     description: 'Sobre tela, madera y otros soportes',
   },
   {
-    icon: '🪵',
+    icon: 'wood',
     title: 'Talla en madera',
     description: 'Policromada y dorada',
   },
   {
-    icon: '⚱️',
+    icon: 'chalice',
     title: 'Orfebrería y platería',
     description: 'Piezas litúrgicas y devocionales · Exposición especial Semana Santa',
   },
   {
-    icon: '🧵',
+    icon: 'textile',
     title: 'Textiles bordados',
     description: 'Ornamentos sagrados y vestiduras litúrgicas',
   },

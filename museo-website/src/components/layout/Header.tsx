@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState, type MouseEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 const navigation = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'El Museo', href: '#identidad' },
-  { label: 'Historia', href: '#historia' },
-  { label: 'Colección', href: '#coleccion' },
-  { label: 'Visitas', href: '#visita' },
-  { label: 'Programación', href: '#programacion' },
-  { label: 'Patrimonio', href: '#patrimonio' },
-  { label: 'Investigación', href: '#investigacion' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Inicio', to: '/' },
+  { label: 'El Museo', to: '/museo' },
+  { label: 'Historia', to: '/historia' },
+  { label: 'Colección', to: '/coleccion' },
+  { label: 'Visitas', to: '/visitas' },
+  { label: 'Programación', to: '/programacion' },
+  { label: 'Patrimonio', to: '/patrimonio' },
+  { label: 'Investigación', to: '/investigacion' },
+  { label: 'Contacto', to: '/contacto' },
 ]
 
 export function Header() {
@@ -66,43 +67,23 @@ export function Header() {
     }
   }, [])
 
-  const handleNavigationClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith('#')) {
-      return
-    }
-
-    event.preventDefault()
+  const handleNavigationClick = () => {
     setIsMenuOpen(false)
-
-    const targetId = href.slice(1)
-    const targetElement = document.getElementById(targetId)
-
-    if (!targetElement) {
-      return
-    }
-
-    const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    targetElement.scrollIntoView({
-      behavior: shouldReduceMotion ? 'auto' : 'smooth',
-      block: 'start',
-      inline: 'nearest',
-    })
-
-    window.history.replaceState(null, '', href)
+    window.scrollTo({ top: 0, behavior: 'auto' })
   }
 
   return (
     <nav className="header-bar" aria-label="Navegación principal" ref={navContainerRef}>
       <div className="header-inner">
-        <a
+        <Link
           className="brand-mark"
-          href="#inicio"
+          to="/"
           aria-label="Ir al inicio del museo"
-          onClick={(event) => handleNavigationClick(event, '#inicio')}
+          onClick={handleNavigationClick}
         >
           <span className="brand-mark__title">Museo Arquidiocesano</span>
           <span className="brand-mark__detail">Popayán</span>
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -120,19 +101,17 @@ export function Header() {
         <ul className={`header-nav ${isMenuOpen ? 'is-open' : ''}`} id="main-navigation">
           {navigation.map((item) => (
             <li key={item.label}>
-              <a
-                className={
-                  item.label === 'Inicio'
-                    ? 'header-nav__link header-nav__link--home'
-                    : item.label === 'Contacto'
-                      ? 'header-nav__link header-nav__link--cta'
-                      : 'header-nav__link'
+              <NavLink
+                className={({ isActive }) =>
+                  item.label === 'Contacto'
+                    ? `header-nav__link header-nav__link--cta ${isActive ? 'header-nav__link--active' : ''}`
+                    : `header-nav__link ${item.label === 'Inicio' ? 'header-nav__link--home' : ''} ${isActive ? 'header-nav__link--active' : ''}`
                 }
-                href={item.href}
-                onClick={(event) => handleNavigationClick(event, item.href)}
+                to={item.to}
+                onClick={handleNavigationClick}
               >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
