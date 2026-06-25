@@ -1426,6 +1426,20 @@ h3 {
   color: var(--color-text-primary);
 }
 
+.investigacion-publication-icon {
+  display: inline-flex;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-right: 0.36rem;
+  color: var(--color-accent);
+  vertical-align: -0.15em;
+}
+
+.investigacion-publication-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .visit-detail-card-wide {
   grid-column: 1 / -1;
 }

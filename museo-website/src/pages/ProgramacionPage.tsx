@@ -21,7 +21,11 @@ export function ProgramacionPage() {
 
         <div className="program-accordion-list patrimonio-accordion-list">
           {programAxes.map((axis, index) => (
-            <details className="program-axis-card" key={axis.id} open={index < 2}>
+            <details
+              className={`program-axis-card${axis.id.includes('03') ? ' program-axis-card-wide' : ''}`}
+              key={axis.id}
+              open={index < 2}
+            >
               <summary>
                 <div>
                   <div className="program-axis-id">{axis.id}</div>

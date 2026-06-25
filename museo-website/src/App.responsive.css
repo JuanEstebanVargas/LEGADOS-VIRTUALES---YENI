@@ -156,16 +156,90 @@ video {
     gap: 0.25rem;
   }
 
+  .home-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .section-preview-card {
+    min-height: 0;
+  }
+
+  .section-preview-card h3 {
+    font-size: clamp(1.22rem, 2.2vw, 1.5rem);
+    line-height: 1.16;
+  }
+
+  .section-preview-card p {
+    font-size: 0.92rem;
+    line-height: 1.42;
+  }
+
+  .section-preview-card__cta {
+    font-size: 0.68rem;
+    white-space: normal;
+    text-align: center;
+  }
+
   .program-axis-card-wide,
   .visit-detail-card-wide {
     grid-column: auto;
   }
 
-  /* Filas compactas de directoras/custodios */
-  .directora-row-compact,
-  .custodio-row-compact {
-    grid-template-columns: 1fr;
+  /* Historia: directoras/custodios en tablet */
+  .directoras-toggle,
+  .custodios-toggle {
+    padding: 0.85rem;
+  }
+
+  .directoras-toggle .directora-row-compact,
+  .custodios-toggle .custodio-row-compact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'periodo action'
+      'main main'
+      'tag tag';
     align-items: flex-start;
+    gap: 0.5rem 0.7rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .directoras-toggle .dir-periodo,
+  .custodios-toggle .custodio-periodo {
+    grid-area: periodo;
+  }
+
+  .directoras-toggle .dir-main,
+  .custodios-toggle .custodio-main {
+    grid-area: main;
+    min-height: 0;
+  }
+
+  .directoras-toggle .dir-tag,
+  .custodios-toggle .custodio-tag {
+    grid-area: tag;
+    justify-self: start;
+    max-width: 100%;
+    border-radius: 12px;
+    padding: 0.32rem 0.56rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    white-space: normal;
+    text-wrap: pretty;
+    text-align: left;
+  }
+
+  .directoras-toggle .accordion-action,
+  .custodios-toggle .accordion-action {
+    grid-area: action;
+    justify-self: end;
+    align-self: start;
+    margin-top: 0;
+    font-size: 0.62rem;
+    white-space: nowrap;
+    text-align: right;
   }
 
   .dir-bio-compact,
@@ -174,12 +248,21 @@ video {
     padding: 0.5rem 0.95rem 1rem;
   }
 
-  .directora-row-compact .dir-tag,
-  .directora-row-compact .accordion-action,
-  .custodio-row-compact .custodio-tag,
-  .custodio-row-compact .accordion-action {
-    justify-self: start;
-    text-align: left;
+  .directoras-toggle .dir-nombre,
+  .custodios-toggle .custodio-nombre {
+    font-size: 0.96rem;
+    line-height: 1.28;
+  }
+
+  .directoras-toggle .dir-num,
+  .custodios-toggle .custodio-rol {
+    font-size: 0.58rem;
+    line-height: 1.3;
+  }
+
+  .custodios-intro {
+    font-size: 0.9rem;
+    line-height: 1.56;
   }
 
   /* Mapa y contenido denso */
@@ -303,6 +386,38 @@ video {
 
   .content-section {
     padding: 0.95rem;
+  }
+
+  .home-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+  }
+
+  .directoras-toggle .directora-row-compact,
+  .custodios-toggle .custodio-row-compact {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'periodo'
+      'main'
+      'tag'
+      'action';
+    gap: 0.42rem;
+  }
+
+  .directoras-toggle .accordion-action,
+  .custodios-toggle .accordion-action {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .directoras-toggle .dir-tag,
+  .custodios-toggle .custodio-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
+  }
+
+  .section-preview-card__body {
+    padding: 0.85rem 0.9rem 0.78rem;
   }
 
   .section-heading {
