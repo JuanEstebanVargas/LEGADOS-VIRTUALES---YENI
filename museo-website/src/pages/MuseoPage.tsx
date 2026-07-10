@@ -27,7 +27,7 @@ export function MuseoPage() {
         <div className="manifiesto-box">
           <blockquote>
             Cuatro siglos de pincel y gubia hablan en estas paredes. No como monumentos congelados, sino como
-            <span className="verde"> preguntas abiertas:</span>
+            
             ¿quién nombró estas imágenes? ¿A quiénes sirvieron? ¿Qué dicen hoy, desde el sur, desde lo colectivo, desde lo que aún no ha sido dicho? El Museo es el lugar donde esas preguntas tienen espacio, donde el patrimonio deja de ser propiedad de unos pocos y se convierte en conversación de muchos.
           </blockquote>
           <div className="firma">Propósito cultural — Museo Arquidiocesano de Arte Religioso · Popayán</div>

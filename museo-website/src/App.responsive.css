@@ -520,12 +520,22 @@ video {
 
   .manifiesto-box {
     margin: 1.15rem 0;
-    padding: 1.3rem 1.05rem;
+    padding: 1.15rem 0.95rem;
+    border-radius: 18px;
   }
 
   .manifiesto-box::before {
-    top: -8px;
+    top: -4px;
     left: 4px;
+  }
+
+  .manifiesto-box blockquote {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .manifiesto-box .firma {
+    letter-spacing: 0.08em;
   }
 
   .mv-card,

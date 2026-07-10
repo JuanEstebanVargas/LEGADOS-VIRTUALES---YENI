@@ -1,0 +1,261 @@
+/* Adaptación de clases React al lenguaje visual legado (museonacional.gov.co) */
+
+.legacy-museo {
+  --legacy-gray-900: #222222;
+  --legacy-gray-800: #333333;
+  --legacy-gray-700: #4c4c4c;
+  --legacy-gray-600: #646464;
+  --legacy-gray-500: #999999;
+  --legacy-gray-300: #c4c4c4;
+  --legacy-gray-200: #eeeeee;
+  --legacy-bg: #ffffff;
+  --legacy-text: #444444;
+  --legacy-font: "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+
+.legacy-museo,
+.legacy-museo body,
+.legacy-museo .site-shell {
+  font-family: var(--legacy-font) !important;
+  color: var(--legacy-text) !important;
+  background: var(--legacy-bg) !important;
+}
+
+.legacy-museo.site-shell::before,
+.legacy-museo.site-shell::after {
+  display: none !important;
+}
+
+.legacy-museo .o-container,
+.legacy-museo main {
+  width: min(980px, calc(100% - 8rem)) !important;
+  max-width: 980px !important;
+  margin-inline: auto;
+}
+
+.legacy-museo .c-utility-bar {
+  background: var(--legacy-gray-700) !important;
+  color: #ffffff !important;
+}
+
+.legacy-museo .c-header {
+  position: relative;
+  background: #ffffff !important;
+  border-bottom: 0;
+  box-shadow: none !important;
+}
+
+.legacy-museo .c-header__inner {
+  padding-top: 0.35rem !important;
+  max-width: 1520px;
+  margin-inline: auto;
+}
+
+.legacy-museo .c-header__top {
+  width: min(980px, calc(100% - 8rem));
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.legacy-museo .c-brand,
+.legacy-museo .c-header__nav-link {
+  font-family: var(--legacy-font) !important;
+}
+
+.legacy-museo .c-header__nav {
+  margin-top: 0.18rem !important;
+  gap: 1.2rem !important;
+  justify-content: space-between;
+  width: min(980px, calc(100% - 8rem));
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.legacy-museo .c-header__nav-link {
+  color: var(--legacy-gray-800) !important;
+  font-size: 0.82rem !important;
+  border-bottom: 0;
+  padding-top: 0.05rem !important;
+  padding-bottom: 0.58rem !important;
+}
+
+.legacy-museo .c-header__nav-link:hover,
+.legacy-museo .c-header__nav-link.is-active {
+  color: #2f2f2f !important;
+}
+
+.legacy-museo .portal-main,
+.legacy-museo .section-page-main {
+  padding-top: 1rem !important;
+}
+
+.legacy-museo main.home-page {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.legacy-museo main.home-page .home-page__inner,
+.legacy-museo .home-page__inner.o-container {
+  width: min(980px, calc(100% - 8rem)) !important;
+  max-width: 980px !important;
+  margin-inline: auto;
+}
+
+@media only screen and (max-width: 1024px) {
+  .legacy-museo .o-container,
+  .legacy-museo main {
+    width: calc(100% - 2rem) !important;
+    max-width: none !important;
+  }
+
+  .legacy-museo main.home-page .home-page__inner,
+  .legacy-museo .home-page__inner.o-container {
+    width: calc(100% - 2rem) !important;
+    max-width: none !important;
+  }
+
+  .legacy-museo .c-header__top,
+  .legacy-museo .c-header__nav {
+    width: calc(100% - 2rem);
+    max-width: none;
+  }
+}
+
+.legacy-museo .content-section,
+.legacy-museo .hero-card,
+.legacy-museo .panel,
+.legacy-museo .card,
+.legacy-museo .historia-mini-card,
+.legacy-museo .visit-card,
+.legacy-museo .section-preview-card,
+.legacy-museo .content-card {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.legacy-museo .c-section__header,
+.legacy-museo .c-card,
+.legacy-museo .c-agenda__item,
+.legacy-museo .c-feature-banner,
+.legacy-museo .c-quick-links__item,
+.legacy-museo .visit-map-embed-wrap,
+.legacy-museo .visit-map-link,
+.legacy-museo .section-heading,
+.legacy-museo .section-heading-compact {
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.legacy-museo .c-section__header {
+  border: 0 !important;
+}
+
+.legacy-museo .section-heading h2,
+.legacy-museo .section-heading h3,
+.legacy-museo h1,
+.legacy-museo h2,
+.legacy-museo h3,
+.legacy-museo h4 {
+  color: #444 !important;
+}
+
+.legacy-museo p,
+.legacy-museo li,
+.legacy-museo span,
+.legacy-museo a {
+  color: #333 !important;
+}
+
+.legacy-museo .c-utility-bar a,
+.legacy-museo .c-utility-bar span {
+  color: #ffffff !important;
+}
+
+.legacy-museo .button,
+.legacy-museo .section-preview-card__cta,
+.legacy-museo .cta-button {
+  background: #ffffff !important;
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 0 !important;
+  color: #333333 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.legacy-museo .button:hover,
+.legacy-museo .section-preview-card__cta:hover,
+.legacy-museo .cta-button:hover {
+  background: #ffffff !important;
+}
+
+.legacy-museo .c-footer {
+  background: var(--legacy-gray-700) !important;
+  color: #ffffff !important;
+  border-top: 0 !important;
+}
+
+.legacy-museo .c-footer h3,
+.legacy-museo .c-footer p,
+.legacy-museo .c-footer a,
+.legacy-museo .c-footer li {
+  color: #ffffff !important;
+}
+
+.legacy-museo .c-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .legacy-museo .o-container,
+  .legacy-museo main {
+    width: calc(100% - 1.2rem) !important;
+  }
+
+  .legacy-museo .home-page__inner.o-container {
+    width: calc(100% - 1.2rem) !important;
+  }
+
+  .legacy-museo .c-header__inner {
+    padding-top: 0.8rem !important;
+  }
+
+  .legacy-museo .c-header__nav {
+    margin-top: 0.45rem !important;
+  }
+
+  .legacy-museo .c-header__top {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+
+  .legacy-museo .c-header__tools {
+    display: none !important;
+  }
+
+  .legacy-museo .c-header__toggle {
+    display: inline-flex !important;
+  }
+
+  .legacy-museo .c-header__nav {
+    display: none;
+    flex-direction: column;
+    background: #2f2f2f;
+    margin-top: 0.5rem !important;
+    gap: 0;
+  }
+
+  .legacy-museo .c-header__nav.is-open {
+    display: flex;
+  }
+
+  .legacy-museo .c-header__nav-link {
+    color: #dfdfdf !important;
+    padding: 0.9rem 1rem !important;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.1);
+  }
+
+  .legacy-museo .contacto-fab {
+    display: none !important;
+  }
+}

@@ -1,9 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 import './App.responsive.css'
+import './styles/portal.css'
+import './styles/museo_nacional/reseter.css'
+import './styles/museo_nacional/general.css'
+import './styles/museo_nacional/responsive.css'
+import './styles/museo_nacional/bridge.css'
 import { Footer } from './components/layout/Footer'
 import { Header } from './components/layout/Header'
+import { InstitutionalBar } from './components/portal/InstitutionalBar'
 import { ColeccionPage } from './pages/ColeccionPage'
 import { ContactoPage } from './pages/ContactoPage'
 import { HistoriaPage } from './pages/HistoriaPage'
@@ -45,12 +51,22 @@ function LegacyHashRedirect() {
 }
 
 export default function RoutedApp() {
+  const [reduceMotionManually, setReduceMotionManually] = useState(false)
+
+  useEffect(() => {
+    document.documentElement.dataset.motion = reduceMotionManually ? 'off' : 'on'
+  }, [reduceMotionManually])
+
   const whatsappPhone = '573127887309'
   const whatsappMessage = 'Hola, quiero planear una visita al Museo Arquidiocesano de Arte Religioso de Popayán.'
   const whatsappHref = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
-    <div className="site-shell">
+    <div className="site-shell legacy-museo">
+      <a className="skip-link" href="#main-content">
+        Saltar al contenido principal
+      </a>
+      <InstitutionalBar onToggleMotion={() => setReduceMotionManually((current) => !current)} />
       <Header />
       <LegacyHashRedirect />
 

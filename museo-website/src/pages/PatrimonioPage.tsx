@@ -18,7 +18,7 @@ export function PatrimonioPage() {
           action="Explorar recursos, conocer proyectos colaborativos y consultar publicaciones educativas del Museo."
         />
 
-        <div className="info-band">
+        <div className="info-band patrimonio-info-band">
           <div>
             <p className="eyebrow eyebrow-inverse">Patrimonio Vivo</p>
             <h2>Proyectos de mediación, recursos pedagógicos y creación colectiva.</h2>

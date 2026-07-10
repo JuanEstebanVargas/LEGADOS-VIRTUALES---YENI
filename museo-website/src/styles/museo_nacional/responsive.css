@@ -1,0 +1,488 @@
+@media only screen
+and (max-width: 767px){
+	body {
+		font-size: 100%;
+	}
+	.movil-nav-list{
+		display:block!important;
+	}
+	.sidr h1{
+		font-weight:200!important;
+		font-size:20px!important;
+		color:#eaeaea;
+		padding: 12px 15px !important;
+		line-height:22px!important;
+	}
+	/*==== Boton de busqueda =====*/
+
+
+	.busqueda-movil {
+		
+		display: table;
+		/* float: right; */
+		height: 100%;
+		margin-top: 2px;
+		padding: 18px;
+		padding-right:0px;
+		width: 10%;
+		border-left: 1pt #6C6B6B solid;
+	}
+/*
+.busqueda-movil img{
+	width:auto;
+	display:block;
+	width:70%;
+}
+*/
+
+/*================================================================================== OCULTAR ====================*/
+#s4-statusbarcontainer,/*#s4-ribbonrow,*/#s4-titlerow, .banner-home1, .box-destacados1, .col-right1, #anteportada, 
+.mapa_sitio, .hide-mobile, .creditos .links-btm, .info-right, .links-rht,
+.info-right1, .box-tw1, #links-top, .siguenos, .mincultura, .breadcrumb, .primera, .info-bottom-main, .info-bottom-main,
+.buscador, .paginacion, .mm-header{
+	display:none!important;
+}
+
+.s4-ba {
+	padding:0px!important;
+}
+/*================================================================================= REDIMENSIÓN DEL LIENZO ======*/
+/* body #s4-bodyContainer {min-width: 480px!important;} */
+body #s4-bodyContainer {width: auto!important;}
+
+/*HEAD*/
+#contenedor {width:100%; margin:0px;}
+#cabezote {
+	height: initial;
+	padding: 0px; 
+}
+#cabezote h1.mus-nal {
+	float: left!important;
+}
+	/*
+	a.logo-museo {
+		width: 100%;
+		display: block;
+		float: left;
+	}
+	a.logo-museo img {
+	width:100%;
+	padding:4% 0%;
+	padding-left: 6%;
+	}
+	*/
+	.content-logo {
+		display: table;
+		float:left;
+		height: 100%;
+		width: 65%;
+		position: relative;
+	}
+	/*PORTADA & MENU*/
+	.Portada-mobile{
+		display:block;
+		background:gray;
+	}
+	.menu-mobile{
+		display:none;
+		background:gray;
+	}
+	h1.item-mobile {
+		font-weight:400!important;
+		font-size:15px!important;
+		color:gray;
+	}
+	/*PORTADA*/
+	img.img-portada-mobile {
+		width: 100%;
+	}
+	.Portada-mobile li.dfwp-item {
+		list-style:none;
+	}
+	/*MENU LATERAL*/
+
+
+	.menu-navsup-mobile,.icon-menu-nav{
+		display:block;
+	}
+	.icon-menu-nav img {
+		width: 55%;
+		padding: 29% 5% 20% 30%;
+	}
+
+	.icon-menu-nav:focus .icon-menu-nav a:focus { 
+		background: red!important;
+		border-color: red!important;
+	}
+	.icon-menu-nav:active .icon-menu-nav a:active { 
+		background: red!important;
+		border-color: red!important;
+	}
+	/*DESPLEGADO*/
+	nav .item-menu-mov a:hover {
+		text-decoration: none!important;
+	}
+	nav#menu {
+		background: #2F2F2F!important;
+	}
+	nav.menu-mobile li {
+		list-style: none;
+		background: none!important;
+		padding: 15px 30px!important;;
+		border-bottom: 1pt solid rgba(196, 196, 196, 0.1)!important;;
+	}
+	nav h1.item-mobile {
+		font-weight: lighter!important;
+		font-size: 22px!important;
+		color: #DFDFDF!important;;
+	}
+	nav span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-s{
+		display:none!important;
+	}
+	nav.menu-mobile li{
+		-webkit-box-shadow: 0px 2px 5px 0px rgba(47, 47, 47, 0.78);
+		-moz-box-shadow:    0px 2px 5px 0px rgba(47, 47, 47, 0.78);
+		box-shadow:         0px 2px 5px 0px rgba(47, 47, 47, 0.78);
+	}
+	/*MENU*/
+	.menu-mobile li{
+		list-style:none;
+		background:#eee;
+		padding: 15px 30px;
+		border-bottom:2px solid #c4c4c4;
+	}
+	.icon-menu-nav {
+		width: 15%;
+		float: left;
+		height: 100%;
+		display: table;
+		position: relative;
+	}
+	span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-s {
+		position: absolute;
+		right: 4%;
+		top: 0px;
+	}
+	.ui-icon {
+		background: url("/Style Library/museo/images/right.png") !important;
+		background-size: contain!important;
+	}
+	.item-menu-mov{
+		position:relative;
+	}
+	/*SOCIAL*/
+	.social-mobile a {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.social-mobile {
+		min-height: 60px;
+		display: block;
+		width: 100%;
+	}
+	.socialm {
+		width: 33.3333%;
+		display: block;
+		float:left;
+		position: relative;
+		height: 60px;
+		text-align:center;
+	}
+	.fb{
+		background:#3b5998;
+	}
+	.tw{
+		background:#00aced;/*1dcaff*/
+	}
+	.yt{
+		background:#e52d27;/*b31217*/
+	}
+	.socialm img {
+/*
+	margin: auto;
+	display: table-cell;
+	vertical-align: middle;
+	position: relative;
+	padding-top:17px;
+	height:30px!important;
+	width:initial!important;
+	*/
+}
+/*DATOS*/
+#piedepagina{
+	height:auto!important;
+}
+#piedepagina, .creditos{
+	background:#4C4C4C;
+	color:white;
+	
+}
+.infoFooter{
+	padding-left:20px;
+	width:80%!important;
+}
+#piedepagina .infoFooter li {
+	width: 100%!important;
+}
+#piedepagina p, #piedepagina .lastUpdate span, #piedepagina strong{
+	color:white;
+	font-size:1.5em!important;	
+}
+#piedepagina a{
+	color:#eee!important;
+	font-size:1em!important;
+}
+.creditos{
+	margin:0px!important;
+}
+
+/*==================================================================================PIEZA DEL MES==================*/
+.centrado {
+	margin-left: auto;
+	position:relative;
+}
+.piezaMes img {
+	width: 100%;
+}
+.piezaMes > table {
+	width: 100%;
+}
+.info-txt {
+	/* padding: 5%; */
+}
+/*================================================================================= Exposiciones temporales=======*/
+#contenedor .box-galeria ul li.dfwp-item div.celda{min-height: 200px !important; padding-bottom: 30px; width:100%; margin-top:20px;}
+#contenedor .box-galeria ul li.dfwp-item{
+	float:none!important;
+	height:auto!important;
+}
+#contenedor .box-galeria .exposiciones ul.dfwp-list li.dfwp-item {
+	width: 100% !important;
+
+	margin:0px!important;
+}
+.exposiciones {
+	width: 100% !important;
+
+}
+#contenedor .box-galeria ul li h2 {
+	height: auto!important;
+	width: 55%;
+	float: right;
+	font-size: 20px !important;
+	line-height: 20px !important;
+	background:none!important;
+	padding: 15px!important;
+}
+
+.celda > div {
+	width: 55%;
+	float: right;
+}
+.celda{
+	/*float:left;*/
+}
+#contenedor .box-galeria ul li p {
+	float: right;
+	width: 55%;
+	background:none;
+
+}
+.celda span, .celda div,.celda p, #contenedor .box-galeria ul li p{
+	font-size: 16px!important;
+	line-height: 16px!important;
+}
+.celda img.imgNoticia {
+	position: absolute;
+	width: initial!important;
+	padding: 2%;
+	height:160px!important;
+}
+
+#contenedor .box-galeria ul li p.ver-mas {position: absolute !important;  bottom: 0px !important; right: 0px !important; 
+	float: right;
+	width: 100%;
+	background: gray;
+	height: 30px;
+	margin: 0px!important;
+	padding: 0px!important;
+	line-height: 13px!important;
+	font-size:12px!important;
+}
+.ver-mas a {margin: auto; width: 115px; display: block; font-size: 1.5em; margin-top: 7px;}
+.celda .ms-rteStyle-Normal{
+	background:transparent!important;
+}
+.mask-imgmob {
+	position: absolute;
+	width: 40%!important;
+	height: 280px;
+	overflow: hidden!important;
+}
+/* SU visita*/
+/*.container-section-acord{
+	width:100%!important;
+	display:block;
+	}*/
+	.section-acord img {
+		width: 95%!important;
+		height: inherit!important;
+		margin: auto;
+		display: block;
+	}
+	img.imagen-acord {
+		width: 90%;
+		margin: auto;
+		display: block;
+		margin-bottom: 20px;
+	}
+	.section-acord table {
+		width: 95%;
+	}
+
+	.ui-accordion .ui-accordion-header {
+		font-weight:400!important;
+		font-size:25px!important;
+		color:gray;
+		padding: 15px 30px!important;
+		line-height: 20px!important;
+		margin:0px!important;
+		font-family: "Trebuchet MS",Verdana,Helvetica,sans-serif !important;
+		border:none!important;
+		border-bottom: 2px solid #c4c4c4!important;
+	}
+	.ui-state-default, .ui-state-default:hover {
+		background:#eee!important;
+		border:none!important;
+		border-bottom: 2px solid #c4c4c4!important;
+
+	}
+	.ui-state-default:hover{
+		border:none!Important;
+		border-bottom: 2px solid #c4c4c4!important;
+
+	}
+	.ui-widget-content{
+		border:none!important;
+	}
+	.ui-corner-all{
+		border-radius: 0px!important;
+	}
+
+	.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+		right: 40px!important;
+		top: 25px !Important;
+		-ms-transform: rotate(90deg); /* IE 9 */
+		-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+		transform: rotate(90deg);
+		opacity:0.7;
+
+	}
+	.ui-state-default .ui-icon, .ui-state-default .ui-icon {
+		background: url("/Style Library/museo/images/right.png") !important;
+		background-size: contain!important;
+	}
+	.ui-icon {
+		width: 23px!important;
+		height: 22px!important;
+	}
+	.section-acord p,.section-acord span{
+		font-size:18px!important;
+	}
+	.section-acord table tr td p, .section-acord table tr td span{
+		font-size:14px!important;
+	}
+	.ui-accordion .ui-accordion-header-active .ui-accordion-header-icon  {
+		-ms-transform: rotate(0deg); /* IE 9 */
+		-webkit-transform: rotate(0eg); /* Chrome, Safari, Opera */
+		transform: rotate(0deg);
+	}
+	.expo-temp-mob {
+		list-style: disc!important;
+		font-size: 17PX!important;
+		font-weight: bold!important;
+	}
+	.ver-cal{
+		width:96%;
+		background:rgb(168,168,168);
+		color:#444;
+		font-size:25px;
+		text-align:center;
+		display:block;
+		font-weight:100;
+		padding:2%;
+	}
+	.day{
+		width:96%;
+		background:rgb(194,194,194);
+		color:#444;
+		font-size:25px;
+		text-align:center;
+		display:block;
+		font-weight:100;
+		padding:2%;
+		border-bottom:2px solid white;
+	}
+
+	.hoy-museo .hoyenelmuseo{
+		padding:25px!important;
+		border-bottom:solid 2px white;
+		display:block;
+	}
+	.hoy-museo  .dfwp-item{
+		list-style:none!important;
+	}
+	.hoy-museo .hoyenelmuseo p{
+		font-size:18px!important;
+	}
+	.hoy-museo .dfwp-item:nth-child(odd) .hoyenelmuseo{
+		background:rgb(168,168,168);
+	}
+	.hoy-museo .dfwp-item:nth-child(even) .hoyenelmuseo{
+		background:rgb(194,194,194);
+	}
+	/*TITULOS DE PAGINAS*/
+	#contenedor h2.pages {
+		color: white!important;
+		background: #222!important;
+		padding:17px!important;
+		margin:0px!important;
+		width:auto;
+
+	}
+	#contenedor h2.pages span {
+
+		border-bottom: none!important;
+
+	}
+	/*Detalle del evento*/
+	.evt-desc {
+		width: 100%!important;
+		margin: 0px!important;
+		padding: 0px!important;
+	}
+	.detail{
+		width: 100% !important}
+
+		.margin-detail{
+			margin-left: 0px !important
+		}
+		/*Mapa del sitio*/
+		#contenedor .box-galeria .content {
+			width: 100%!important;
+			display:block;
+			margin-left:0px;
+		}
+		.box-galeria1,.box-galeria{
+			width:100%!important;
+		}
+
+		.expoTemp .col-right1 {
+			display:none !important;
+		}
+		.hide-desk{
+			display:block;
+		}
+}

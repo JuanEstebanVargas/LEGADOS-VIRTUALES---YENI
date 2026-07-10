@@ -1,135 +1,71 @@
-import { Link } from 'react-router-dom'
-import { SectionPreviewCard } from '../components/home/SectionPreviewCard'
-import { siteHighlights } from '../data/content'
+import { AgendaList } from '../components/portal/AgendaList'
+import { ContentCard } from '../components/portal/ContentCard'
+import { HeroNewsCarousel } from '../components/portal/HeroNewsCarousel'
+import { SectionBlock } from '../components/portal/SectionBlock'
+import { portalEvents } from '../data/portal/events'
+import { portalNews } from '../data/portal/news'
 import { usePageTitle } from './usePageTitle'
-
-type HomeSection = {
-	title: string
-	summary: string
-	to: string
-	backgroundImage: string
-	icon: 'museo' | 'historia' | 'coleccion' | 'visitas' | 'programacion' | 'patrimonio' | 'investigacion' | 'contacto'
-}
-
-const homeSections: HomeSection[] = [
-	{
-		title: 'El Museo',
-		summary: 'Conoce el propósito cultural, la sede patrimonial y los valores que orientan la labor institucional del Museo.',
-		to: '/museo',
-		backgroundImage: '/home-sections/museo.jpg',
-		icon: 'museo',
-	},
-	{
-		title: 'Historia',
-		summary: 'Recorre los hitos históricos, las directoras, los custodios y el marco legal que dio forma a esta institución.',
-		to: '/historia',
-		backgroundImage: '/home-sections/historia.jpg',
-		icon: 'historia',
-	},
-	{
-		title: 'Colección',
-		summary: 'Explora técnicas y obras destacadas del arte religioso colonial entre los siglos XVI y XIX.',
-		to: '/coleccion',
-		backgroundImage: '/home-sections/coleccion.jpg',
-		icon: 'coleccion',
-	},
-	{
-		title: 'Visitas',
-		summary: 'Consulta horarios, tarifas, ubicación, reglamento y condiciones de accesibilidad para planear tu recorrido.',
-		to: '/visitas',
-		backgroundImage: '/home-sections/visitas.jpg',
-		icon: 'visitas',
-	},
-	{
-		title: 'Programación',
-		summary: 'Descubre ejes formativos, actividades culturales y condiciones para participar en talleres y recorridos.',
-		to: '/programacion',
-		backgroundImage: '/home-sections/programacion.jpg',
-		icon: 'programacion',
-	},
-	{
-		title: 'Patrimonio',
-		summary: 'Conoce proyectos de mediación, recursos pedagógicos y creación colectiva vinculados al patrimonio vivo.',
-		to: '/patrimonio',
-		backgroundImage: '/home-sections/patrimonio.jpg',
-		icon: 'patrimonio',
-	},
-	{
-		title: 'Investigación',
-		summary: 'Accede a publicaciones institucionales y referencias académicas en actualización sobre colección e inmueble.',
-		to: '/investigacion',
-		backgroundImage: '/home-sections/investigacion.jpg',
-		icon: 'investigacion',
-	},
-	{
-		title: 'Contacto',
-		summary: 'Encuentra canales de atención, redes sociales, correo institucional y ubicación para comunicarte con el Museo.',
-		to: '/contacto',
-		backgroundImage: '/home-sections/contacto.jpg',
-		icon: 'contacto',
-	},
-]
 
 export function HomePage() {
 	usePageTitle('Inicio')
 
 	return (
-		<main id="main-content">
-			<header className="portada" id="inicio">
-				<div className="portada-ornamento" />
-				<div className="portada-sello" aria-hidden="true">
-					<svg viewBox="0 0 48 48" role="presentation" focusable="false">
-						<circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" strokeWidth="1.2" />
-						<path d="M24 12l4.2 8.5 9.4 1.4-6.8 6.6 1.6 9.3-8.4-4.4-8.4 4.4 1.6-9.3-6.8-6.6 9.4-1.4z" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round" />
-					</svg>
-				</div>
+		<main id="main-content" className="portal-main home-page">
+			<div className="home-page__inner o-container o-stack o-stack--lg">
+				<HeroNewsCarousel items={portalNews} />
 
-				<p className="portada-tipo">Arquidiócesis de Popayán</p>
-				<h1>Museo Arquidiocesano de</h1>
-				<p className="portada-title-emphasis">
-					<em>Arte Religioso</em> de Popayán
-				</p>
+				<SectionBlock
+					id="noticias"
+					title="NOTICIAS"
+					linkTo="/programacion"
+					linkLabel="Mayor información"
+				>
+					<div className="o-grid o-grid--cards">
+						{portalNews.map((item) => (
+							<ContentCard key={item.id} title={item.title} summary={item.summary} href={item.href} image={item.image} />
+						))}
+					</div>
+				</SectionBlock>
 
-				<div className="portada-badges" aria-label="Resumen rápido">
-					{siteHighlights.map((highlight) => (
-						<span className="badge" key={highlight}>
-							{highlight}
-						</span>
-					))}
-				</div>
+				<SectionBlock
+					id="agenda"
+					title="EVENTOS Y ACTIVIDADES"
+					summary="Charlas, conciertos, recorridos guiados y programación educativa abierta a la ciudadanía."
+					linkTo="/programacion"
+					linkLabel="Ver calendario completo"
+				>
+					<AgendaList items={portalEvents} />
+				</SectionBlock>
 
-				<div className="hero-actions">
-					<Link className="button button-primary" to="/visitas">
-						Planear visita
-					</Link>
-					<Link className="button button-secondary" to="/museo">
-						Explorar el museo
-					</Link>
-				</div>
+				<section className="c-section" id="accesos-visuales" aria-label="Secciones con accesos visuales">
+					<div className="c-section__header">
+						<div className="c-section__headings">
+							<h2 className="c-section__title">SECCIONES DESTACADAS</h2>
+							<p className="c-section__summary">Imágenes de referencia de los mismos apartados disponibles en los botones superiores.</p>
+						</div>
+					</div>
 
-				<div className="portada-scroll">Explorar</div>
-			</header>
+					
+				</section>
 
-			<section className="content-section home-compact-section" aria-labelledby="explorar-secciones-title">
-				<div className="section-heading section-heading-compact">
-					<h2 id="explorar-secciones-title">Explorar por secciones</h2>
-					<p className="section-intro">Selecciona una sección para ver su contenido completo.</p>
-				</div>
+				<section className="c-section" id="ubicacion" aria-label="Ubicación del museo">
+					<div className="c-section__header">
+						<div className="c-section__headings">
+							<h2 className="c-section__title">UBICACIÓN</h2>
+						</div>
+					</div>
 
-				<div className="home-preview-grid">
-					{homeSections.map((section) => (
-						<SectionPreviewCard
-							key={section.to}
-							title={section.title}
-							summary={section.summary}
-							to={section.to}
-							ctaLabel="Ver sección completa"
-							backgroundImage={section.backgroundImage}
-							icon={section.icon}
+					<div className="visit-map-embed-wrap">
+						<iframe
+							className="visit-map-embed"
+							title="Mapa del Museo Arquidiocesano"
+							src="https://www.google.com/maps?q=2.4418349,-76.6043796&z=17&output=embed"
+							loading="lazy"
+							referrerPolicy="no-referrer-when-downgrade"
 						/>
-					))}
-				</div>
-			</section>
+					</div>
+				</section>
+			</div>
 		</main>
 	)
 }

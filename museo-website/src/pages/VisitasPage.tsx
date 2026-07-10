@@ -68,11 +68,28 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
           </div>
 
           <div className="hero-actions visit-planner-actions">
-            <a className="button button-primary visit-planner-cta" href="#como-llegar">
-              Cómo llegar
+            <a className="button visit-planner-cta visit-planner-cta-directions" href="#como-llegar">
+              <span className="visit-planner-cta-icon" aria-hidden="true">
+                ⌖
+              </span>
+              <span className="visit-planner-cta-copy">
+                <span className="visit-planner-cta-title">Cómo llegar</span>
+                <span className="visit-planner-cta-subtitle">Ver mapa y ruta sugerida</span>
+              </span>
             </a>
-            <a className="button button-whatsapp visit-planner-cta visit-planner-cta-secondary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
-              Escribir por WhatsApp
+            <a
+              className="button visit-planner-cta visit-planner-cta-whatsapp"
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="visit-planner-cta-icon" aria-hidden="true">
+                ✆
+              </span>
+              <span className="visit-planner-cta-copy">
+                <span className="visit-planner-cta-title">Escribir por WhatsApp</span>
+                <span className="visit-planner-cta-subtitle">Recibir apoyo para tu visita</span>
+              </span>
             </a>
           </div>
         </article>
