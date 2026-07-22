@@ -10,6 +10,8 @@ type ContentCardProps = {
   label?: string
 }
 
+const isExternalHref = (href: string) => /^https?:\/\//i.test(href)
+
 export function ContentCard({ title, summary, href, image, meta, label = 'Mayor información' }: ContentCardProps) {
   return (
     <article className="c-card">
@@ -20,9 +22,15 @@ export function ContentCard({ title, summary, href, image, meta, label = 'Mayor 
         <p>{summary}</p>
       </div>
       <div className="c-card__footer">
-        <Link className="c-card__link" to={href}>
-          {label}
-        </Link>
+        {isExternalHref(href) ? (
+          <a className="c-card__link" href={href} target="_blank" rel="noopener noreferrer">
+            {label}
+          </a>
+        ) : (
+          <Link className="c-card__link" to={href}>
+            {label}
+          </Link>
+        )}
       </div>
     </article>
   )

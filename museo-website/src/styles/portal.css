@@ -797,6 +797,128 @@
   transform: none;
 }
 
+.admin-carousel {
+  max-width: 860px;
+}
+
+.admin-carousel__card {
+  border: 1px solid #d0d8e6;
+  background: #ffffff;
+  padding: 1.25rem;
+}
+
+.admin-carousel__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-carousel__title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #102a5e;
+}
+
+.admin-carousel__subtitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #102a5e;
+}
+
+.admin-carousel__text {
+  margin: 0.65rem 0 1rem;
+  color: #334155;
+}
+
+.admin-carousel__form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-carousel__preview {
+  width: min(100%, 380px);
+  border: 1px solid #d0d8e6;
+}
+
+.admin-carousel__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.admin-carousel__error,
+.admin-carousel__success {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.admin-carousel__error {
+  color: #b42318;
+}
+
+.admin-carousel__success {
+  color: #0f766e;
+}
+
+.admin-carousel__button {
+  width: fit-content;
+  border: 0;
+  background: #103a8a;
+  color: #ffffff;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+
+.admin-carousel__button:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.admin-carousel__button--secondary {
+  background: #334155;
+}
+
+.admin-carousel__button--danger {
+  background: #b42318;
+}
+
+.admin-carousel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.admin-carousel__item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem;
+}
+
+.admin-carousel__thumb {
+  width: 120px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.admin-carousel__item-content h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.admin-carousel__item-content p {
+  margin: 0.4rem 0 0;
+  color: #475569;
+  font-size: 0.85rem;
+  word-break: break-word;
+}
+
 @media (max-width: 1024px) {
   .o-grid--cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -850,6 +972,14 @@
   .c-footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-5);
+  }
+
+  .admin-carousel__item {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-carousel__thumb {
+    width: 100%;
   }
 }
 

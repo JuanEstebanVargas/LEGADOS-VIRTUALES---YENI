@@ -2151,7 +2151,7 @@ h3 {
 
 .directora-row-compact {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(16rem, 1.35fr) auto;
   align-items: center;
   gap: var(--dir-col-gap);
   padding: 0.9rem var(--dir-row-padding-x);
@@ -2190,8 +2190,14 @@ h3 {
 }
 
 .directora-row-compact .dir-tag {
-  font-size: 0.54rem;
-  padding: 0.24rem 0.58rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.56rem !important;
+  letter-spacing: 0.08em;
+  line-height: 1.34;
+  padding: 0.28rem 0.62rem;
+  max-width: 100%;
+  text-wrap: balance;
   justify-self: start;
   text-align: left;
 }
@@ -2298,7 +2304,7 @@ h3 {
 
 .custodio-row-compact {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(16rem, 1.35fr) auto;
   gap: var(--cust-col-gap);
   align-items: center;
   padding: 0.9rem var(--cust-row-padding-x);
@@ -2343,13 +2349,17 @@ h3 {
 }
 
 .custodio-tag {
-  display: inline-block;
-  padding: 0.24rem 0.58rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.62rem;
   border-radius: 999px;
   border: 1px solid rgba(240, 207, 109, 0.46);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.54rem;
+  letter-spacing: 0.08em;
+  line-height: 1.34;
+  font-size: 0.56rem !important;
+  max-width: 100%;
+  text-wrap: balance;
   color: rgba(247, 236, 216, 0.88);
   justify-self: start;
   text-align: left;
@@ -2749,8 +2759,6 @@ h3 {
 .dir-periodo,
 .custodio-periodo,
 .custodio-rol,
-.dir-tag,
-.custodio-tag,
 .manifiesto-box .firma {
   font-size: 0.78rem;
   letter-spacing: 0.07em;
@@ -3186,6 +3194,7 @@ h3 {
   color: var(--color-secondary);
   border-color: rgba(95, 74, 133, 0.34);
   background: rgba(95, 74, 133, 0.08);
+  font-size: 0.56rem !important;
 }
 
 #visita .visit-planner-card {

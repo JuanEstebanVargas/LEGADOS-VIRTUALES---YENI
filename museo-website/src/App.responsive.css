@@ -223,7 +223,7 @@ video {
     max-width: 100%;
     border-radius: 12px;
     padding: 0.32rem 0.56rem;
-    font-size: 0.62rem;
+    font-size: 0.52rem !important;
     letter-spacing: 0.08em;
     line-height: 1.35;
     white-space: normal;
@@ -412,7 +412,7 @@ video {
 
   .directoras-toggle .dir-tag,
   .custodios-toggle .custodio-tag {
-    font-size: 0.6rem;
+    font-size: 0.52rem !important;
     letter-spacing: 0.07em;
   }
 

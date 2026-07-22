@@ -1,6 +1,7 @@
 import type { PortalNewsItem } from './types'
+import { getCustomCarouselItems } from './carouselStorage'
 
-export const portalNews: PortalNewsItem[] = [
+export const basePortalNews: PortalNewsItem[] = [
   {
     id: 'news-1',
     title: 'El Museo de la ciudad de Ocaña Antón García de Bonilla reabrió sus puertas con sus salas renovadas',
@@ -29,3 +30,10 @@ export const portalNews: PortalNewsItem[] = [
     image: '/home-sections/coleccion.jpg',
   },
 ]
+
+export const portalNews: PortalNewsItem[] = basePortalNews
+
+export const getPortalNewsItems = (): PortalNewsItem[] => {
+  const customItems = getCustomCarouselItems()
+  return [...customItems, ...basePortalNews]
+}

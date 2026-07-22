@@ -7,6 +7,8 @@ type HeroNewsCarouselProps = {
   items: PortalNewsItem[]
 }
 
+const isExternalHref = (href: string) => /^https?:\/\//i.test(href)
+
 export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -42,15 +44,29 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
     <section className="c-hero" aria-label="Carrusel principal" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="c-hero__slides" aria-live="polite">
         {items.map((item, index) => (
-          <Link
-            key={item.id}
-            className={`c-hero__slide${index === activeIndex ? ' is-active' : ''}`}
-            to={item.href}
-            aria-label={`Ir al contenido: ${item.title}`}
-            aria-hidden={index !== activeIndex}
-            tabIndex={index === activeIndex ? 0 : -1}
-            style={{ '--hero-image': `url(${item.image})` } as CSSProperties}
-          />
+          isExternalHref(item.href) ? (
+            <a
+              key={item.id}
+              className={`c-hero__slide${index === activeIndex ? ' is-active' : ''}`}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ir al contenido: ${item.title}`}
+              aria-hidden={index !== activeIndex}
+              tabIndex={index === activeIndex ? 0 : -1}
+              style={{ '--hero-image': `url(${item.image})` } as CSSProperties}
+            />
+          ) : (
+            <Link
+              key={item.id}
+              className={`c-hero__slide${index === activeIndex ? ' is-active' : ''}`}
+              to={item.href}
+              aria-label={`Ir al contenido: ${item.title}`}
+              aria-hidden={index !== activeIndex}
+              tabIndex={index === activeIndex ? 0 : -1}
+              style={{ '--hero-image': `url(${item.image})` } as CSSProperties}
+            />
+          )
         ))}
       </div>
 

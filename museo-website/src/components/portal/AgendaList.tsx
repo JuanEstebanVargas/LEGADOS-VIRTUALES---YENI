@@ -5,6 +5,8 @@ type AgendaListProps = {
   items: PortalEventItem[]
 }
 
+const isExternalHref = (href: string) => /^https?:\/\//i.test(href)
+
 const formatDate = (isoDate: string) => {
   const formatter = new Intl.DateTimeFormat('es-CO', {
     day: '2-digit',
@@ -26,9 +28,15 @@ export function AgendaList({ items }: AgendaListProps) {
             <p>{item.summary}</p>
             <p className="c-agenda__location">{item.location}</p>
           </div>
-          <Link className="c-agenda__link" to={item.href}>
-            Mayor información
-          </Link>
+          {isExternalHref(item.href) ? (
+            <a className="c-agenda__link" href={item.href} target="_blank" rel="noopener noreferrer">
+              Mayor información
+            </a>
+          ) : (
+            <Link className="c-agenda__link" to={item.href}>
+              Mayor información
+            </Link>
+          )}
         </li>
       ))}
     </ul>

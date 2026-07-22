@@ -10,6 +10,7 @@ import './styles/museo_nacional/bridge.css'
 import { Footer } from './components/layout/Footer'
 import { Header } from './components/layout/Header'
 import { InstitutionalBar } from './components/portal/InstitutionalBar'
+import { AdminCarouselPage } from './pages/AdminCarouselPage'
 import { ColeccionPage } from './pages/ColeccionPage'
 import { ContactoPage } from './pages/ContactoPage'
 import { HistoriaPage } from './pages/HistoriaPage'
@@ -80,6 +81,7 @@ export default function RoutedApp() {
         <Route path="/patrimonio" element={<PatrimonioPage />} />
         <Route path="/investigacion" element={<InvestigacionPage />} />
         <Route path="/contacto" element={<ContactoPage whatsappHref={whatsappHref} />} />
+        <Route path="/adicion" element={<AdminCarouselPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

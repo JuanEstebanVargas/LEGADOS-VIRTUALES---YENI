@@ -1,6 +1,7 @@
 import type { PortalEventItem } from './types'
+import { getCustomEventItems } from './eventsStorage'
 
-export const portalEvents: PortalEventItem[] = [
+export const basePortalEvents: PortalEventItem[] = [
   {
     id: 'event-1',
     title: 'Vuelve al Museo',
@@ -29,3 +30,10 @@ export const portalEvents: PortalEventItem[] = [
     href: '/coleccion',
   },
 ]
+
+export const portalEvents: PortalEventItem[] = basePortalEvents
+
+export const getPortalEventItems = (): PortalEventItem[] => {
+  const customItems = getCustomEventItems()
+  return [...customItems, ...basePortalEvents]
+}

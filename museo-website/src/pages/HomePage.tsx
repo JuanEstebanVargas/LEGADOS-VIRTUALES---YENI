@@ -1,18 +1,66 @@
+import { useEffect, useState } from 'react'
 import { AgendaList } from '../components/portal/AgendaList'
 import { ContentCard } from '../components/portal/ContentCard'
 import { HeroNewsCarousel } from '../components/portal/HeroNewsCarousel'
 import { SectionBlock } from '../components/portal/SectionBlock'
-import { portalEvents } from '../data/portal/events'
-import { portalNews } from '../data/portal/news'
+import { fetchServerCarouselItems } from '../data/portal/carouselServerApi'
+import { fetchServerEventItems } from '../data/portal/eventsServerApi'
+import { basePortalEvents, getPortalEventItems } from '../data/portal/events'
+import { basePortalNews, getPortalNewsItems } from '../data/portal/news'
+import type { PortalEventItem, PortalNewsItem } from '../data/portal/types'
 import { usePageTitle } from './usePageTitle'
 
 export function HomePage() {
 	usePageTitle('Inicio')
+	const [newsItems, setNewsItems] = useState<PortalNewsItem[]>(getPortalNewsItems())
+	const [eventsItems, setEventsItems] = useState<PortalEventItem[]>(getPortalEventItems())
+
+	useEffect(() => {
+		let isMounted = true
+
+		const loadServerItems = async () => {
+			try {
+				const serverItems = await fetchServerCarouselItems()
+				if (!isMounted) {
+					return
+				}
+
+				setNewsItems([...serverItems, ...basePortalNews])
+			} catch {
+				if (!isMounted) {
+					return
+				}
+
+				setNewsItems(getPortalNewsItems())
+			}
+
+			try {
+				const serverEvents = await fetchServerEventItems()
+				if (!isMounted) {
+					return
+				}
+
+				setEventsItems([...serverEvents, ...basePortalEvents])
+			} catch {
+				if (!isMounted) {
+					return
+				}
+
+				setEventsItems(getPortalEventItems())
+			}
+		}
+
+		void loadServerItems()
+
+		return () => {
+			isMounted = false
+		}
+	}, [])
 
 	return (
 		<main id="main-content" className="portal-main home-page">
 			<div className="home-page__inner o-container o-stack o-stack--lg">
-				<HeroNewsCarousel items={portalNews} />
+				<HeroNewsCarousel items={newsItems} />
 
 				<SectionBlock
 					id="noticias"
@@ -21,7 +69,7 @@ export function HomePage() {
 					linkLabel="Mayor información"
 				>
 					<div className="o-grid o-grid--cards">
-						{portalNews.map((item) => (
+						{newsItems.map((item) => (
 							<ContentCard key={item.id} title={item.title} summary={item.summary} href={item.href} image={item.image} />
 						))}
 					</div>
@@ -34,7 +82,7 @@ export function HomePage() {
 					linkTo="/programacion"
 					linkLabel="Ver calendario completo"
 				>
-					<AgendaList items={portalEvents} />
+					<AgendaList items={eventsItems} />
 				</SectionBlock>
 
 				<section className="c-section" id="accesos-visuales" aria-label="Secciones con accesos visuales">
