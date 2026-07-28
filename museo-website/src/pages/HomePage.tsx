@@ -5,15 +5,15 @@ import { HeroNewsCarousel } from '../components/portal/HeroNewsCarousel'
 import { SectionBlock } from '../components/portal/SectionBlock'
 import { fetchServerCarouselItems } from '../data/portal/carouselServerApi'
 import { fetchServerEventItems } from '../data/portal/eventsServerApi'
-import { basePortalEvents, getPortalEventItems } from '../data/portal/events'
-import { basePortalNews, getPortalNewsItems } from '../data/portal/news'
+import { basePortalEvents } from '../data/portal/events'
+import { basePortalNews } from '../data/portal/news'
 import type { PortalEventItem, PortalNewsItem } from '../data/portal/types'
 import { usePageTitle } from './usePageTitle'
 
 export function HomePage() {
 	usePageTitle('Inicio')
-	const [newsItems, setNewsItems] = useState<PortalNewsItem[]>(getPortalNewsItems())
-	const [eventsItems, setEventsItems] = useState<PortalEventItem[]>(getPortalEventItems())
+	const [newsItems, setNewsItems] = useState<PortalNewsItem[]>(basePortalNews)
+	const [eventsItems, setEventsItems] = useState<PortalEventItem[]>(basePortalEvents)
 
 	useEffect(() => {
 		let isMounted = true
@@ -31,7 +31,7 @@ export function HomePage() {
 					return
 				}
 
-				setNewsItems(getPortalNewsItems())
+				setNewsItems(basePortalNews)
 			}
 
 			try {
@@ -46,7 +46,7 @@ export function HomePage() {
 					return
 				}
 
-				setEventsItems(getPortalEventItems())
+				setEventsItems(basePortalEvents)
 			}
 		}
 

@@ -2458,6 +2458,12 @@ h3 {
   background: linear-gradient(160deg, #4a1d96, #7c3aed);
 }
 
+.artwork-card .artwork-media.artwork-media-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .artwork-card .artwork-body {
   padding: 1rem 1.05rem;
   display: grid;

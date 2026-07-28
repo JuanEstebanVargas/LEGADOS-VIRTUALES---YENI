@@ -1,9 +1,12 @@
 export type Artwork = {
+  id?: string
   title: string
   artist: string
   year: string
   period: string
   medium: string
+  href?: string
+  image?: string
   variant: 'artwork-media-alt' | 'artwork-media-night' | ''
 }
 

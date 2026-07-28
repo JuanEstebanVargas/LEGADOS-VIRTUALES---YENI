@@ -1,5 +1,4 @@
 import type { PortalEventItem } from './types'
-import { getCustomEventItems } from './eventsStorage'
 
 export const basePortalEvents: PortalEventItem[] = [
   {
@@ -34,6 +33,5 @@ export const basePortalEvents: PortalEventItem[] = [
 export const portalEvents: PortalEventItem[] = basePortalEvents
 
 export const getPortalEventItems = (): PortalEventItem[] => {
-  const customItems = getCustomEventItems()
-  return [...customItems, ...basePortalEvents]
+  return basePortalEvents
 }

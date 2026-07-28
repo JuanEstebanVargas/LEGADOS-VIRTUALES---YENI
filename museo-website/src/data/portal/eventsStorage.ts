@@ -168,3 +168,38 @@ export const saveCustomEventItem = ({ title, summary, startsAt, location, href }
 export const removeCustomEventItem = (id: string) => {
   saveCustomEventItems(getCustomEventItems().filter((item) => item.id !== id))
 }
+
+export const updateCustomEventItem = (id: string, input: SaveCustomEventItemInput) => {
+  const normalizedTitle = sanitizePlainText(input.title, MAX_TITLE_LENGTH)
+  const normalizedSummary = sanitizePlainText(input.summary, MAX_SUMMARY_LENGTH)
+  const normalizedLocation = sanitizePlainText(input.location, MAX_LOCATION_LENGTH)
+  const normalizedHref = normalizeAndValidateHref(input.href)
+  const normalizedStartsAt = normalizeAndValidateStartsAt(input.startsAt)
+
+  if (!normalizedTitle || !normalizedSummary || !normalizedLocation) {
+    throw new Error('Título, resumen y ubicación son obligatorios.')
+  }
+
+  if (!normalizedHref) {
+    throw new Error('Debes ingresar un enlace válido (ruta interna o URL HTTPS).')
+  }
+
+  if (!normalizedStartsAt) {
+    throw new Error('Debes ingresar una fecha y hora válidas para el evento.')
+  }
+
+  const updatedItems = getCustomEventItems().map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          title: normalizedTitle,
+          summary: normalizedSummary,
+          location: normalizedLocation,
+          href: normalizedHref,
+          startsAt: normalizedStartsAt,
+        }
+      : item,
+  )
+
+  saveCustomEventItems(updatedItems)
+}

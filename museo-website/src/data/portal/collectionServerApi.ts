@@ -1,30 +1,37 @@
-import type { PortalNewsItem } from './types'
+import type { Artwork } from '../content'
 
-type SaveServerCarouselItemInput = {
+export type CollectionServerItem = Artwork & { id: string; href: string; image: string }
+
+type SaveServerCollectionItemInput = {
   title: string
+  artist: string
+  year: string
+  period: string
+  medium: string
   href: string
   imageDataUrl?: string
-  summary?: string
 }
 
-const API_BASE = '/api/carousel'
+const API_BASE = '/api/collection'
 
-const parseItemsPayload = (payload: unknown): PortalNewsItem[] => {
+const parseItemsPayload = (payload: unknown): CollectionServerItem[] => {
   if (!Array.isArray(payload)) {
     return []
   }
 
-  return payload.filter((item): item is PortalNewsItem => {
+  return payload.filter((item): item is CollectionServerItem => {
     if (typeof item !== 'object' || item === null) {
       return false
     }
 
-    const candidate = item as Partial<PortalNewsItem>
+    const candidate = item as Partial<CollectionServerItem>
     return (
       typeof candidate.id === 'string' &&
       typeof candidate.title === 'string' &&
-      typeof candidate.summary === 'string' &&
-      typeof candidate.ctaLabel === 'string' &&
+      typeof candidate.artist === 'string' &&
+      typeof candidate.year === 'string' &&
+      typeof candidate.period === 'string' &&
+      typeof candidate.medium === 'string' &&
       typeof candidate.href === 'string' &&
       typeof candidate.image === 'string'
     )
@@ -40,7 +47,7 @@ const readErrorMessage = async (response: Response) => {
   }
 }
 
-export const fetchServerCarouselItems = async () => {
+export const fetchServerCollectionItems = async () => {
   const response = await fetch(`${API_BASE}/items`, {
     method: 'GET',
     credentials: 'same-origin',
@@ -54,7 +61,7 @@ export const fetchServerCarouselItems = async () => {
   return parseItemsPayload(parsed.items)
 }
 
-export const saveServerCarouselItem = async (input: SaveServerCarouselItemInput) => {
+export const saveServerCollectionItem = async (input: SaveServerCollectionItemInput) => {
   const response = await fetch(`${API_BASE}/items`, {
     method: 'POST',
     credentials: 'same-origin',
@@ -68,15 +75,15 @@ export const saveServerCarouselItem = async (input: SaveServerCarouselItemInput)
     throw new Error(await readErrorMessage(response))
   }
 
-  const parsed = (await response.json()) as { item?: PortalNewsItem }
+  const parsed = (await response.json()) as { item?: CollectionServerItem }
   if (!parsed.item) {
-    throw new Error('El servidor no devolvió el elemento guardado.')
+    throw new Error('El servidor no devolvió la obra guardada.')
   }
 
   return parsed.item
 }
 
-export const removeServerCarouselItem = async (id: string) => {
+export const removeServerCollectionItem = async (id: string) => {
   const response = await fetch(`${API_BASE}/items/${encodeURIComponent(id)}`, {
     method: 'DELETE',
     credentials: 'same-origin',
@@ -87,7 +94,7 @@ export const removeServerCarouselItem = async (id: string) => {
   }
 }
 
-export const updateServerCarouselItem = async (id: string, input: SaveServerCarouselItemInput) => {
+export const updateServerCollectionItem = async (id: string, input: SaveServerCollectionItemInput) => {
   const response = await fetch(`${API_BASE}/items/${encodeURIComponent(id)}`, {
     method: 'PUT',
     credentials: 'same-origin',
@@ -101,9 +108,9 @@ export const updateServerCarouselItem = async (id: string, input: SaveServerCaro
     throw new Error(await readErrorMessage(response))
   }
 
-  const parsed = (await response.json()) as { item?: PortalNewsItem }
+  const parsed = (await response.json()) as { item?: CollectionServerItem }
   if (!parsed.item) {
-    throw new Error('El servidor no devolvió el elemento actualizado.')
+    throw new Error('El servidor no devolvió la obra actualizada.')
   }
 
   return parsed.item

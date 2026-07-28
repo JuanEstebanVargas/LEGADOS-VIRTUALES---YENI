@@ -1,10 +1,41 @@
+import { useEffect, useState } from 'react'
 import { ArtworkCard } from '../components/artwork/ArtworkCard'
+import type { Artwork } from '../data/content'
 import { collectionTechniques, featuredArtworks } from '../data/content'
+import { fetchServerCollectionItems } from '../data/portal/collectionServerApi'
 import { TechniqueIcon } from './SectionElements'
 import { usePageTitle } from './usePageTitle'
 
 export function ColeccionPage() {
   usePageTitle('Colección')
+  const [artworks, setArtworks] = useState<Artwork[]>(featuredArtworks)
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadCollection = async () => {
+      try {
+        const serverItems = await fetchServerCollectionItems()
+        if (!isMounted) {
+          return
+        }
+
+        setArtworks([...serverItems, ...featuredArtworks])
+      } catch {
+        if (!isMounted) {
+          return
+        }
+
+        setArtworks(featuredArtworks)
+      }
+    }
+
+    void loadCollection()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <main id="main-content" className="section-page-main">
@@ -26,8 +57,8 @@ export function ColeccionPage() {
         </div>
 
         <div className="artwork-grid">
-          {featuredArtworks.map((artwork) => (
-            <ArtworkCard key={artwork.title} artwork={artwork} />
+          {artworks.map((artwork) => (
+            <ArtworkCard key={artwork.id ?? `${artwork.title}-${artwork.year}`} artwork={artwork} />
           ))}
         </div>
       </section>

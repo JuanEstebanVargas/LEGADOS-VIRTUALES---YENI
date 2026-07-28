@@ -260,6 +260,40 @@ export const removeCustomCarouselItem = (id: string) => {
   saveCustomCarouselItems(updatedItems)
 }
 
+export const updateCustomCarouselItem = (id: string, input: SaveCarouselItemInput) => {
+  const sanitizedTitle = sanitizePlainText(input.title, MAX_TITLE_LENGTH)
+  const sanitizedSummary = sanitizePlainText(input.summary ?? '', MAX_SUMMARY_LENGTH)
+  const sanitizedHref = normalizeAndValidateHref(input.href)
+  const normalizedImageDataUrl = input.imageDataUrl.trim()
+
+  if (!sanitizedHref) {
+    throw new Error('El enlace no es válido. Solo se admite ruta interna (/ruta) o URL HTTPS.')
+  }
+
+  if (sanitizedTitle.length === 0) {
+    throw new Error('El título es obligatorio.')
+  }
+
+  if (!isSafeImageDataUrl(normalizedImageDataUrl)) {
+    throw new Error('La imagen no tiene un formato permitido o excede el tamaño máximo.')
+  }
+
+  const updatedItems = getCustomCarouselItems().map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          title: sanitizedTitle,
+          summary: sanitizedSummary.length > 0 ? sanitizedSummary : 'Contenido agregado desde el panel privado.',
+          href: sanitizedHref,
+          image: normalizedImageDataUrl,
+          ctaLabel: 'Mayor información',
+        }
+      : item,
+  )
+
+  saveCustomCarouselItems(updatedItems)
+}
+
 export const isCarouselAdminAuthenticated = () => {
   if (!isBrowser()) {
     return false

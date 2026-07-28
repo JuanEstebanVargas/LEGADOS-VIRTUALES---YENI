@@ -1,5 +1,4 @@
 import type { PortalNewsItem } from './types'
-import { getCustomCarouselItems } from './carouselStorage'
 
 export const basePortalNews: PortalNewsItem[] = [
   {
@@ -34,6 +33,5 @@ export const basePortalNews: PortalNewsItem[] = [
 export const portalNews: PortalNewsItem[] = basePortalNews
 
 export const getPortalNewsItems = (): PortalNewsItem[] => {
-  const customItems = getCustomCarouselItems()
-  return [...customItems, ...basePortalNews]
+  return basePortalNews
 }

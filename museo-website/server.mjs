@@ -8,15 +8,26 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const DIST_DIR = path.resolve(__dirname, 'dist')
-const TARGET_DIR = path.resolve(
+const BASE_CONTENT_DIR = path.resolve(
   __dirname,
   '..',
   'MULTIMEDIA',
   'C5488_26-8.3 PÁGINA WEB - JUAN ESTEBAN VARGAS',
-  'HOME_PAGE',
 )
-const METADATA_FILE = path.join(TARGET_DIR, 'carousel-items.json')
-const EVENTS_METADATA_FILE = path.join(TARGET_DIR, 'events-items.json')
+
+const HOME_PAGE_DIR = path.join(BASE_CONTENT_DIR, 'HOME_PAGE')
+const COLLECTION_PAGE_DIR = path.join(BASE_CONTENT_DIR, 'COLECCION_PAGE')
+
+const CAROUSEL_DIR = path.join(HOME_PAGE_DIR, 'CARRUSEL')
+const EVENTS_DIR = path.join(HOME_PAGE_DIR, 'EVENTOS_Y_ACTIVIDADES')
+const COLLECTION_DIR = path.join(COLLECTION_PAGE_DIR, 'OBRAS_DESTACADAS')
+
+const CAROUSEL_METADATA_FILE = path.join(CAROUSEL_DIR, 'carousel-items.json')
+const EVENTS_METADATA_FILE = path.join(EVENTS_DIR, 'events-items.json')
+const COLLECTION_METADATA_FILE = path.join(COLLECTION_DIR, 'collection-items.json')
+
+const LEGACY_CAROUSEL_METADATA_FILE = path.join(HOME_PAGE_DIR, 'carousel-items.json')
+const LEGACY_EVENTS_METADATA_FILE = path.join(HOME_PAGE_DIR, 'events-items.json')
 
 const MAX_CUSTOM_ITEMS = 20
 const MAX_TITLE_LENGTH = 120
@@ -24,14 +35,16 @@ const MAX_SUMMARY_LENGTH = 300
 const MAX_HREF_LENGTH = 500
 const MAX_IMAGE_DATA_URL_LENGTH = 2_800_000
 const MAX_LOCATION_LENGTH = 160
+const MAX_ARTIST_LENGTH = 120
+const MAX_YEAR_LENGTH = 40
+const MAX_PERIOD_LENGTH = 80
+const MAX_MEDIUM_LENGTH = 120
 const SAFE_IMAGE_DATA_URL_REGEX = /^data:image\/(png|jpe?g|webp|gif);base64,([a-z0-9+/=\s]+)$/i
 
 const app = express()
 app.use(express.json({ limit: '4mb' }))
 
-const ensureTargetDir = async () => {
-  await fs.mkdir(TARGET_DIR, { recursive: true })
-}
+const ensureDir = async (dirPath) => fs.mkdir(dirPath, { recursive: true })
 
 const sanitizePlainText = (value, maxLength) =>
   value
@@ -73,16 +86,33 @@ const normalizeAndValidateStartsAt = (value) => {
   return date.toISOString()
 }
 
-const parseMetadataItems = async () => {
-  await ensureTargetDir()
-
+const readJsonArrayFromFile = async (filePath) => {
   try {
-    const raw = await fs.readFile(METADATA_FILE, 'utf8')
+    const raw = await fs.readFile(filePath, 'utf8')
     const parsed = JSON.parse(raw)
 
-    if (!Array.isArray(parsed)) {
-      return []
+    return Array.isArray(parsed) ? parsed : null
+  } catch {
+    return null
+  }
+}
+
+const readFirstJsonArray = async (filePaths) => {
+  for (const filePath of filePaths) {
+    const parsed = await readJsonArrayFromFile(filePath)
+    if (parsed) {
+      return parsed
     }
+  }
+
+  return []
+}
+
+const parseCarouselMetadataItems = async () => {
+  await ensureDir(CAROUSEL_DIR)
+
+  try {
+    const parsed = await readFirstJsonArray([CAROUSEL_METADATA_FILE, LEGACY_CAROUSEL_METADATA_FILE])
 
     return parsed
       .map((item) => {
@@ -118,21 +148,16 @@ const parseMetadataItems = async () => {
   }
 }
 
-const writeMetadataItems = async (items) => {
-  await ensureTargetDir()
-  await fs.writeFile(METADATA_FILE, JSON.stringify(items, null, 2), 'utf8')
+const writeCarouselMetadataItems = async (items) => {
+  await ensureDir(CAROUSEL_DIR)
+  await fs.writeFile(CAROUSEL_METADATA_FILE, JSON.stringify(items, null, 2), 'utf8')
 }
 
 const parseEventsMetadataItems = async () => {
-  await ensureTargetDir()
+  await ensureDir(EVENTS_DIR)
 
   try {
-    const raw = await fs.readFile(EVENTS_METADATA_FILE, 'utf8')
-    const parsed = JSON.parse(raw)
-
-    if (!Array.isArray(parsed)) {
-      return []
-    }
+    const parsed = await readFirstJsonArray([EVENTS_METADATA_FILE, LEGACY_EVENTS_METADATA_FILE])
 
     return parsed
       .map((item) => {
@@ -172,11 +197,62 @@ const parseEventsMetadataItems = async () => {
 }
 
 const writeEventsMetadataItems = async (items) => {
-  await ensureTargetDir()
+  await ensureDir(EVENTS_DIR)
   await fs.writeFile(EVENTS_METADATA_FILE, JSON.stringify(items, null, 2), 'utf8')
 }
 
-const toClientItem = (item) => ({
+const parseCollectionMetadataItems = async () => {
+  await ensureDir(COLLECTION_DIR)
+
+  try {
+    const parsed = await readFirstJsonArray([COLLECTION_METADATA_FILE])
+
+    return parsed
+      .map((item) => {
+        if (typeof item !== 'object' || item === null) {
+          return null
+        }
+
+        const href = normalizeAndValidateHref(item.href)
+        if (!href || typeof item.id !== 'string' || typeof item.imageFilename !== 'string') {
+          return null
+        }
+
+        const title = sanitizePlainText(String(item.title ?? ''), MAX_TITLE_LENGTH)
+        const artist = sanitizePlainText(String(item.artist ?? ''), MAX_ARTIST_LENGTH)
+        const year = sanitizePlainText(String(item.year ?? ''), MAX_YEAR_LENGTH)
+        const period = sanitizePlainText(String(item.period ?? ''), MAX_PERIOD_LENGTH)
+        const medium = sanitizePlainText(String(item.medium ?? ''), MAX_MEDIUM_LENGTH)
+
+        if (!title || !artist || !year || !period || !medium) {
+          return null
+        }
+
+        return {
+          id: item.id,
+          title,
+          artist,
+          year,
+          period,
+          medium,
+          href,
+          imageFilename: item.imageFilename,
+          variant: '',
+        }
+      })
+      .filter(Boolean)
+      .slice(0, MAX_CUSTOM_ITEMS)
+  } catch {
+    return []
+  }
+}
+
+const writeCollectionMetadataItems = async (items) => {
+  await ensureDir(COLLECTION_DIR)
+  await fs.writeFile(COLLECTION_METADATA_FILE, JSON.stringify(items, null, 2), 'utf8')
+}
+
+const toCarouselClientItem = (item) => ({
   id: item.id,
   title: item.title,
   summary: item.summary,
@@ -185,10 +261,22 @@ const toClientItem = (item) => ({
   image: `/api/carousel/files/${encodeURIComponent(item.imageFilename)}`,
 })
 
+const toCollectionClientItem = (item) => ({
+  id: item.id,
+  title: item.title,
+  artist: item.artist,
+  year: item.year,
+  period: item.period,
+  medium: item.medium,
+  href: item.href,
+  image: `/api/collection/files/${encodeURIComponent(item.imageFilename)}`,
+  variant: '',
+})
+
 app.get('/api/carousel/items', async (_req, res) => {
   try {
-    const items = await parseMetadataItems()
-    res.json({ items: items.map(toClientItem) })
+    const items = await parseCarouselMetadataItems()
+    res.json({ items: items.map(toCarouselClientItem) })
   } catch {
     res.status(500).json({ error: 'No se pudieron leer los elementos del carrusel.' })
   }
@@ -200,6 +288,15 @@ app.get('/api/events/items', async (_req, res) => {
     res.json({ items })
   } catch {
     res.status(500).json({ error: 'No se pudieron leer los eventos.' })
+  }
+})
+
+app.get('/api/collection/items', async (_req, res) => {
+  try {
+    const items = await parseCollectionMetadataItems()
+    res.json({ items: items.map(toCollectionClientItem) })
+  } catch {
+    res.status(500).json({ error: 'No se pudieron leer las obras de colección.' })
   }
 })
 
@@ -241,14 +338,14 @@ app.post('/api/carousel/items', async (req, res) => {
       return
     }
 
-    await ensureTargetDir()
+    await ensureDir(CAROUSEL_DIR)
 
     const imageFilename = `carousel-${Date.now()}-${crypto.randomUUID()}.${extension}`
-    const imagePath = path.join(TARGET_DIR, imageFilename)
+    const imagePath = path.join(CAROUSEL_DIR, imageFilename)
 
     await fs.writeFile(imagePath, binary)
 
-    const existingItems = await parseMetadataItems()
+    const existingItems = await parseCarouselMetadataItems()
     const newItem = {
       id: crypto.randomUUID(),
       title,
@@ -258,9 +355,9 @@ app.post('/api/carousel/items', async (req, res) => {
     }
 
     const updatedItems = [newItem, ...existingItems].slice(0, MAX_CUSTOM_ITEMS)
-    await writeMetadataItems(updatedItems)
+    await writeCarouselMetadataItems(updatedItems)
 
-    res.status(201).json({ item: toClientItem(newItem) })
+    res.status(201).json({ item: toCarouselClientItem(newItem) })
   } catch {
     res.status(500).json({ error: 'No se pudo guardar la imagen en el servidor.' })
   }
@@ -309,6 +406,294 @@ app.post('/api/events/items', async (req, res) => {
   }
 })
 
+app.post('/api/collection/items', async (req, res) => {
+  const title = sanitizePlainText(String(req.body?.title ?? ''), MAX_TITLE_LENGTH)
+  const artist = sanitizePlainText(String(req.body?.artist ?? ''), MAX_ARTIST_LENGTH)
+  const year = sanitizePlainText(String(req.body?.year ?? ''), MAX_YEAR_LENGTH)
+  const period = sanitizePlainText(String(req.body?.period ?? ''), MAX_PERIOD_LENGTH)
+  const medium = sanitizePlainText(String(req.body?.medium ?? ''), MAX_MEDIUM_LENGTH)
+  const href = normalizeAndValidateHref(req.body?.href)
+  const imageDataUrl = String(req.body?.imageDataUrl ?? '').trim()
+
+  if (!title || !artist || !year || !period || !medium) {
+    res.status(400).json({ error: 'Todos los campos de la obra son obligatorios.' })
+    return
+  }
+
+  if (!href) {
+    res.status(400).json({ error: 'El enlace no es válido. Solo se admite ruta interna (/ruta) o URL HTTPS.' })
+    return
+  }
+
+  if (imageDataUrl.length === 0 || imageDataUrl.length > MAX_IMAGE_DATA_URL_LENGTH) {
+    res.status(400).json({ error: 'La imagen no tiene un tamaño permitido.' })
+    return
+  }
+
+  const imageMatch = imageDataUrl.match(SAFE_IMAGE_DATA_URL_REGEX)
+  if (!imageMatch) {
+    res.status(400).json({ error: 'La imagen no tiene un formato permitido.' })
+    return
+  }
+
+  const mime = imageMatch[1].toLowerCase()
+  const base64Payload = imageMatch[2].replace(/\s/g, '')
+  const extension = mime === 'jpeg' || mime === 'jpg' ? 'jpg' : mime
+
+  try {
+    const binary = Buffer.from(base64Payload, 'base64')
+    if (binary.length === 0) {
+      res.status(400).json({ error: 'La imagen está vacía.' })
+      return
+    }
+
+    await ensureDir(COLLECTION_DIR)
+
+    const imageFilename = `collection-${Date.now()}-${crypto.randomUUID()}.${extension}`
+    const imagePath = path.join(COLLECTION_DIR, imageFilename)
+
+    await fs.writeFile(imagePath, binary)
+
+    const existingItems = await parseCollectionMetadataItems()
+    const newItem = {
+      id: crypto.randomUUID(),
+      title,
+      artist,
+      year,
+      period,
+      medium,
+      href,
+      imageFilename,
+    }
+
+    const updatedItems = [newItem, ...existingItems].slice(0, MAX_CUSTOM_ITEMS)
+    await writeCollectionMetadataItems(updatedItems)
+
+    res.status(201).json({ item: toCollectionClientItem(newItem) })
+  } catch {
+    res.status(500).json({ error: 'No se pudo guardar la obra de colección en el servidor.' })
+  }
+})
+
+app.put('/api/carousel/items/:id', async (req, res) => {
+  const id = String(req.params?.id ?? '')
+  const title = sanitizePlainText(String(req.body?.title ?? ''), MAX_TITLE_LENGTH)
+  const summaryInput = sanitizePlainText(String(req.body?.summary ?? ''), MAX_SUMMARY_LENGTH)
+  const href = normalizeAndValidateHref(req.body?.href)
+  const imageDataUrl = typeof req.body?.imageDataUrl === 'string' ? req.body.imageDataUrl.trim() : ''
+
+  if (!id) {
+    res.status(400).json({ error: 'Debe indicar un identificador válido.' })
+    return
+  }
+
+  if (!title) {
+    res.status(400).json({ error: 'El título es obligatorio.' })
+    return
+  }
+
+  if (!href) {
+    res.status(400).json({ error: 'El enlace no es válido. Solo se admite ruta interna (/ruta) o URL HTTPS.' })
+    return
+  }
+
+  try {
+    const existingItems = await parseCarouselMetadataItems()
+    const currentItem = existingItems.find((item) => item.id === id)
+
+    if (!currentItem) {
+      res.status(404).json({ error: 'No se encontró el elemento a actualizar.' })
+      return
+    }
+
+    let imageFilename = currentItem.imageFilename
+
+    if (imageDataUrl) {
+      if (imageDataUrl.length > MAX_IMAGE_DATA_URL_LENGTH) {
+        res.status(400).json({ error: 'La imagen no tiene un tamaño permitido.' })
+        return
+      }
+
+      const imageMatch = imageDataUrl.match(SAFE_IMAGE_DATA_URL_REGEX)
+      if (!imageMatch) {
+        res.status(400).json({ error: 'La imagen no tiene un formato permitido.' })
+        return
+      }
+
+      const mime = imageMatch[1].toLowerCase()
+      const base64Payload = imageMatch[2].replace(/\s/g, '')
+      const extension = mime === 'jpeg' || mime === 'jpg' ? 'jpg' : mime
+      const binary = Buffer.from(base64Payload, 'base64')
+
+      if (binary.length === 0) {
+        res.status(400).json({ error: 'La imagen está vacía.' })
+        return
+      }
+
+      const nextImageFilename = `carousel-${Date.now()}-${crypto.randomUUID()}.${extension}`
+      const nextImagePath = path.join(CAROUSEL_DIR, nextImageFilename)
+      await fs.writeFile(nextImagePath, binary)
+      await fs.rm(path.join(CAROUSEL_DIR, currentItem.imageFilename), { force: true })
+      imageFilename = nextImageFilename
+    }
+
+    const updatedRecord = {
+      ...currentItem,
+      title,
+      summary: summaryInput || 'Contenido agregado desde el panel privado.',
+      href,
+      imageFilename,
+    }
+
+    const updatedItems = existingItems.map((item) => (item.id === id ? updatedRecord : item))
+    await writeCarouselMetadataItems(updatedItems)
+
+    res.status(200).json({ item: toCarouselClientItem(updatedRecord) })
+  } catch {
+    res.status(500).json({ error: 'No se pudo actualizar el elemento del carrusel.' })
+  }
+})
+
+app.put('/api/events/items/:id', async (req, res) => {
+  const id = String(req.params?.id ?? '')
+  const title = sanitizePlainText(String(req.body?.title ?? ''), MAX_TITLE_LENGTH)
+  const summary = sanitizePlainText(String(req.body?.summary ?? ''), MAX_SUMMARY_LENGTH)
+  const location = sanitizePlainText(String(req.body?.location ?? ''), MAX_LOCATION_LENGTH)
+  const href = normalizeAndValidateHref(req.body?.href)
+  const startsAt = normalizeAndValidateStartsAt(req.body?.startsAt)
+
+  if (!id) {
+    res.status(400).json({ error: 'Debe indicar un identificador válido.' })
+    return
+  }
+
+  if (!title || !summary || !location) {
+    res.status(400).json({ error: 'Título, resumen y ubicación son obligatorios.' })
+    return
+  }
+
+  if (!href) {
+    res.status(400).json({ error: 'El enlace no es válido. Solo se admite ruta interna (/ruta) o URL HTTPS.' })
+    return
+  }
+
+  if (!startsAt) {
+    res.status(400).json({ error: 'La fecha/hora del evento no es válida.' })
+    return
+  }
+
+  try {
+    const existingItems = await parseEventsMetadataItems()
+    const currentItem = existingItems.find((item) => item.id === id)
+
+    if (!currentItem) {
+      res.status(404).json({ error: 'No se encontró el evento a actualizar.' })
+      return
+    }
+
+    const updatedRecord = {
+      ...currentItem,
+      title,
+      summary,
+      location,
+      href,
+      startsAt,
+    }
+
+    const updatedItems = existingItems.map((item) => (item.id === id ? updatedRecord : item))
+    await writeEventsMetadataItems(updatedItems)
+
+    res.status(200).json({ item: updatedRecord })
+  } catch {
+    res.status(500).json({ error: 'No se pudo actualizar el evento.' })
+  }
+})
+
+app.put('/api/collection/items/:id', async (req, res) => {
+  const id = String(req.params?.id ?? '')
+  const title = sanitizePlainText(String(req.body?.title ?? ''), MAX_TITLE_LENGTH)
+  const artist = sanitizePlainText(String(req.body?.artist ?? ''), MAX_ARTIST_LENGTH)
+  const year = sanitizePlainText(String(req.body?.year ?? ''), MAX_YEAR_LENGTH)
+  const period = sanitizePlainText(String(req.body?.period ?? ''), MAX_PERIOD_LENGTH)
+  const medium = sanitizePlainText(String(req.body?.medium ?? ''), MAX_MEDIUM_LENGTH)
+  const href = normalizeAndValidateHref(req.body?.href)
+  const imageDataUrl = typeof req.body?.imageDataUrl === 'string' ? req.body.imageDataUrl.trim() : ''
+
+  if (!id) {
+    res.status(400).json({ error: 'Debe indicar un identificador válido.' })
+    return
+  }
+
+  if (!title || !artist || !year || !period || !medium) {
+    res.status(400).json({ error: 'Todos los campos de la obra son obligatorios.' })
+    return
+  }
+
+  if (!href) {
+    res.status(400).json({ error: 'El enlace no es válido. Solo se admite ruta interna (/ruta) o URL HTTPS.' })
+    return
+  }
+
+  try {
+    const existingItems = await parseCollectionMetadataItems()
+    const currentItem = existingItems.find((item) => item.id === id)
+
+    if (!currentItem) {
+      res.status(404).json({ error: 'No se encontró la obra a actualizar.' })
+      return
+    }
+
+    let imageFilename = currentItem.imageFilename
+
+    if (imageDataUrl) {
+      if (imageDataUrl.length > MAX_IMAGE_DATA_URL_LENGTH) {
+        res.status(400).json({ error: 'La imagen no tiene un tamaño permitido.' })
+        return
+      }
+
+      const imageMatch = imageDataUrl.match(SAFE_IMAGE_DATA_URL_REGEX)
+      if (!imageMatch) {
+        res.status(400).json({ error: 'La imagen no tiene un formato permitido.' })
+        return
+      }
+
+      const mime = imageMatch[1].toLowerCase()
+      const base64Payload = imageMatch[2].replace(/\s/g, '')
+      const extension = mime === 'jpeg' || mime === 'jpg' ? 'jpg' : mime
+      const binary = Buffer.from(base64Payload, 'base64')
+
+      if (binary.length === 0) {
+        res.status(400).json({ error: 'La imagen está vacía.' })
+        return
+      }
+
+      const nextImageFilename = `collection-${Date.now()}-${crypto.randomUUID()}.${extension}`
+      const nextImagePath = path.join(COLLECTION_DIR, nextImageFilename)
+      await fs.writeFile(nextImagePath, binary)
+      await fs.rm(path.join(COLLECTION_DIR, currentItem.imageFilename), { force: true })
+      imageFilename = nextImageFilename
+    }
+
+    const updatedRecord = {
+      ...currentItem,
+      title,
+      artist,
+      year,
+      period,
+      medium,
+      href,
+      imageFilename,
+    }
+
+    const updatedItems = existingItems.map((item) => (item.id === id ? updatedRecord : item))
+    await writeCollectionMetadataItems(updatedItems)
+
+    res.status(200).json({ item: toCollectionClientItem(updatedRecord) })
+  } catch {
+    res.status(500).json({ error: 'No se pudo actualizar la obra de colección.' })
+  }
+})
+
 app.delete('/api/carousel/items/:id', async (req, res) => {
   const id = String(req.params?.id ?? '')
 
@@ -318,7 +703,7 @@ app.delete('/api/carousel/items/:id', async (req, res) => {
   }
 
   try {
-    const existingItems = await parseMetadataItems()
+    const existingItems = await parseCarouselMetadataItems()
     const targetItem = existingItems.find((item) => item.id === id)
 
     if (!targetItem) {
@@ -327,14 +712,43 @@ app.delete('/api/carousel/items/:id', async (req, res) => {
     }
 
     const updatedItems = existingItems.filter((item) => item.id !== id)
-    await writeMetadataItems(updatedItems)
+  await writeCarouselMetadataItems(updatedItems)
 
-    const imagePath = path.join(TARGET_DIR, targetItem.imageFilename)
+  const imagePath = path.join(CAROUSEL_DIR, targetItem.imageFilename)
     await fs.rm(imagePath, { force: true })
 
     res.status(204).send()
   } catch {
     res.status(500).json({ error: 'No se pudo eliminar el elemento seleccionado.' })
+  }
+})
+
+app.delete('/api/collection/items/:id', async (req, res) => {
+  const id = String(req.params?.id ?? '')
+
+  if (!id) {
+    res.status(400).json({ error: 'Debe indicar un identificador válido.' })
+    return
+  }
+
+  try {
+    const existingItems = await parseCollectionMetadataItems()
+    const targetItem = existingItems.find((item) => item.id === id)
+
+    if (!targetItem) {
+      res.status(404).json({ error: 'No se encontró la obra a eliminar.' })
+      return
+    }
+
+    const updatedItems = existingItems.filter((item) => item.id !== id)
+    await writeCollectionMetadataItems(updatedItems)
+
+    const imagePath = path.join(COLLECTION_DIR, targetItem.imageFilename)
+    await fs.rm(imagePath, { force: true })
+
+    res.status(204).send()
+  } catch {
+    res.status(500).json({ error: 'No se pudo eliminar la obra seleccionada.' })
   }
 })
 
@@ -372,7 +786,23 @@ app.get('/api/carousel/files/:filename', async (req, res) => {
     return
   }
 
-  const filePath = path.join(TARGET_DIR, filename)
+  const filePath = path.join(CAROUSEL_DIR, filename)
+  res.sendFile(filePath, (error) => {
+    if (error) {
+      res.status(404).send('Not found')
+    }
+  })
+})
+
+app.get('/api/collection/files/:filename', async (req, res) => {
+  const filename = path.basename(String(req.params?.filename ?? ''))
+
+  if (!filename) {
+    res.status(404).send('Not found')
+    return
+  }
+
+  const filePath = path.join(COLLECTION_DIR, filename)
   res.sendFile(filePath, (error) => {
     if (error) {
       res.status(404).send('Not found')
@@ -389,5 +819,7 @@ app.use((_req, res) => {
 const port = Number(process.env.PORT) || 4173
 app.listen(port, () => {
   console.log(`Servidor iniciado en http://localhost:${port}`)
-  console.log(`Carpeta de guardado del carrusel: ${TARGET_DIR}`)
+  console.log(`Carpeta carrusel: ${CAROUSEL_DIR}`)
+  console.log(`Carpeta eventos: ${EVENTS_DIR}`)
+  console.log(`Carpeta colección: ${COLLECTION_DIR}`)
 })

@@ -171,6 +171,7 @@
   display: inline-grid;
   grid-template-columns: 1fr auto;
   gap: 0.5rem;
+  position: relative;
 }
 
 .c-header__search input {
@@ -201,6 +202,88 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.c-header__search-results {
+  position: absolute;
+  right: 0;
+  left: auto;
+  width: max(100%, 18.5rem);
+  top: calc(100% + 0.45rem);
+  margin: 0;
+  padding: 0.55rem;
+  background: #ffffff;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 12px 28px rgba(26, 26, 26, 0.12);
+  z-index: 30;
+}
+
+.c-header__search-result {
+  margin: 0;
+  color: #272727;
+  font-size: 0.83rem;
+}
+
+.c-header__search-result.is-empty {
+  display: block;
+  color: #5e5e5e;
+}
+
+.c-header__search-feedback {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.c-header__search-count {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #313131;
+}
+
+.c-header__search-nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.c-header__search-position {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #5f5f5f;
+}
+
+.c-header__search-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.c-header__search-nav button {
+  width: 100%;
+  min-height: 1.9rem;
+  border: 1px solid #cbcbcb;
+  background: #f8f8f8;
+  color: #333333;
+  font-size: 0.74rem;
+  padding: 0.26rem 0.46rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.c-header__search-nav button:hover,
+.c-header__search-nav button:focus-visible {
+  background: #eef3ff;
+  border-color: #98afd8;
+}
+
+mark.c-search-highlight {
+  background: #fff2a8;
+  color: inherit;
+  padding: 0.02em 0.08em;
+}
+
+mark.c-search-highlight[data-active-search-match='true'] {
+  background: #ffd55e;
+  outline: 1px solid #d8a700;
 }
 
 .c-header__toggle {
@@ -807,6 +890,33 @@
   padding: 1.25rem;
 }
 
+.admin-module {
+  border-left-width: 6px;
+}
+
+.admin-module--carousel {
+  border-left-color: #103a8a;
+}
+
+.admin-module--events {
+  border-left-color: #0f766e;
+}
+
+.admin-module--collection {
+  border-left-color: #7c3aed;
+}
+
+.admin-module__tag {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.18rem 0.5rem;
+}
+
 .admin-carousel__header-row {
   display: flex;
   justify-content: space-between;
@@ -846,6 +956,27 @@
   margin: 0;
   font-size: 0.85rem;
   color: #475569;
+}
+
+.admin-modules-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.admin-modules-nav__button {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+}
+
+.admin-modules-nav__button.is-active {
+  border-color: #103a8a;
+  background: #103a8a;
+  color: #ffffff;
 }
 
 .admin-carousel__error,

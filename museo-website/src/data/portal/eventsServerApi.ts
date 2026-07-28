@@ -87,3 +87,25 @@ export const removeServerEventItem = async (id: string) => {
     throw new Error(await readErrorMessage(response))
   }
 }
+
+export const updateServerEventItem = async (id: string, input: SaveServerEventItemInput) => {
+  const response = await fetch(`${API_BASE}/items/${encodeURIComponent(id)}`, {
+    method: 'PUT',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(input),
+  })
+
+  if (!response.ok) {
+    throw new Error(await readErrorMessage(response))
+  }
+
+  const parsed = (await response.json()) as { item?: PortalEventItem }
+  if (!parsed.item) {
+    throw new Error('El servidor no devolvió el evento actualizado.')
+  }
+
+  return parsed.item
+}
