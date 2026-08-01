@@ -7,12 +7,13 @@ type SectionBlockProps = {
   summary?: string
   linkTo?: string
   linkLabel?: string
+  className?: string
   children: ReactNode
 }
 
-export function SectionBlock({ id, title, summary, linkTo, linkLabel = 'Ver todo', children }: SectionBlockProps) {
+export function SectionBlock({ id, title, summary, linkTo, linkLabel = 'Ver todo', className, children }: SectionBlockProps) {
   return (
-    <section className="c-section" id={id} aria-labelledby={`${id}-title`}>
+    <section className={`c-section${className ? ` ${className}` : ''}`} id={id} aria-labelledby={`${id}-title`}>
       <div className="c-section__header">
         <div className="c-section__headings">
           <h2 className="c-section__title" id={`${id}-title`}>

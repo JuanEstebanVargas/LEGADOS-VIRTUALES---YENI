@@ -190,6 +190,14 @@
   background: #ffffff !important;
 }
 
+.legacy-museo .contact-whatsapp-cta {
+  border-radius: 999px !important;
+}
+
+.legacy-museo .visit-planner-actions .visit-planner-cta {
+  border-radius: 22px !important;
+}
+
 .legacy-museo .c-footer {
   background: var(--legacy-gray-700) !important;
   color: #ffffff !important;

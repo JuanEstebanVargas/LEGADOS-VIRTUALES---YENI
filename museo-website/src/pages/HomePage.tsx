@@ -65,6 +65,7 @@ export function HomePage() {
 				<SectionBlock
 					id="noticias"
 					title="NOTICIAS"
+					className="c-section--highlighted"
 					linkTo="/programacion"
 					linkLabel="Mayor información"
 				>
@@ -78,6 +79,7 @@ export function HomePage() {
 				<SectionBlock
 					id="agenda"
 					title="EVENTOS Y ACTIVIDADES"
+					className="c-section--highlighted"
 					summary="Charlas, conciertos, recorridos guiados y programación educativa abierta a la ciudadanía."
 					linkTo="/programacion"
 					linkLabel="Ver calendario completo"
@@ -85,17 +87,7 @@ export function HomePage() {
 					<AgendaList items={eventsItems} />
 				</SectionBlock>
 
-				<section className="c-section" id="accesos-visuales" aria-label="Secciones con accesos visuales">
-					<div className="c-section__header">
-						<div className="c-section__headings">
-							<h2 className="c-section__title">SECCIONES DESTACADAS</h2>
-							<p className="c-section__summary">Imágenes de referencia de los mismos apartados disponibles en los botones superiores.</p>
-						</div>
-					</div>
-
-					
-				</section>
-
+				
 				<section className="c-section" id="ubicacion" aria-label="Ubicación del museo">
 					<div className="c-section__header">
 						<div className="c-section__headings">
