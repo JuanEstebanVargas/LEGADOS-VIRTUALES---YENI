@@ -2493,6 +2493,26 @@ h3 {
   border-radius: 999px;
 }
 
+.contact-channel-list-compact {
+  margin-top: 0.5rem;
+}
+
+.contact-social-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.28rem;
+}
+
+.contact-social-label {
+  color: var(--color-text-primary);
+}
+
+.contact-social-link {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .contact-info-band {
   margin: 0.2rem 0 0.72rem;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);

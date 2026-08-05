@@ -40,22 +40,37 @@ export function ContactoPage({ whatsappHref }: ContactoPageProps) {
 
           <article className="info-card">
             <h2>Canales digitales</h2>
-            <ul className="program-axis-list">
-              <li>
-                📘 <strong>Facebook:</strong>{' '}
-                <a href="https://www.facebook.com/arquimuseo.popayan/" target="_blank" rel="noopener noreferrer">
+            <ul className="program-axis-list contact-channel-list-compact">
+              <li className="contact-social-item">
+                <span className="contact-social-label">📘 <strong>Facebook:</strong></span>{' '}
+                <a
+                  className="contact-social-link"
+                  href="https://www.facebook.com/arquimuseo.popayan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   facebook.com/arquimuseo.popayan
                 </a>
               </li>
-              <li>
-                📸 <strong>Instagram:</strong>{' '}
-                <a href="https://www.instagram.com/arquimuseo.popayan/" target="_blank" rel="noopener noreferrer">
+              <li className="contact-social-item">
+                <span className="contact-social-label">📸 <strong>Instagram:</strong></span>{' '}
+                <a
+                  className="contact-social-link"
+                  href="https://www.instagram.com/arquimuseo.popayan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   @arquimuseo.popayan
                 </a>
               </li>
-              <li>
-                📍 <strong>Google Maps:</strong>{' '}
-                <a href="https://maps.app.goo.gl/ZgefXEr5kK6JcuGE8" target="_blank" rel="noopener noreferrer">
+              <li className="contact-social-item">
+                <span className="contact-social-label">📍 <strong>Google Maps:</strong></span>{' '}
+                <a
+                  className="contact-social-link"
+                  href="https://maps.app.goo.gl/ZgefXEr5kK6JcuGE8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Ver ubicación en Google Maps
                 </a>
               </li>
