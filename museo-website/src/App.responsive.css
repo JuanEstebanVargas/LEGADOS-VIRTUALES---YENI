@@ -166,7 +166,7 @@ video {
   }
 
   .section-preview-card h3 {
-    font-size: clamp(1.22rem, 2.2vw, 1.5rem);
+    font-size: clamp(0.84rem, 1.52vw, 1.04rem);
     line-height: 1.16;
   }
 
@@ -426,7 +426,7 @@ video {
   }
 
   .section-page-main .section-heading h1 {
-    font-size: clamp(2rem, 8.4vw, 2.85rem);
+    font-size: clamp(1.27rem, 4.68vw, 1.69rem);
     line-height: 1.06;
   }
 
@@ -439,7 +439,7 @@ video {
   .portada h1,
   .portada-title-emphasis {
     max-width: 16ch;
-    font-size: clamp(1.65rem, 7.2vw, 2.3rem);
+    font-size: clamp(1.12rem, 4.23vw, 1.46rem);
   }
 
   .portada-badges {
@@ -505,11 +505,11 @@ video {
 
   /* Tipografía / bloques */
   h2 {
-    font-size: clamp(1.45rem, 7.2vw, 2rem);
+    font-size: clamp(0.61rem, 2.4vw, 0.82rem);
   }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 0.49rem;
   }
 
   .descripcion-destacada {
@@ -574,7 +574,7 @@ video {
 
   .historia-subtitle {
     margin-top: 0.9rem;
-    font-size: 0.94rem;
+    font-size: 0.66rem;
   }
 
   .custodios-toggle {
@@ -582,7 +582,7 @@ video {
   }
 
   .custodios-toggle summary h3 {
-    font-size: 0.9rem;
+    font-size: 0.63rem;
   }
 
   .custodio-bio {
@@ -608,7 +608,7 @@ video {
   }
 
   .info-band h2 {
-    font-size: 1.45rem;
+    font-size: 1.09rem;
   }
 
   /* Obras */
@@ -661,11 +661,11 @@ video {
   }
 
   .portada h1 {
-    font-size: clamp(1.45rem, 8vw, 1.95rem);
+    font-size: clamp(0.94rem, 5.2vw, 1.27rem);
   }
 
   .section-page-main .section-heading h1 {
-    font-size: clamp(1.82rem, 8.8vw, 2.35rem);
+    font-size: clamp(1.18rem, 5.72vw, 1.53rem);
   }
 
   .section-label,

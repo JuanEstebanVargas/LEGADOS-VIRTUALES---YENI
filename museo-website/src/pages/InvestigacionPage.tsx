@@ -1,4 +1,3 @@
-import { SectionSummary } from './SectionElements'
 import { usePageTitle } from './usePageTitle'
 
 const PublicationTypeIcon = ({ type }: { type: 'book' | 'document' }) => {
@@ -59,13 +58,6 @@ export function InvestigacionPage() {
         <div className="section-heading section-heading-compact">
           <h1>Investigación y publicaciones</h1>
         </div>
-
-        <SectionSummary
-          title="Investigación"
-          what="Un repositorio en crecimiento con producción editorial del Museo y bibliografía especializada externa."
-          audience="Investigadores, docentes, estudiantes universitarios y equipos de mediación cultural."
-          action="Consultar publicaciones institucionales, revisar referencias clave y dar seguimiento al catálogo académico."
-        />
 
         <div className="program-accordion-list">
           <details className="program-axis-card program-axis-card-wide" open>

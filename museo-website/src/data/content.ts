@@ -443,7 +443,7 @@ export const programmingCards: HighlightCard[] = [
 
 export const programAxes: ProgramAxis[] = [
   {
-    id: 'Eje 01',
+    id: '',
     title: 'Formación académica de públicos',
     items: [
       'Seminario de Arte y Cultura Colonial — encuentro académico anual (desde 2022) que congrega historiadores, expertos en arte, artistas-investigadores y profesionales del patrimonio.',
@@ -452,7 +452,7 @@ export const programAxes: ProgramAxis[] = [
     ],
   },
   {
-    id: 'Eje 02',
+    id: '',
     title: 'Escuela y Museo',
     items: [
       'EducArte en el Museo (niños, jóvenes y adulto mayor).',
@@ -466,7 +466,7 @@ export const programAxes: ProgramAxis[] = [
     ],
   },
   {
-    id: 'Eje 03',
+    id: '',
     title: 'El Museo como Centro Cultural',
     items: [
       'Noches de Museo.',

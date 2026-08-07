@@ -709,7 +709,7 @@ a {
 
 #contenedor .box-galeria .content ul li > span {
 	font-size: small;
-	font-family: trebuchet ms,geneva;
+	font-family: var(--font-sans);
 	color: #333333;
 }
 
@@ -1541,7 +1541,7 @@ div.prim{
 	font-size: 11px;
 	line-height: 30px;
 	margin: 20px 0 0 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	padding: 5px 0 0 0;
 	border-top: 1px solid #666;
 }
@@ -2233,7 +2233,7 @@ fieldset.ms-rteFontSize-3 {
 	height: 150px;
 }
 .productos-tienda .productos-tienda p {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	text-align: left;
 	width: 95%;
 	padding-top: 20px;
@@ -2251,7 +2251,7 @@ fieldset.ms-rteFontSize-3 {
 	background-color: #999;
 	text-align: center;
 	color: #FFF;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	display: block;
 	padding: 10px;
 	-webkit-border-radius: 5px 5px 0px 0px;
@@ -2269,7 +2269,7 @@ fieldset.ms-rteFontSize-3 {
 }
 .productos-tienda h3 {
 	padding-left: 15px;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	font-size: 24px;
 }
 .productos-tienda .producto .precio {
@@ -2278,7 +2278,7 @@ fieldset.ms-rteFontSize-3 {
 	padding: 10px;
 	text-align: center;
 	color: #FFF;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	font-weight: bold;
 	font-size: 18px;
 	display: block;	
@@ -2296,7 +2296,7 @@ fieldset.ms-rteFontSize-3 {
 	padding: 10px;
 	text-align: center;
 	color: #FFF;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans);
 	font-weight: bold;
 	font-size: 18px;
 	display: block;
@@ -2317,7 +2317,7 @@ hr {
 }
 
 .celda, .celda p , .celda span {
-	font-family: trebuchet ms !important;
+	font-family: var(--font-sans) !important;
 	font-size: 9.5pt !important;
 	line-height: 15px !important;
 }

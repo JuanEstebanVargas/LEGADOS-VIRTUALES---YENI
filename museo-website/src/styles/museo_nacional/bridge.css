@@ -10,7 +10,7 @@
   --legacy-gray-200: #eeeeee;
   --legacy-bg: #ffffff;
   --legacy-text: #444444;
-  --legacy-font: "Trebuchet MS", Verdana, Helvetica, sans-serif;
+  --legacy-font: var(--font-sans);
 }
 
 .legacy-museo,
@@ -19,6 +19,8 @@
   font-family: var(--legacy-font) !important;
   color: var(--legacy-text) !important;
   background: var(--legacy-bg) !important;
+  overflow: visible !important;
+  --utility-bar-height: 2.6rem;
 }
 
 .legacy-museo.site-shell::before,
@@ -34,12 +36,17 @@
 }
 
 .legacy-museo .c-utility-bar {
+  position: sticky !important;
+  top: 0;
+  z-index: 95;
   background: var(--legacy-gray-700) !important;
   color: #ffffff !important;
 }
 
 .legacy-museo .c-header {
-  position: relative;
+  position: sticky !important;
+  top: var(--utility-bar-height);
+  z-index: 80;
   background: #ffffff !important;
   border-bottom: 0;
   box-shadow: none !important;
@@ -89,6 +96,10 @@
   padding-top: 1rem !important;
 }
 
+.legacy-museo .portal-main.home-page {
+  padding-top: 0 !important;
+}
+
 .legacy-museo main.home-page {
   width: 100% !important;
   max-width: none !important;
@@ -99,6 +110,12 @@
   width: min(980px, calc(100% - 8rem)) !important;
   max-width: 980px !important;
   margin-inline: auto;
+}
+
+.legacy-museo main.home-page #noticias.c-section--highlighted {
+  margin-top: -2.2rem !important;
+  position: relative;
+  z-index: 6;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -118,6 +135,10 @@
   .legacy-museo .c-header__nav {
     width: calc(100% - 2rem);
     max-width: none;
+  }
+
+  .legacy-museo main.home-page #noticias.c-section--highlighted {
+    margin-top: -1.2rem !important;
   }
 }
 
@@ -154,11 +175,14 @@
 
 .legacy-museo .section-heading h2,
 .legacy-museo .section-heading h3,
-.legacy-museo h1,
 .legacy-museo h2,
 .legacy-museo h3,
 .legacy-museo h4 {
-  color: #444 !important;
+  color: var(--color-heading-secondary) !important;
+}
+
+.legacy-museo h1 {
+  color: var(--color-heading-primary) !important;
 }
 
 .legacy-museo p,
@@ -216,6 +240,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .legacy-museo .site-shell {
+    --utility-bar-height: 2.4rem;
+  }
+
   .legacy-museo .o-container,
   .legacy-museo main {
     width: calc(100% - 1.2rem) !important;

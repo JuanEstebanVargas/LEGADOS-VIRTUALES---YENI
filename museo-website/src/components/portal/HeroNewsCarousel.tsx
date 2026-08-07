@@ -14,6 +14,14 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
   const [isPaused, setIsPaused] = useState(false)
   const hasItems = items.length > 0
 
+  const goToPrev = () => {
+    setActiveIndex((current) => (current - 1 + items.length) % items.length)
+  }
+
+  const goToNext = () => {
+    setActiveIndex((current) => (current + 1) % items.length)
+  }
+
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === 'undefined') {
       return true
@@ -70,19 +78,17 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
         ))}
       </div>
 
-      <div className="c-hero__controls" role="tablist" aria-label="Seleccionar imagen del carrusel">
-        {items.map((item, index) => (
-          <button
-            key={item.id}
-            className={`c-hero__dot${index === activeIndex ? ' is-active' : ''}`}
-            type="button"
-            role="tab"
-            aria-label={`Ir a imagen ${index + 1}`}
-            aria-selected={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
-      </div>
+      <button className="c-hero__nav c-hero__nav--prev" type="button" aria-label="Imagen anterior" onClick={goToPrev}>
+        <svg className="c-hero__nav-icon" viewBox="0 0 24 24" role="presentation" focusable="false" aria-hidden="true">
+          <path d="M15 4L7 12L15 20" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      <button className="c-hero__nav c-hero__nav--next" type="button" aria-label="Imagen siguiente" onClick={goToNext}>
+        <svg className="c-hero__nav-icon" viewBox="0 0 24 24" role="presentation" focusable="false" aria-hidden="true">
+          <path d="M9 4L17 12L9 20" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
     </section>
   )
 }

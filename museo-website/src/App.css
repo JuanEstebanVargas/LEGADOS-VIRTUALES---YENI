@@ -171,7 +171,7 @@ main {
 
 .section-preview-card h3 {
   margin: 0;
-  font-size: 1.82rem;
+  font-size: clamp(0.48rem, 0.72vw, 0.59rem);
   line-height: 1.12;
 }
 
@@ -619,46 +619,46 @@ h3,
 h1 {
   margin: 0;
   max-width: 22ch;
-  color: #ffffff;
-  font-size: clamp(2.35rem, 4.9vw, 4.2rem);
-  font-weight: 500;
-  line-height: 1.06;
+  color: var(--color-heading-primary);
+  font-size: clamp(1.36rem, 2.67vw, 2.28rem);
+  font-weight: 800;
+  line-height: 1.04;
   letter-spacing: 0.01em;
 }
 
 h1 em {
-  color: var(--color-accent-strong);
+  color: var(--color-heading-secondary);
 }
 
 .portada-title-emphasis {
   margin: 0;
   max-width: 22ch;
-  color: #f3cb6f;
+  color: var(--color-heading-secondary);
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 4.9vw, 4.2rem);
-  font-weight: 500;
-  line-height: 1.06;
+  font-size: clamp(1.36rem, 2.67vw, 2.28rem);
+  font-weight: 700;
+  line-height: 1.04;
   letter-spacing: 0.01em;
   text-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.34),
-    0 0 22px rgba(236, 190, 81, 0.18);
+    0 8px 20px rgba(0, 0, 0, 0.26),
+    0 0 20px rgba(95, 74, 133, 0.16);
 }
 
 h2 {
   margin: 0;
-  font-size: clamp(1.85rem, 3.7vw, 3rem);
-  line-height: 1.12;
+  font-size: clamp(0.75rem, 1.32vw, 1.1rem);
+  line-height: 1.08;
   letter-spacing: 0.01em;
-  font-weight: 500;
-  color: var(--color-primary);
+  font-weight: 700;
+  color: var(--color-heading-secondary);
 }
 
 h3 {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--color-primary);
+  font-size: clamp(0.54rem, 0.89vw, 0.7rem);
+  font-weight: 700;
+  line-height: 1.16;
+  color: var(--color-heading-secondary);
 }
 
 .portada-sub,
@@ -916,20 +916,20 @@ h3 {
 }
 
 .section-page-main .section-heading h1 {
-  color: var(--color-primary);
+  color: var(--color-heading-primary);
   max-width: 30ch;
-  font-size: clamp(2.7rem, 5.7vw, 5rem);
-  font-weight: 600;
+  font-size: clamp(1.5rem, 2.73vw, 2.41rem);
+  font-weight: 800;
   line-height: 1.03;
   letter-spacing: 0.012em;
   text-wrap: balance;
   text-shadow:
-    0 2px 0 rgba(212, 169, 58, 0.22),
-    0 14px 24px rgba(74, 29, 150, 0.12);
+    0 2px 0 rgba(95, 74, 133, 0.2),
+    0 14px 24px rgba(56, 31, 101, 0.14);
 }
 
 .section-page-main .content-section-dark .section-heading h1 {
-  color: rgba(250, 244, 233, 0.94);
+  color: var(--color-heading-on-dark);
 }
 
 .section-heading-compact {
@@ -956,7 +956,8 @@ h3 {
 
 .section-summary h3 {
   margin: 0 0 0.45rem;
-  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  font-size: clamp(0.56rem, 0.9vw, 0.72rem);
+  color: var(--color-heading-secondary);
 }
 
 .section-summary-list {
@@ -1530,7 +1531,7 @@ h3 {
 
 .program-axis-card h3 {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: 0.77rem;
   line-height: 1.2;
 }
 
@@ -1576,7 +1577,7 @@ h3 {
 
 .visit-detail-card h3 {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 0.79rem;
   line-height: 1.2;
 }
 
@@ -1863,7 +1864,7 @@ h3 {
 }
 
 .historia-recuadro h3 {
-  color: var(--color-accent-strong);
+  color: var(--color-heading-secondary);
 }
 
 .historia-recuadro p {
@@ -1887,8 +1888,8 @@ h3 {
 
 .historia-mini-card h3 {
   margin: 0 0 0.2rem;
-  font-size: 0.95rem;
-  color: var(--color-accent-strong);
+  font-size: 0.52rem;
+  color: var(--color-heading-secondary);
 }
 
 .historia-mini-card p {
@@ -2083,8 +2084,8 @@ h3 {
 
 .historia-subtitle {
   margin: 1.1rem 0 0.8rem;
-  font-size: 1rem;
-  color: var(--color-accent-strong);
+  font-size: 0.56rem;
+  color: var(--color-heading-secondary);
 }
 
 .directoras-toggle {
@@ -2104,8 +2105,8 @@ h3 {
 
 .history-group-head h3 {
   margin: 0;
-  font-size: 1rem;
-  color: var(--color-accent-strong);
+  font-size: 0.54rem;
+  color: var(--color-heading-secondary);
 }
 
 .directoras-toggle summary {
@@ -2123,8 +2124,8 @@ h3 {
 
 .directoras-toggle summary h3 {
   margin: 0;
-  font-size: 1rem;
-  color: var(--color-accent-strong);
+  font-size: 0.54rem;
+  color: var(--color-heading-secondary);
 }
 
 .directoras-list-compact {
@@ -2268,8 +2269,8 @@ h3 {
 
 .custodios-toggle summary h3 {
   margin: 0;
-  font-size: 1rem;
-  color: var(--color-accent-strong);
+  font-size: 0.46rem;
+  color: var(--color-heading-secondary);
 }
 
 .custodios-list {
@@ -2466,7 +2467,8 @@ h3 {
 
 .artwork-card .artwork-body p {
   margin: 0;
-  font-size: 0.89rem;
+  font-size: 1.14rem;
+  color: var(--color-heading-secondary);
 }
 
 .artwork-card .artwork-meta {
@@ -2536,7 +2538,7 @@ h3 {
 }
 
 .contact-info-band h2 {
-  font-size: clamp(1.2rem, 2.3vw, 1.6rem);
+  font-size: clamp(0.9rem, 1.73vw, 1.2rem);
 }
 
 .contact-info-band p {
@@ -2576,7 +2578,7 @@ h3 {
 
 .contact-card h2 {
   margin: 0;
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
   line-height: 1.25;
 }
 
@@ -2673,7 +2675,7 @@ h3 {
 }
 
 .patrimonio-info-band h2 {
-  font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+  font-size: clamp(1.09rem, 1.8vw, 1.58rem);
   line-height: 1.2;
 }
 
@@ -2993,11 +2995,11 @@ h3 {
   }
 
   h2 {
-    font-size: clamp(1.45rem, 7.2vw, 2rem);
+    font-size: clamp(1.09rem, 5.4vw, 1.5rem);
   }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 
   .descripcion-destacada {
@@ -3057,7 +3059,7 @@ h3 {
 
   .historia-subtitle {
     margin-top: 0.9rem;
-    font-size: 0.94rem;
+    font-size: 0.71rem;
   }
 
   .custodios-toggle {
@@ -3065,7 +3067,7 @@ h3 {
   }
 
   .custodios-toggle summary h3 {
-    font-size: 0.9rem;
+    font-size: 0.68rem;
   }
 
   .custodio-bio {
@@ -3084,7 +3086,7 @@ h3 {
   }
 
   .info-band h2 {
-    font-size: 1.45rem;
+    font-size: 1.09rem;
   }
 
   .artwork-card .artwork-body {
@@ -3314,34 +3316,45 @@ h3 {
   }
 }
 
-/* Unificación estricta de tamaño de texto (jun 2026) */
+/* Jerarquía tipográfica unificada */
 :root {
   --text-size-unified: 1rem;
-  --text-line-height-unified: 1.6;
+  --text-line-height-unified: 1.64;
 }
 
-.site-shell :where(
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  li,
-  a,
-  span,
-  strong,
-  em,
-  small,
-  button,
-  label,
-  input,
-  select,
-  textarea
-) {
-  font-size: var(--text-size-unified) !important;
+.site-shell :where(p, li, td, span, strong, em, small, input, select, textarea) {
+  font-size: var(--text-size-unified);
   line-height: var(--text-line-height-unified);
+}
+
+.site-shell :where(h1) {
+  color: var(--color-heading-primary);
+  font-size: clamp(1.43rem, 2.73vw, 2.34rem);
+  line-height: 1.03;
+}
+
+.site-shell :where(h2) {
+  color: var(--color-heading-secondary);
+  font-size: clamp(0.79rem, 1.46vw, 1.19rem);
+  line-height: 1.08;
+}
+
+.site-shell :where(h3) {
+  color: var(--color-heading-secondary);
+  font-size: clamp(0.54rem, 0.9vw, 0.71rem);
+  line-height: 1.14;
+}
+
+.site-shell :where(h4, h5, h6) {
+  color: var(--color-heading-secondary);
+}
+
+.site-shell :where(.section-label, .section-summary-kicker, .eyebrow, .historia-subtitle) {
+  color: var(--color-heading-secondary);
+}
+
+.site-shell .content-section-dark :where(h1, h2, h3, h4, h5, h6, .section-label, .section-summary-kicker, .eyebrow) {
+  color: var(--color-heading-on-dark);
 }
 
 /* Excepción: menú del header más compacto */

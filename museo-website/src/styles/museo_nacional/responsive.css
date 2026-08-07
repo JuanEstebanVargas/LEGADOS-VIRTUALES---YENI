@@ -349,7 +349,7 @@ body #s4-bodyContainer {width: auto!important;}
 		padding: 15px 30px!important;
 		line-height: 20px!important;
 		margin:0px!important;
-		font-family: "Trebuchet MS",Verdana,Helvetica,sans-serif !important;
+		font-family: var(--font-sans) !important;
 		border:none!important;
 		border-bottom: 2px solid #c4c4c4!important;
 	}

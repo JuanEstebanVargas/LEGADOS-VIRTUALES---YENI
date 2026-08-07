@@ -1,5 +1,4 @@
 import { programAxes, programConditions } from '../data/content'
-import { SectionSummary } from './SectionElements'
 import { usePageTitle } from './usePageTitle'
 
 export function ProgramacionPage() {
@@ -11,13 +10,6 @@ export function ProgramacionPage() {
         <div className="section-heading section-heading-compact">
           <h1>Programación educativa, cultural y académica</h1>
         </div>
-
-        <SectionSummary
-          title="Programación"
-          what="Una agenda estructurada en ejes educativos y culturales con actividades para públicos diversos."
-          audience="Docentes, grupos escolares, universidades, turistas y ciudadanía interesada en cultura colonial."
-          action="Elegir un eje, revisar actividades disponibles y confirmar condiciones de participación antes de reservar."
-        />
 
         <div className="program-accordion-list patrimonio-accordion-list">
           {programAxes.map((axis, index) => (

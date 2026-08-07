@@ -1,4 +1,3 @@
-import { SectionSummary } from './SectionElements'
 import { usePageTitle } from './usePageTitle'
 
 export function PatrimonioPage() {
@@ -10,13 +9,6 @@ export function PatrimonioPage() {
         <div className="section-heading section-heading-compact">
           <h1>Patrimonio Vivo</h1>
         </div>
-
-        <SectionSummary
-          title="Patrimonio Vivo"
-          what="Un frente de mediación donde el patrimonio se activa con recursos pedagógicos y creación colectiva."
-          audience="Comunidades educativas, jóvenes creadores, mediadores culturales y público local."
-          action="Explorar recursos, conocer proyectos colaborativos y consultar publicaciones educativas del Museo."
-        />
 
         <div className="info-band patrimonio-info-band">
           <div>

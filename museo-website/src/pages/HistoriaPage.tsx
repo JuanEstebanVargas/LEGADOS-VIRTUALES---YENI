@@ -1,5 +1,4 @@
 import { custodianEntries, historyTimeline, leadershipEntries, legalMilestones } from '../data/content'
-import { SectionSummary } from './SectionElements'
 import { usePageTitle } from './usePageTitle'
 
 export function HistoriaPage() {
@@ -11,13 +10,6 @@ export function HistoriaPage() {
         <div className="section-heading section-heading-compact">
           <h1>Historia del museo</h1>
         </div>
-
-        <SectionSummary
-          title="Historia del Museo"
-          what="Una línea de tiempo de los hitos que dieron forma a la institución y a su sede histórica."
-          audience="Personas que visitan el Museo por primera vez, estudiantes e investigadoras de patrimonio."
-          action="Revisar hitos clave, conocer sus directoras, consultar el marco legal y ubicar a los custodios del patrimonio."
-        />
 
         <div className="historia-resumen-grid">
           <article className="historia-mini-card">
