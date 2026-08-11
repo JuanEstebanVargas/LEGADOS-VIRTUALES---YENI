@@ -11,8 +11,6 @@ import {
   custodianEntries,
   legalMilestones,
   leadershipEntries,
-  programAxes,
-  programConditions,
   siteHighlights,
   storyBlocks,
   visitAccessibilityIntro,
@@ -373,7 +371,7 @@ function App() {
 
         <section className="content-section" id="visita">
           <div className="section-heading section-heading-compact">
-            <h2>Horarios, ubicación, accesibilidad y planificación de la visita.</h2>
+            <h2>Horarios y planifica tu visita.</h2>
             <p className="section-intro section-intro-inverse">
               La información práctica se conserva y se presenta como un bloque de orientación claro y responsivo.
             </p>
@@ -411,42 +409,42 @@ function App() {
             {visitInfoSections
               .filter((section) => section.title !== 'Cómo llegar')
               .map((section) => (
-              <details className="visit-detail-card" key={section.title} open={section.title === 'Horarios de atención'}>
-                <summary>
-                  <div>
-                    <h3>{section.title}</h3>
-                    <p className="accordion-preview">{section.preview}</p>
-                  </div>
-                  <span className="accordion-action">Ver detalle</span>
-                </summary>
-
-                <div className="visit-rows">
-                  {section.rows.map((row) => (
-                    <div className="visit-row" key={`${section.title}-${row.label}`}>
-                      <span className="visit-lbl">{row.label}</span>
-                      <span className="visit-val">{row.value}</span>
+                <details className="visit-detail-card" key={section.title} open={section.title === 'Horarios de atención'}>
+                  <summary>
+                    <div>
+                      <h3>{section.title}</h3>
+                      <p className="accordion-preview">{section.preview}</p>
                     </div>
-                  ))}
-                </div>
+                    <span className="accordion-action">Ver detalle</span>
+                  </summary>
 
-                {section.mapEmbedUrl ? (
-                  <div className="visit-map-embed-wrap">
-                    <iframe
-                      className="visit-map-embed"
-                      title={`Mapa de ${section.title}`}
-                      src={section.mapEmbedUrl}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
+                  <div className="visit-rows">
+                    {section.rows.map((row) => (
+                      <div className="visit-row" key={`${section.title}-${row.label}`}>
+                        <span className="visit-lbl">{row.label}</span>
+                        <span className="visit-val">{row.value}</span>
+                      </div>
+                    ))}
                   </div>
-                ) : null}
 
-                {section.mapUrl ? (
-                  <a className="visit-map-link" href={section.mapUrl} target="_blank" rel="noopener noreferrer">
-                    Ver ubicación en Google Maps
-                  </a>
-                ) : null}
-              </details>
+                  {section.mapEmbedUrl ? (
+                    <div className="visit-map-embed-wrap">
+                      <iframe
+                        className="visit-map-embed"
+                        title={`Mapa de ${section.title}`}
+                        src={section.mapEmbedUrl}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  ) : null}
+
+                  {section.mapUrl ? (
+                    <a className="visit-map-link" href={section.mapUrl} target="_blank" rel="noopener noreferrer">
+                      Ver ubicación en Google Maps
+                    </a>
+                  ) : null}
+                </details>
               ))}
 
             <details className="visit-detail-card" open>
@@ -541,59 +539,7 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section" id="programacion">
-          <div className="section-heading section-heading-compact">
-            <h2>Programación educativa, cultural y académica del Museo.</h2>
-            <p className="section-intro">
-              Esta sección organiza la oferta formativa del Museo por ejes para facilitar decisiones rápidas según perfil, objetivo y tiempo disponible.
-            </p>
-          </div>
 
-          <SectionSummary
-            title="Programación"
-            what="Una agenda estructurada en ejes educativos y culturales con actividades para públicos diversos."
-            audience="Docentes, grupos escolares, universidades, turistas y ciudadanía interesada en cultura colonial."
-            action="Elegir un eje, revisar actividades disponibles y confirmar condiciones de participación antes de reservar."
-          />
-
-          <div className="program-accordion-list patrimonio-accordion-list">
-            {programAxes.map((axis, index) => (
-              <details className="program-axis-card" key={axis.id} open={index < 2}>
-                <summary>
-                  <div>
-                    <div className="program-axis-id">{axis.id}</div>
-                    <h3>{axis.title}</h3>
-                    <p className="accordion-preview">{axis.items[0]}</p>
-                  </div>
-                  <span className="accordion-action">Ver detalle</span>
-                </summary>
-
-                <ul className="program-axis-list">
-                  {axis.items.map((item) => (
-                    <li key={`${axis.id}-${item}`}>{item}</li>
-                  ))}
-                </ul>
-              </details>
-            ))}
-
-            <details className="program-axis-card program-axis-card-wide">
-              <summary>
-                <div>
-                  <div className="program-axis-id">Condiciones</div>
-                  <h3>Condiciones de participación</h3>
-                  <p className="accordion-preview">Requisitos operativos para recorridos y actividades educativas.</p>
-                </div>
-                <span className="accordion-action">Ver detalle</span>
-              </summary>
-
-              <ul className="program-axis-list">
-                {programConditions.map((condition) => (
-                  <li key={condition}>{condition}</li>
-                ))}
-              </ul>
-            </details>
-          </div>
-        </section>
 
         <section className="content-section" id="patrimonio">
           <div className="section-heading section-heading-compact">

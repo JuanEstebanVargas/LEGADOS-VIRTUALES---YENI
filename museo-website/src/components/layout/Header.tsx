@@ -9,9 +9,6 @@ const navigation = [
   { label: 'Historia', to: '/historia', accent: '#e38aad' },
   { label: 'Colección', to: '/coleccion', accent: '#c9a29b' },
   { label: 'Visitas', to: '/visitas', accent: '#8f78cd' },
-  { label: 'Programación', to: '/programacion', accent: '#5a8ed8' },
-  { label: 'Patrimonio', to: '/patrimonio', accent: '#13b4c3' },
-  { label: 'Investigación', to: '/investigacion', accent: '#18c4b0' },
   { label: 'Contacto', to: '/contacto', accent: '#88c561' },
 ]
 

@@ -43,7 +43,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
     <main id="main-content" className="section-page-main">
       <section className="content-section" id="visitas">
         <div className="section-heading section-heading-compact">
-          <h1>Horarios, ubicación, accesibilidad y planificación de la visita</h1>
+          <h1>Horarios y planifica tu visita</h1>
         </div>
 
         <article className="visit-planner-card" aria-label="Planifica tu visita">
@@ -104,7 +104,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
                     <h2>{section.title}</h2>
                     <p className="accordion-preview">{section.preview}</p>
                   </div>
-                  <span className="accordion-action">Ver detalle</span>
+                  <span className="accordion-action"></span>
                 </summary>
 
                 <div className="visit-rows">
@@ -124,7 +124,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
                 <h2>Reglamento de visita</h2>
                 <p className="accordion-preview">Fotografía, alimentos, grupos y lineamientos generales de recorrido.</p>
               </div>
-              <span className="accordion-action">Ver detalle</span>
+              <span className="accordion-action"></span>
             </summary>
 
             <div className="visit-rows">
@@ -143,7 +143,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
                 <h2>Accesibilidad</h2>
                 <p className="accordion-preview">Condiciones actuales de acceso y apoyos para distintos perfiles de visitantes.</p>
               </div>
-              <span className="accordion-action">Ver detalle</span>
+              <span className="accordion-action"></span>
             </summary>
 
             <p className="visit-access-intro">{visitAccessibilityIntro}</p>
@@ -176,7 +176,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
                     <h2>{section.title}</h2>
                     <p className="accordion-preview">{section.preview}</p>
                   </div>
-                  <span className="accordion-action">Ver detalle</span>
+                  <span className="accordion-action"></span>
                 </summary>
 
                 <div className="visit-rows">

@@ -130,6 +130,7 @@ a:focus-visible {
 }
 
 @media (min-width: 769px) {
+
   .c-header__nav,
   .legacy-museo .c-header__nav {
     display: flex !important;
@@ -435,9 +436,9 @@ a:focus-visible {
   border-radius: 12px !important;
   background: transparent !important;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
-  min-height: 2.3rem !important;
-  padding: 0.5rem 0.95rem 0.6rem !important;
-  font-size: 0.88rem !important;
+  min-height: 1.84rem !important;
+  padding: 0.4rem 0.76rem 0.48rem !important;
+  font-size: 0.704rem !important;
   line-height: 1.12 !important;
 }
 
@@ -473,8 +474,8 @@ a:focus-visible {
   background: linear-gradient(180deg, #ecebf4, #dfddeb) !important;
   border-color: #d4d0e5 !important;
   border-radius: 12px !important;
-  padding-inline: 1.2rem !important;
-  padding-block: 0.56rem 0.66rem !important;
+  padding-inline: 0.96rem !important;
+  padding-block: 0.45rem 0.53rem !important;
   box-shadow:
     0 8px 18px rgba(31, 19, 68, 0.14),
     0 0 0 1px rgba(95, 69, 191, 0.22),
@@ -651,8 +652,7 @@ tbody tr,
 }
 
 /* Contenedores y superficies principales */
-:where(
-  .c-card,
+:where(.c-card,
   .content-card,
   .hero-card,
   .panel,
@@ -661,16 +661,14 @@ tbody tr,
   .content-section,
   .table-wrapper,
   [class*='modal'],
-  [class*='dropdown']
-) {
+  [class*='dropdown']) {
   border: 1px solid #ddd8ef;
   border-radius: 14px;
   box-shadow: var(--ui-shadow-soft);
   background: #ffffff;
 }
 
-:where(
-  .c-card,
+:where(.c-card,
   .content-card,
   .hero-card,
   .panel,
@@ -679,8 +677,7 @@ tbody tr,
   .content-section,
   .table-wrapper,
   [class*='modal'],
-  [class*='dropdown']
-):hover {
+  [class*='dropdown']):hover {
   box-shadow: var(--ui-shadow-medium);
 }
 
@@ -751,8 +748,7 @@ button:focus-visible,
 }
 
 /* Unificación de sombras moradas en superficies UI */
-:where(
-  .section-preview-card,
+:where(.section-preview-card,
   .mv-card,
   .valor-card,
   .pestana-card,
@@ -774,13 +770,11 @@ button:focus-visible,
   [class*='drawer'],
   [class*='menu-panel'],
   [class*='dropdown-menu'],
-  [class*='popover']
-) {
+  [class*='popover']) {
   box-shadow: var(--ui-shadow-soft);
 }
 
-:where(
-  .section-preview-card,
+:where(.section-preview-card,
   .mv-card,
   .valor-card,
   .pestana-card,
@@ -800,8 +794,7 @@ button:focus-visible,
   [class*='drawer'],
   [class*='menu-panel'],
   [class*='dropdown-menu'],
-  [class*='popover']
-):hover {
+  [class*='popover']):hover {
   box-shadow: var(--ui-shadow-medium);
 }
 
@@ -819,15 +812,13 @@ button:focus-visible,
   box-shadow: var(--ui-tab-glow-hover);
 }
 
-:where(
-  .header-nav__link--active,
+:where(.header-nav__link--active,
   .c-header__nav-link.is-active,
   .c-header__nav-link.active,
   .admin-modules-nav__button.is-active,
   [role='tab'][aria-selected='true'],
   [role='tab'].is-active,
-  [role='tab'].active
-) {
+  [role='tab'].active) {
   box-shadow: var(--ui-tab-glow-active);
 }
 
@@ -980,6 +971,7 @@ tbody tr:focus-within {
 
 /* Mantener experiencia fluida sin excesos */
 @media (prefers-reduced-motion: reduce) {
+
   a,
   button,
   input,
