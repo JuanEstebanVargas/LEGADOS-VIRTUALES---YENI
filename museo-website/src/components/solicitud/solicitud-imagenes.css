@@ -1,0 +1,684 @@
+/* =========================================================
+   Solicitud de imágenes de la colección
+   Botón, modales, tarifas y condiciones, formato de solicitud
+   ========================================================= */
+
+/* Botón de entrada en ColeccionPage */
+.coleccion-action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+  margin: 0 0 1.4rem;
+}
+
+.coleccion-action-note {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #4b5563);
+}
+
+.coleccion-action .button {
+  gap: 0.5rem;
+}
+
+/* ---------- Base del diálogo ---------- */
+.solicitud-dialog {
+  width: min(880px, calc(100% - 1.5rem));
+  max-height: min(90vh, 880px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-divider, #ddd9ed);
+  border-radius: 20px;
+  background: var(--color-bg-surface, #ffffff);
+  color: var(--color-text-primary, #1e2235);
+  box-shadow:
+    var(--shadow-lg, 0 16px 40px rgba(16, 24, 40, 0.16)),
+    0 34px 64px rgba(20, 12, 44, 0.24);
+  overflow: hidden;
+}
+
+.solicitud-dialog::backdrop {
+  background: linear-gradient(180deg, rgba(18, 10, 40, 0.62), rgba(18, 10, 40, 0.78));
+  backdrop-filter: blur(4px);
+}
+
+.solicitud-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(90vh, 880px);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---------- Cabecera ---------- */
+.solicitud-header {
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.2rem 3.2rem 1rem 1.4rem;
+  border-bottom: 1px solid var(--color-divider, #ddd9ed);
+  border-radius: 20px 20px 0 0;
+  background:
+    linear-gradient(135deg, rgba(95, 69, 191, 0.08), rgba(217, 174, 77, 0.1)),
+    var(--color-bg-surface, #ffffff);
+  flex: 0 0 auto;
+}
+
+.solicitud-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-accent, #c99a31);
+}
+
+.solicitud-title {
+  margin: 0;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  color: var(--color-heading-primary, #1a1029);
+}
+
+.solicitud-title:focus-visible {
+  outline: none;
+}
+
+.solicitud-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 2.15rem;
+  height: 2.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-divider, #ddd9ed);
+  background: var(--color-bg-muted, #f4f2fb);
+  color: var(--color-text-secondary, #41465d);
+  cursor: pointer;
+  transition:
+    transform var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    background-color var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    border-color var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+
+.solicitud-close:hover {
+  transform: translateY(-1px);
+  border-color: #cfc5ee;
+  background: #efe9ff;
+  color: var(--color-brand-primary, #3b2484);
+}
+
+.solicitud-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(95, 69, 191, 0.3);
+}
+
+.solicitud-close svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Indicador de pasos */
+.solicitud-stepper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #6b7280);
+}
+
+.solicitud-stepper li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.solicitud-stepper li:not(:last-child)::after {
+  content: '→';
+  margin-left: 0.7rem;
+  opacity: 0.45;
+}
+
+.solicitud-stepnum {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-bg-muted, #f4f2fb);
+  color: var(--color-text-muted, #6b7280);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.solicitud-stepper li.is-active {
+  color: var(--color-brand-primary, #3b2484);
+}
+
+.solicitud-stepper li.is-active .solicitud-stepnum {
+  background: linear-gradient(180deg, var(--color-brand-primary, #3b2484), var(--color-brand-primary-strong, #1f1344));
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(44, 26, 97, 0.32);
+}
+
+.solicitud-stepper li.is-done {
+  color: var(--color-text-secondary, #41465d);
+}
+
+.solicitud-stepper li.is-done .solicitud-stepnum {
+  background: var(--color-brand-accent, #c99a31);
+  color: #ffffff;
+}
+
+/* ---------- Cuerpo ---------- */
+.solicitud-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.1rem 1.4rem 0.4rem;
+}
+
+.solicitud-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.95rem;
+  flex: 0 0 auto;
+}
+
+.solicitud-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--color-divider, #ddd9ed);
+  border-radius: 999px;
+  background: var(--color-bg-surface, #ffffff);
+  color: var(--color-text-secondary, #41465d);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  cursor: pointer;
+  transition:
+    color var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    background-color var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    border-color var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    box-shadow var(--ui-time-fast, 160ms) var(--ui-ease-standard, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+
+.solicitud-tab:hover {
+  border-color: #cfc5ee;
+  background: #f6f2ff;
+  color: var(--color-brand-primary, #3b2484);
+}
+
+.solicitud-tab.is-active {
+  color: #ffffff;
+  background: linear-gradient(180deg, var(--color-brand-primary, #3b2484), var(--color-brand-primary-strong, #1f1344));
+  border-color: transparent;
+  box-shadow: 0 6px 14px rgba(44, 26, 97, 0.28);
+}
+
+.solicitud-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(95, 69, 191, 0.3);
+}
+
+/* Zona de documento con scroll interno */
+.solicitud-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.05rem 0.3rem 0.7rem 0;
+}
+
+.solicitud-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.solicitud-scroll::-webkit-scrollbar-track {
+  background: rgba(95, 69, 191, 0.06);
+  border-radius: 999px;
+}
+
+.solicitud-scroll::-webkit-scrollbar-thumb {
+  background: rgba(95, 69, 191, 0.32);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.solicitud-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(95, 69, 191, 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ---------- Tipografía de los documentos ---------- */
+.solicitud-doc {
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: var(--color-text-primary, #1e2235);
+}
+
+.solicitud-doc > p {
+  margin: 0 0 0.75rem;
+}
+
+.solicitud-doc-titulo {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--color-brand-primary-strong, #1f1344);
+}
+
+.solicitud-doc-subtitulo {
+  margin: 1.15rem 0 0.6rem;
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--color-brand-primary-strong, #1f1344);
+}
+
+.solicitud-doc-original {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.15rem 0 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-brand-primary, #3b2484);
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 36, 132, 0.35);
+  text-underline-offset: 3px;
+}
+
+.solicitud-doc-original:hover {
+  color: var(--color-brand-primary-strong, #1f1344);
+  text-decoration-color: currentColor;
+}
+
+.solicitud-doc-original svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.solicitud-lista-pasos,
+.solicitud-lista-condiciones {
+  margin: 0.2rem 0 0.8rem;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.solicitud-lista-pasos li {
+  padding-left: 0.15rem;
+}
+
+.solicitud-lista-condiciones {
+  counter-reset: condicion;
+  list-style: none;
+  padding-left: 0;
+}
+
+.solicitud-lista-condiciones > li {
+  position: relative;
+  counter-increment: condicion;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.solicitud-lista-condiciones > li::before {
+  content: counter(condicion);
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-brand-primary, #3b2484), var(--color-brand-primary-strong, #1f1344));
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.solicitud-lista-condiciones > li > p {
+  margin: 0 0 0.35rem;
+}
+
+.solicitud-cond-encabezado {
+  font-weight: 700;
+  color: var(--color-brand-primary-strong, #1f1344);
+  margin: 0.35rem 0 0.35rem;
+}
+
+.solicitud-lista-puntos {
+  margin: 0.3rem 0 0.4rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.solicitud-lista-puntos li {
+  padding-left: 0.1rem;
+}
+
+.solicitud-lista-puntos--finales {
+  margin-top: 0.6rem;
+}
+
+.solicitud-firma {
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  border-top: 1px solid var(--color-divider, #ddd9ed);
+  background: var(--color-bg-muted, #f4f2fb);
+  border-radius: 12px;
+  font-size: 0.82rem;
+}
+
+.solicitud-firma p {
+  margin: 0.15rem 0;
+}
+
+/* ---------- Tablas de tarifas ---------- */
+.solicitud-table-wrap {
+  margin: 0.3rem 0 0.7rem;
+  border: 1px solid var(--color-divider, #ddd9ed);
+  border-radius: 12px;
+  overflow-x: auto;
+  background: var(--color-bg-surface, #ffffff);
+}
+
+.solicitud-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.solicitud-table th,
+.solicitud-table td {
+  border: 1px solid var(--color-divider, #ddd9ed);
+  padding: 0.5rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.solicitud-table thead th {
+  background: var(--color-brand-primary-strong, #1f1344);
+  color: #ffffff;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.solicitud-table tbody tr:nth-child(even) {
+  background: #faf8ff;
+}
+
+.solicitud-table tbody th[scope='row'] {
+  background: #f3efff;
+  color: var(--color-brand-primary-strong, #1f1344);
+  font-weight: 700;
+}
+
+.solicitud-table .solicitud-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.solicitud-nota {
+  margin: 0 0 0.8rem;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-text-muted, #737a92);
+}
+
+/* ---------- Pie del diálogo ---------- */
+.solicitud-footer {
+  display: grid;
+  gap: 0.85rem;
+  padding: 0.95rem 1.4rem 1.2rem;
+  border-top: 1px solid var(--color-divider, #ddd9ed);
+  border-radius: 0 0 20px 20px;
+  background: var(--color-bg-muted, #f4f2fb);
+  flex: 0 0 auto;
+  box-shadow: 0 -6px 14px -10px rgba(31, 20, 71, 0.18);
+}
+
+.solicitud-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.solicitud-check input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  margin: 0.12rem 0 0;
+  accent-color: var(--color-brand-primary, #3b2484);
+  cursor: pointer;
+}
+
+.solicitud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.solicitud-actions .button {
+  min-height: 42px;
+}
+
+/* ---------- Modal 2: formato de solicitud ---------- */
+.solicitud-dialog--form {
+  width: min(720px, calc(100% - 1.5rem));
+}
+
+.solicitud-aviso {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(217, 174, 77, 0.55);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fffdf4, #fdf6e3);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.solicitud-aviso p {
+  margin: 0;
+}
+
+.solicitud-aviso-icon {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-brand-accent-soft, #eedcb0);
+  color: var(--color-brand-accent, #c99a31);
+}
+
+.solicitud-aviso-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.solicitud-instrucciones {
+  margin: 0 0 1.1rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: instruccion;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.solicitud-instrucciones li {
+  counter-increment: instruccion;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.solicitud-instrucciones li::before {
+  content: counter(instruccion);
+  flex: 0 0 auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-brand-primary, #3b2484), var(--color-brand-primary-strong, #1f1344));
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.solicitud-email {
+  font-weight: 700;
+  color: var(--color-brand-primary, #3b2484);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+
+.solicitud-email:hover {
+  color: var(--color-brand-primary-strong, #1f1344);
+}
+
+.solicitud-descarga {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px dashed var(--color-border-strong, #a9a2c7);
+  border-radius: 14px;
+  background: var(--color-bg-surface, #ffffff);
+}
+
+.solicitud-descarga-nombre {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #41465d);
+}
+
+.solicitud-boton-descarga {
+  justify-self: start;
+}
+
+.solicitud-correo-note {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--color-text-secondary, #41465d);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 639px) {
+  .solicitud-dialog,
+  .solicitud-dialog--form {
+    width: min(100% - 1rem, 880px);
+    max-height: calc(100dvh - 1rem);
+    border-radius: 16px;
+  }
+
+  .solicitud-panel {
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .solicitud-header {
+    padding: 1rem 2.9rem 0.9rem 1rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .solicitud-close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .solicitud-body {
+    padding: 0.95rem 1rem 0.3rem;
+  }
+
+  .solicitud-footer {
+    padding: 0.8rem 1rem 1rem;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .solicitud-actions {
+    flex-direction: column;
+  }
+
+  .solicitud-actions .button {
+    width: 100%;
+  }
+
+  .solicitud-boton-descarga {
+    justify-self: stretch;
+  }
+
+  .coleccion-action {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 479px) {
+  .solicitud-table {
+    min-width: 560px;
+    font-size: 0.72rem;
+  }
+
+  .solicitud-stepper li:not(:last-child)::after {
+    margin-left: 0.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solicitud-dialog,
+  .solicitud-dialog *,
+  .solicitud-dialog *::before,
+  .solicitud-dialog *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

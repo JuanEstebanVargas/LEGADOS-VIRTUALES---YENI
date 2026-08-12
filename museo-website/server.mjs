@@ -21,6 +21,13 @@ const COLLECTION_PAGE_DIR = path.join(BASE_CONTENT_DIR, 'COLECCION_PAGE')
 const CAROUSEL_DIR = path.join(HOME_PAGE_DIR, 'CARRUSEL')
 const EVENTS_DIR = path.join(HOME_PAGE_DIR, 'EVENTOS_Y_ACTIVIDADES')
 const COLLECTION_DIR = path.join(COLLECTION_PAGE_DIR, 'OBRAS_DESTACADAS')
+const SOLICITUD_DIR = path.resolve(__dirname, '..', 'MULTIMEDIA', 'SOLICITUD IMAGENES')
+
+const SOLICITUD_FILES = {
+  'tarifas-video.pdf': '2024-08-09_Tarifas y Condiciones de Video.pdf.pdf',
+  'tarifas-fotografias.pdf': '2025-01-27_Tarifas y Condiciones Uso Fotografias Museo Arquidiocesano.pdf',
+  'formato-solicitud.docx': '2024-08-09_Formato Solicitud Uso de Fotografia.docx.docx',
+}
 
 const CAROUSEL_METADATA_FILE = path.join(CAROUSEL_DIR, 'carousel-items.json')
 const EVENTS_METADATA_FILE = path.join(EVENTS_DIR, 'events-items.json')
@@ -803,6 +810,26 @@ app.get('/api/collection/files/:filename', async (req, res) => {
   }
 
   const filePath = path.join(COLLECTION_DIR, filename)
+  res.sendFile(filePath, (error) => {
+    if (error) {
+      res.status(404).send('Not found')
+    }
+  })
+})
+
+app.get('/api/solicitud/files/:name', (req, res) => {
+  const name = path.basename(String(req.params?.name ?? ''))
+  const realName = SOLICITUD_FILES[name]
+
+  if (!realName) {
+    res.status(404).send('Not found')
+    return
+  }
+
+  const filePath = path.join(SOLICITUD_DIR, realName)
+  const disposition = name === 'formato-solicitud.docx' ? 'attachment' : 'inline'
+
+  res.setHeader('Content-Disposition', `${disposition}; filename*=UTF-8''${encodeURIComponent(realName)}`)
   res.sendFile(filePath, (error) => {
     if (error) {
       res.status(404).send('Not found')
