@@ -40,6 +40,7 @@ export type LeadershipEntry = {
   period: string
   description: string
   tag: string
+  image?: string
 }
 
 export type LegalMilestone = {
@@ -53,6 +54,7 @@ export type CustodianEntry = {
   role: string
   description: string
   tag: string
+  image?: string
 }
 
 export type HighlightCard = {
@@ -242,6 +244,7 @@ export const leadershipEntries: LeadershipEntry[] = [
     description:
       'Asumió la dirección del Museo desde su nacimiento institucional en 1972, siendo parte del grupo fundacional que transformó la visión del Arzobispo Arce Vivas en una realidad museística. Acompañó la adquisición de la sede, la restauración del inmueble entre 1976 y 1979, y la inauguración oficial en septiembre de 1979. Vivió también el momento más crítico de la institución: el terremoto del 31 de marzo de 1983, que dejó la sede gravemente averiada. Bajo su dirección, las obras fueron rescatadas y depositadas en el Banco de la República para garantizar su salvaguarda.',
     tag: 'Directora fundadora · 17 años al frente',
+    image: '/hero-portada-museo.png',
   },
   {
     role: 'Segunda directora',
@@ -250,6 +253,7 @@ export const leadershipEntries: LeadershipEntry[] = [
     description:
       'Ingresó al Museo como secretaria de Silvia Ayerbe de Caicedo y asumió la dirección en 1989, en pleno proceso de recuperación postsísmica. Lideró la etapa más exigente de la institución: la restauración de la colección, el retorno de las obras desde el Banco de la República y la reapertura del Museo al público. Bajo su conducción, el Museo volvió a ser un espacio vivo para la comunidad payanesa, consolidando su papel cultural y patrimonial en el suroccidente colombiano. Su labor es el puente entre el Museo que fue y el Museo que es hoy.',
     tag: 'Etapa de renacimiento · 14 años al frente',
+    image: '/hero-ornamento-dorado.png',
   },
   {
     role: 'Tercera directora',
@@ -258,6 +262,7 @@ export const leadershipEntries: LeadershipEntry[] = [
     description:
       'Ingresó al Museo en 1992 como secretaria, cargo desde el cual conoció a fondo cada aspecto de la institución. Nombrada Subdirectora por el Arzobispo Iván Antonio Marín en 2002, y Directora en 2004. Condujo el Museo durante 18 años, el período más extenso de dirección en su historia. Su gestión abarcó la declaratoria como Bien de Interés Cultural de la Nación (Resolución 0395 de 2006), la actualización de los estatutos institucionales (Decreto 1.306 de 2017) y el fortalecimiento de la colección. Ejerció el cargo hasta marzo de 2022.',
     tag: 'Etapa de consolidación · 18 años al frente',
+    image: '/MUSEOARTERELIGIOSOARQUIPOPAYAN-12.png',
   },
   {
     role: 'Directora actual',
@@ -266,6 +271,7 @@ export const leadershipEntries: LeadershipEntry[] = [
     description:
       'Licenciada en Educación Artística y Cultural y magíster en Educación de la Universidad del Cauca. Asumió la dirección en marzo de 2022, inaugurando una nueva etapa marcada por la educación patrimonial crítica, la apertura comunitaria y la proyección digital del Museo. Impulsora del Plan Educativo institucional, el Laboratorio de Guías, el Seminario de Arte y Cultura Colonial y el proyecto VOCES DEL PATRIMONIO. Autora del libro Museos como espacios de transformación cultural: estrategias para la Educación Patrimonial (2025), publicación que recoge su investigación de maestría y posiciona al Museo como referente educativo nacional.',
     tag: 'Educación patrimonial · Proyección digital',
+    image: '/MUSEOARTERELIGIOSOARQUIPOPAYAN-17.png',
   },
 ]
 
@@ -606,6 +612,7 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Nacido en Popayán el 1 de marzo de 1904, hijo predilecto de la ciudad. Arzobispo de Popayán desde 1965 hasta 1976. Visionario fundador del Museo en 1972 mediante los Decretos Arzobispales 365 y 386, impulsado por su profundo amor al patrimonio artístico de la ciudad. También fue promotor del Instituto Don Bosco, del Instituto Catequístico Arquidiocesano y de la Fundación Juan del Valle. Falleció el 27 de mayo de 1987. Sus pertenencias personales reposan en una vitrina del Museo como homenaje a su legado.',
     tag: 'Fundador del Museo · 1972',
+    image: '/MUSEOARTERELIGIOSOARQUIPOPAYAN-12.png',
   },
   {
     period: '1976 – 1990',
@@ -614,6 +621,7 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Nacido el 21 de junio de 1930, miembro de la Congregación de la Misión. Asumió el arzobispado en el momento del mayor desafío del Museo: el terremoto del 31 de marzo de 1983, que sacudió a Popayán en 18 segundos. Su respuesta fue inmediata: junto a las instituciones nacionales, lideró el rescate de las obras del Museo y su depósito en el Banco de la República. En 1988, presidió el Comité Regional de Restauración que permitió la recuperación de la colección y del inmueble. Falleció el 11 de abril de 1990.',
     tag: 'Restauración del Museo · 1988',
+    image: '/hero-cristo-caspicara.jpg',
   },
   {
     period: '1990 – 1997',
@@ -622,6 +630,7 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Natural de Manizales, ordenado obispo en 1974 como auxiliar del Arzobispo Arce Vivas. Designado Arzobispo de Popayán en diciembre de 1990, recibió el palio arzobispal de manos del Papa Juan Pablo II en 1991. Durante su gestión se consolidó la reapertura y normalización del Museo en la posguerra del terremoto. Fue presidente de la Conferencia Episcopal de Colombia (1996–2002). Trasladado a Medellín en 1997. Firmó los documentos de personería del Museo en 1992 y 1996.',
     tag: 'Consolidación patrimonial · 1996',
+    image: '/hero-manual-marca-13.png',
   },
   {
     period: '1997 – 2018',
@@ -630,6 +639,7 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Nacido en Jardín, Antioquia, el 13 de mayo de 1938. Licenciado en Teología por la Pontificia Universidad Javeriana. Ordenado sacerdote en 1964. El más longevo de los Arzobispos en el período del Museo: 21 años de gestión pastoral. En 2006 gestionó la Resolución 0395 que declaró el Museo Bien de Interés Cultural de la Nación. En 2017 expidió el Decreto No. 1.306, estatutos vigentes del Museo. Nombró Subdirectora a Carmen Elisa Hernández en 2002 y Directora en 2004. Arzobispo emérito desde 2018.',
     tag: 'Bien de Interés Cultural · 2006',
+    image: '/hero-portada-museo.png',
   },
   {
     period: '2018 – 2020',
@@ -638,6 +648,7 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Nacido en San Gil, Santander, el 3 de marzo de 1962. Ordenado sacerdote en 1989. Licenciado en Teología Moral por la Academia Alfonsiana de Roma. Arzobispo de Popayán desde julio de 2018 hasta abril de 2020, cuando el Papa Francisco lo designó Arzobispo de Bogotá y Primado de Colombia. Creado Cardenal por el Papa Francisco en septiembre de 2023. Su breve paso por la Arquidiócesis mantuvo el compromiso institucional con el Museo.',
     tag: 'Hoy Cardenal Arzobispo de Bogotá',
+    image: '/hero-ornamento-dorado.png',
   },
   {
     period: '2020 — Presente',
@@ -646,5 +657,6 @@ export const custodianEntries: CustodianEntry[] = [
     description:
       'Nacido en Cogua, Cundinamarca, el 20 de septiembre de 1963. Miembro de la Orden de Predicadores (dominicos). Ordenado sacerdote en 1990. Doctor en Teología Dogmática por la Pontificia Universidad Santo Tomás de Roma. Nombrado Arzobispo de Popayán por el Papa Francisco el 12 de octubre de 2020; tomó posesión canónica el 12 de diciembre de 2020. Como representante legal del Museo y máximo custodio de su colección, acompaña la nueva etapa de apertura cultural, educación patrimonial y proyección digital de la institución.',
     tag: 'Representante legal · Custodio del Museo',
+    image: '/MUSEOARTERELIGIOSOARQUIPOPAYAN-17.png',
   },
 ]

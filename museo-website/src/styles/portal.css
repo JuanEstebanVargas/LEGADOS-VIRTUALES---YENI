@@ -924,6 +924,136 @@ mark.c-search-highlight[data-active-search-match='true'] {
   width: 100vw;
   max-width: none;
   margin-inline: calc(50% - 50vw);
+  min-height: clamp(330px, 40vw, 500px);
+}
+
+.home-page .c-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(18, 13, 38, 0.62) 0%, rgba(18, 13, 38, 0.34) 45%, rgba(22, 16, 48, 0.68) 100%),
+    linear-gradient(90deg, rgba(18, 13, 38, 0.42), rgba(18, 13, 38, 0.18) 50%, rgba(18, 13, 38, 0.42));
+}
+
+.home-page .c-hero__nav {
+  z-index: 3;
+}
+
+.home-page .c-hero .c-hero__content {
+  height: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  padding: clamp(1.25rem, 3.2vw, 3rem) clamp(1rem, 4vw, 4rem);
+  pointer-events: none;
+}
+
+.home-page .c-hero .c-hero__kicker {
+  margin: 0 0 0.6rem;
+  font-size: clamp(0.68rem, 0.6rem + 0.35vw, 0.95rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.home-page .c-hero .display-title {
+  margin: 0;
+  font-size: clamp(1.55rem, 1.05rem + 2.6vw, 3.1rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #ffffff;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.home-page .c-hero .c-hero__actions {
+  margin-top: clamp(1.05rem, 2vw, 1.6rem);
+  gap: clamp(0.65rem, 1.4vw, 1.1rem);
+}
+
+.home-page .c-hero .c-hero__cta {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.72rem 1.65rem;
+  border-radius: 999px;
+  font-size: clamp(0.88rem, 0.8rem + 0.4vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.home-page .c-hero .c-hero__cta.c-button--ghost {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(8, 5, 22, 0.28);
+}
+
+.home-page .c-hero .c-hero__cta.c-button--primary {
+  background: linear-gradient(180deg, var(--brand-gold-600), var(--brand-gold-700));
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  box-shadow:
+    0 8px 18px rgba(8, 5, 22, 0.32),
+    0 4px 12px rgba(183, 137, 35, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.home-page .c-hero .c-hero__cta.c-button--ghost:hover,
+.home-page .c-hero .c-hero__cta.c-button--ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.home-page .c-hero .c-hero__cta.c-button--primary:hover,
+.home-page .c-hero .c-hero__cta.c-button--primary:focus-visible {
+  background: linear-gradient(180deg, var(--brand-gold-500), var(--brand-gold-600));
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 26px rgba(8, 5, 22, 0.36),
+    0 6px 16px rgba(183, 137, 35, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+}
+
+.home-page .c-hero .c-hero__cta:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(8, 5, 22, 0.3);
+}
+
+.home-page .c-hero .c-hero__cta:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.95),
+    0 0 0 6px rgba(95, 69, 191, 0.55);
+}
+
+@media (max-width: 480px) {
+  .home-page .c-hero .c-hero__actions {
+    width: 100%;
+    max-width: 18rem;
+  }
+
+  .home-page .c-hero .c-hero__cta {
+    flex: 1 1 auto;
+  }
 }
 
 .home-page .c-section__header {
@@ -1383,5 +1513,72 @@ mark.c-search-highlight[data-active-search-match='true'] {
       min-height: 0;
       border-radius: 18px;
       padding: 0.85rem 0.95rem;
+    }
+  }
+
+  /* HistoriaPage (página completa) · Marco legal y patrimonial: lista vertical */
+  .historia-page #historia .decreto-chip-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0.95rem 0 1.35rem;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .historia-page #historia .decreto-item.decreto-item-compact {
+    width: 100%;
+    min-height: 88px;
+    padding: 1.15rem 1.35rem;
+    border-radius: 18px;
+    border: 1px solid rgba(123, 96, 171, 0.18);
+    border-left: 4px solid rgba(212, 169, 58, 0.95);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 6px 18px rgba(30, 30, 60, 0.06);
+  }
+
+  .historia-page #historia .decreto-item.decreto-item-compact:hover {
+    box-shadow: 0 10px 24px rgba(30, 30, 60, 0.09);
+  }
+
+  .historia-page #historia .decreto-item-compact .decreto-titulo {
+    margin: 0 0 0.45rem;
+    display: block;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .historia-page #historia .decreto-item-compact .decreto-desc {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1200px) {
+    .historia-page #historia .decreto-chip-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 979px) {
+    .historia-page #historia .decreto-chip-grid {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      padding: 0;
+    }
+
+    .historia-page #historia .decreto-item.decreto-item-compact {
+      min-height: 0;
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
     }
   }

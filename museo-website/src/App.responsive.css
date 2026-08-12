@@ -195,14 +195,20 @@ video {
   .directoras-toggle .directora-row-compact,
   .custodios-toggle .custodio-row-compact {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
-      'periodo action'
-      'main main'
-      'tag tag';
+      'img periodo action'
+      'img main main'
+      'img tag tag';
     align-items: flex-start;
     gap: 0.5rem 0.7rem;
     padding: 0.85rem 0.9rem;
+  }
+
+  .directoras-toggle .personaje-avatar,
+  .custodios-toggle .personaje-avatar {
+    grid-area: img;
+    align-self: start;
   }
 
   .directoras-toggle .dir-periodo,
@@ -263,6 +269,14 @@ video {
   .custodios-intro {
     font-size: 0.9rem;
     line-height: 1.56;
+  }
+
+  .personaje-detail {
+    grid-template-columns: minmax(0, 1fr) 8.5rem;
+  }
+
+  .personaje-photo {
+    max-width: 8.5rem;
   }
 
   /* Mapa y contenido denso */
@@ -397,11 +411,18 @@ video {
   .custodios-toggle .custodio-row-compact {
     grid-template-columns: 1fr;
     grid-template-areas:
+      'img'
       'periodo'
       'main'
       'tag'
       'action';
     gap: 0.42rem;
+  }
+
+  .directoras-toggle .personaje-avatar,
+  .custodios-toggle .personaje-avatar {
+    grid-area: img;
+    justify-self: start;
   }
 
   .directoras-toggle .accordion-action,
@@ -588,6 +609,17 @@ video {
   .custodio-bio {
     font-size: 0.92rem;
     line-height: 1.6;
+  }
+
+  .personaje-detail {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding: 0.35rem 0.95rem 1rem;
+  }
+
+  .personaje-photo {
+    max-width: 8.5rem;
+    justify-self: center;
   }
 
   /* Visitas y mapas */

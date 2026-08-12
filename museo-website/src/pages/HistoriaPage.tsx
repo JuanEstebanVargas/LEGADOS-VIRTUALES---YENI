@@ -1,11 +1,72 @@
 import { custodianEntries, historyTimeline, leadershipEntries, legalMilestones } from '../data/content'
 import { usePageTitle } from './usePageTitle'
 
+type ProfileEntry = {
+  image?: string
+  name: string
+  period: string
+  role: string
+  description: string
+  tag: string
+}
+
+function ProfileItem({
+  variant,
+  entry,
+  defaultOpen = false,
+}: {
+  variant: 'directora' | 'custodio'
+  entry: ProfileEntry
+  defaultOpen?: boolean
+}) {
+  const isDir = variant === 'directora'
+  const cls = (base: string, alt: string) => (isDir ? base : alt)
+  const itemCls = cls('directora-item-toggle', 'custodio-item-toggle')
+  const rowCls = cls('directora-row-compact', 'custodio-row-compact')
+  const periodoCls = cls('dir-periodo', 'custodio-periodo')
+  const mainCls = cls('dir-main', 'custodio-main')
+  const nombreCls = cls('dir-nombre', 'custodio-nombre')
+  const rolCls = cls('dir-num', 'custodio-rol')
+  const tagCls = cls('dir-tag', 'custodio-tag')
+  const bioCls = cls('dir-bio-compact', 'custodio-bio')
+
+  return (
+    <details className={itemCls} open={defaultOpen}>
+      <summary className={rowCls}>
+        <span className="personaje-avatar" aria-hidden="true">
+          {entry.image ? (
+            <img src={entry.image} alt="" loading="lazy" />
+          ) : (
+            <span className="personaje-avatar-fallback">{entry.name.charAt(0)}</span>
+          )}
+        </span>
+        <span className={periodoCls}>{entry.period}</span>
+        <span className={mainCls}>
+          <span className={nombreCls}>{entry.name}</span>
+          <span className={rolCls}>{entry.role}</span>
+        </span>
+        <span className={tagCls}>{entry.tag}</span>
+        <span className="accordion-action">Ver perfil</span>
+      </summary>
+      <div className="personaje-detail">
+        <div className={bioCls}>{entry.description}</div>
+        <figure className="personaje-photo">
+          {entry.image ? (
+            <img src={entry.image} alt={entry.name} loading="lazy" />
+          ) : (
+            <span className="personaje-photo-fallback">{entry.name}</span>
+          )}
+        </figure>
+      </div>
+    </details>
+  )
+}
+
 export function HistoriaPage() {
   usePageTitle('Historia')
 
   return (
-    <main id="main-content" className="section-page-main">
+    <main id="main-content" className="section-page-main historia-page">
       <section className="content-section" id="historia">
         <div className="section-heading section-heading-compact">
           <h1>Historia del museo</h1>
@@ -45,18 +106,7 @@ export function HistoriaPage() {
           </div>
           <div className="directoras-list-compact">
             {leadershipEntries.map((entry, index) => (
-              <details className="directora-item-toggle" key={entry.name} open={index === 0}>
-                <summary className="directora-row-compact">
-                  <div className="dir-periodo">{entry.period}</div>
-                  <div className="dir-main">
-                    <div className="dir-nombre">{entry.name}</div>
-                    <div className="dir-num">{entry.role}</div>
-                  </div>
-                  <span className="dir-tag">{entry.tag}</span>
-                  <span className="accordion-action">Ver perfil</span>
-                </summary>
-                <div className="dir-bio-compact">{entry.description}</div>
-              </details>
+              <ProfileItem key={entry.name} variant="directora" entry={entry} defaultOpen={index === 0} />
             ))}
           </div>
         </div>
@@ -80,18 +130,7 @@ export function HistoriaPage() {
           </p>
           <div className="custodios-list">
             {custodianEntries.map((item, index) => (
-              <details className="custodio-item-toggle" key={item.name} open={index === 0}>
-                <summary className="custodio-row-compact">
-                  <div className="custodio-periodo">{item.period}</div>
-                  <div className="custodio-main">
-                    <div className="custodio-nombre">{item.name}</div>
-                    <div className="custodio-rol">{item.role}</div>
-                  </div>
-                  <span className="custodio-tag">{item.tag}</span>
-                  <span className="accordion-action">Ver perfil</span>
-                </summary>
-                <div className="custodio-bio">{item.description}</div>
-              </details>
+              <ProfileItem key={item.name} variant="custodio" entry={item} defaultOpen={index === 0} />
             ))}
           </div>
         </div>

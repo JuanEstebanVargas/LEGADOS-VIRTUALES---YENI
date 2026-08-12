@@ -2152,7 +2152,7 @@ h3 {
 
 .directora-row-compact {
   display: grid;
-  grid-template-columns: minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(16rem, 1.35fr) auto;
+  grid-template-columns: auto minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(13rem, 1.3fr) auto;
   align-items: center;
   gap: var(--dir-col-gap);
   padding: 0.9rem var(--dir-row-padding-x);
@@ -2305,7 +2305,7 @@ h3 {
 
 .custodio-row-compact {
   display: grid;
-  grid-template-columns: minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(16rem, 1.35fr) auto;
+  grid-template-columns: auto minmax(6.8rem, 0.9fr) minmax(14rem, 2fr) minmax(13rem, 1.3fr) auto;
   gap: var(--cust-col-gap);
   align-items: center;
   padding: 0.9rem var(--cust-row-padding-x);
@@ -2381,6 +2381,121 @@ h3 {
   font-size: 0.9rem;
   line-height: 1.66;
   color: rgba(248, 240, 228, 0.8);
+}
+
+/* Miniaturas y foto ampliada de perfiles (directoras/custodios) */
+.personaje-avatar {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(122, 86, 23, 0.28);
+  background: rgba(122, 86, 23, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 3px 10px rgba(31, 18, 53, 0.08);
+}
+
+.personaje-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.personaje-avatar-fallback {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--color-accent-text);
+  user-select: none;
+}
+
+.directora-item-toggle[open] .personaje-avatar,
+.custodio-item-toggle[open] .personaje-avatar {
+  opacity: 0.78;
+  transition: opacity 220ms ease;
+}
+
+.personaje-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 11rem);
+  align-items: start;
+  gap: 1.25rem;
+  padding: 0.45rem 1rem 1.15rem;
+}
+
+.personaje-detail .dir-bio-compact,
+.personaje-detail .custodio-bio {
+  padding: 0;
+  margin: 0;
+}
+
+.personaje-photo {
+  margin: 0;
+  width: 100%;
+  max-width: 11rem;
+  justify-self: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(122, 86, 23, 0.24);
+  background: rgba(122, 86, 23, 0.08);
+  box-shadow: 0 10px 24px rgba(31, 18, 53, 0.14);
+}
+
+.personaje-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.personaje-photo-fallback {
+  font-family: var(--font-display);
+  font-weight: 800;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--color-accent-text);
+}
+
+.directora-item-toggle[open] .personaje-detail,
+.custodio-item-toggle[open] .personaje-detail {
+  animation: personaje-detail-in 240ms ease-out;
+}
+
+.directora-item-toggle[open] .personaje-photo,
+.custodio-item-toggle[open] .personaje-photo {
+  animation: personaje-photo-in 280ms ease-out;
+}
+
+@keyframes personaje-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes personaje-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
 }
 
 .decreto-item {
@@ -3281,6 +3396,216 @@ h3 {
 
 #visita .visit-map-link:hover {
   background: rgba(122, 86, 23, 0.16);
+}
+
+/* VisitasPage: unificación visual (referencia HistoriaPage) */
+#visitas .visit-planner-card {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.5rem 1.35rem;
+  border-radius: 20px;
+  border-color: rgba(122, 86, 23, 0.22);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(246, 241, 251, 0.94));
+  box-shadow: 0 8px 22px rgba(25, 37, 53, 0.08);
+}
+
+#visitas .visit-planner-head {
+  gap: 0.4rem;
+  margin-bottom: 0.95rem;
+}
+
+#visitas .visit-planner-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--color-accent-text);
+}
+
+#visitas .visit-planner-head h2 {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.85vw, 1.28rem);
+  line-height: 1.16;
+  font-weight: 800;
+  color: var(--color-heading-primary);
+}
+
+#visitas .visit-planner-item {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border-color: rgba(122, 86, 23, 0.16);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+#visitas .visit-planner-label {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-accent-text);
+}
+
+#visitas .visit-planner-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+#visitas .visit-detail-card {
+  padding: 1.1rem 1.15rem;
+  border-radius: 20px;
+  border-color: rgba(122, 86, 23, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(247, 243, 255, 0.95));
+  box-shadow: 0 8px 22px rgba(25, 37, 53, 0.08);
+}
+
+#visitas .visit-detail-card summary h2 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+#visitas .visit-detail-card .accordion-preview {
+  margin-top: 0.35rem;
+  color: var(--color-text-secondary);
+}
+
+#visitas .visit-rows {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top-color: rgba(122, 86, 23, 0.16);
+}
+
+#visitas .visit-row {
+  padding: 0.5rem 0;
+  border-bottom-color: rgba(122, 86, 23, 0.1);
+}
+
+#visitas .visit-lbl {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--color-accent-text);
+}
+
+#visitas .visit-val {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+#visitas .visit-detail-card .visit-access-intro {
+  margin-top: 0.85rem;
+  padding-top: 0.8rem;
+  border-top-color: rgba(122, 86, 23, 0.16);
+  color: var(--color-text-secondary);
+}
+
+#visitas .visit-access-item {
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  border-color: rgba(122, 86, 23, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+#visitas .visit-access-icon {
+  font-size: 1.15rem;
+}
+
+#visitas .visit-access-item h3,
+#visitas .visit-access-item h4 {
+  margin: 0 0 0.18rem;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+#visitas .visit-access-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+#visitas .visit-note {
+  background: rgba(122, 86, 23, 0.09);
+  border-left-color: var(--color-accent-text);
+}
+
+#visitas .visit-note p {
+  color: var(--color-text-secondary);
+}
+
+#visitas .visit-map-link {
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  border-color: rgba(122, 86, 23, 0.3);
+  background: rgba(122, 86, 23, 0.09);
+}
+
+#visitas .visit-map-link:hover {
+  background: rgba(122, 86, 23, 0.16);
+}
+
+#visitas .visit-map-embed-wrap {
+  margin-top: 0.75rem;
+  border-radius: 14px;
+  border-color: rgba(122, 86, 23, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+#visitas .visit-planner-actions .visit-planner-cta {
+  min-height: 76px;
+  padding: 0.95rem 1.05rem;
+  border-radius: 16px;
+  gap: 0.85rem;
+}
+
+#visitas .visit-planner-cta-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  font-size: 1.2rem;
+}
+
+#visitas .visit-planner-cta-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+#visitas .visit-planner-cta-title {
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+#visitas .visit-planner-cta-subtitle {
+  font-size: 0.8rem;
+}
+
+#visitas .visit-planner-cta-whatsapp {
+  color: #143a29;
+  border-color: rgba(29, 168, 81, 0.34);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(236, 250, 242, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 10px 22px rgba(18, 140, 84, 0.16);
+}
+
+#visitas .visit-planner-cta-whatsapp .visit-planner-cta-icon {
+  color: #ffffff;
+  border: none;
+  background: linear-gradient(180deg, #2bd16d, #1da851);
+  box-shadow: 0 4px 12px rgba(18, 140, 84, 0.36);
+}
+
+#visitas .visit-planner-cta-whatsapp .visit-planner-cta-subtitle {
+  color: var(--color-text-secondary);
+}
+
+#visitas .visit-planner-cta-whatsapp:hover {
+  border-color: rgba(29, 168, 81, 0.5);
+  background: linear-gradient(145deg, #ffffff, #e8f8ee);
 }
 
 @media (max-width: 640px) {

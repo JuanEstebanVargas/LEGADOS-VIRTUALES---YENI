@@ -78,6 +78,19 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
         ))}
       </div>
 
+      <div className="c-hero__content">
+        <p className="c-hero__kicker">Museo de Arte Religioso</p>
+        <h1 className="display-title c-hero__title">Museo Arquidiocesano de Popayán</h1>
+        <div className="c-hero__actions">
+          <Link className="c-button c-button--ghost c-hero__cta" to="/historia">
+            Historia
+          </Link>
+          <Link className="c-button c-button--primary c-hero__cta" to="/visitas">
+            Visitas
+          </Link>
+        </div>
+      </div>
+
       <button className="c-hero__nav c-hero__nav--prev" type="button" aria-label="Imagen anterior" onClick={goToPrev}>
         <svg className="c-hero__nav-icon" viewBox="0 0 24 24" role="presentation" focusable="false" aria-hidden="true">
           <path d="M15 4L7 12L15 20" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
