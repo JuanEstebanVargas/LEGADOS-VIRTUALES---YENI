@@ -1,3 +1,5 @@
+import { HeroCarousel } from '../components/layout/HeroCarousel'
+import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
 import { usePageTitle } from './usePageTitle'
 
 type ContactoPageProps = {
@@ -6,14 +8,20 @@ type ContactoPageProps = {
 
 export function ContactoPage({ whatsappHref }: ContactoPageProps) {
   usePageTitle('Contacto')
+  const carouselItems = useGlobalCarouselItems()
 
   return (
     <main id="main-content" className="section-page-main">
-      <section className="content-section contact-section" id="contacto">
-        <div className="section-heading section-heading-compact">
-          <h1>Canales digitales, redes sociales y atención institucional</h1>
-        </div>
+      <HeroCarousel
+        items={carouselItems}
+        title="Contacto"
+        kicker="Museo Arquidiocesano de Popayán"
+        description="Canales digitales, redes sociales y atención institucional del Museo Arquidiocesano de Arte Religioso de Popayán."
+        contentAlign="left"
+        actions={[{ label: 'Escribir por WhatsApp', href: whatsappHref, variant: 'primary' }]}
+      />
 
+      <section className="content-section contact-section" id="contacto">
         <div className="contact-grid contact-grid-compact">
           <article className="info-card">
             <h2>Información de contacto</h2>

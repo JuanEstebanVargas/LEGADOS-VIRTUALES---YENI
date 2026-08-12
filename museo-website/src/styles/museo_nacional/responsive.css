@@ -11,7 +11,7 @@ and (max-width: 767px){
 		font-size:20px!important;
 		color:#eaeaea;
 		padding: 12px 15px !important;
-		line-height:22px!important;
+		line-height: 1.12 !important;
 	}
 	/*==== Boton de busqueda =====*/
 
@@ -272,7 +272,7 @@ body #s4-bodyContainer {width: auto!important;}
 	width: 55%;
 	float: right;
 	font-size: 20px !important;
-	line-height: 20px !important;
+	line-height: 1.12 !important;
 	background:none!important;
 	padding: 15px!important;
 }
@@ -292,7 +292,7 @@ body #s4-bodyContainer {width: auto!important;}
 }
 .celda span, .celda div,.celda p, #contenedor .box-galeria ul li p{
 	font-size: 16px!important;
-	line-height: 16px!important;
+	line-height: 1.6!important;
 }
 .celda img.imgNoticia {
 	position: absolute;
@@ -308,7 +308,7 @@ body #s4-bodyContainer {width: auto!important;}
 	height: 30px;
 	margin: 0px!important;
 	padding: 0px!important;
-	line-height: 13px!important;
+	line-height: 1.2!important;
 	font-size:12px!important;
 }
 .ver-mas a {margin: auto; width: 115px; display: block; font-size: 1.5em; margin-top: 7px;}
@@ -347,7 +347,7 @@ body #s4-bodyContainer {width: auto!important;}
 		font-size:25px!important;
 		color:gray;
 		padding: 15px 30px!important;
-		line-height: 20px!important;
+		line-height: 1.12!important;
 		margin:0px!important;
 		font-family: var(--font-sans) !important;
 		border:none!important;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { ArtworkCard } from '../components/artwork/ArtworkCard'
+import { HeroCarousel } from '../components/layout/HeroCarousel'
 import { SolicitudImagenesModal } from '../components/solicitud/SolicitudImagenesModal'
+import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
 import type { Artwork } from '../data/content'
 import { collectionTechniques, featuredArtworks } from '../data/content'
 import { fetchServerCollectionItems } from '../data/portal/collectionServerApi'
@@ -9,6 +11,7 @@ import { usePageTitle } from './usePageTitle'
 
 export function ColeccionPage() {
   usePageTitle('Colección')
+  const carouselItems = useGlobalCarouselItems()
   const [artworks, setArtworks] = useState<Artwork[]>(featuredArtworks)
   const [solicitudAbierta, setSolicitudAbierta] = useState(false)
 
@@ -39,11 +42,44 @@ export function ColeccionPage() {
     }
   }, [])
 
+  const handleSolicitarImagenes = () => {
+    setSolicitudAbierta(true)
+  }
+
   return (
     <main id="main-content" className="section-page-main">
+      <HeroCarousel
+        items={carouselItems}
+        title="Colección"
+        kicker="Museo Arquidiocesano de Popayán"
+        description="Técnicas, obras destacadas y patrimonios que reúnen cuatro siglos de arte religioso del suroccidente colombiano."
+        contentAlign="left"
+        actions={[
+          {
+            label: 'Solicitar imágenes de la colección',
+            variant: 'primary',
+            onClick: handleSolicitarImagenes,
+          },
+        ]}
+      />
+
       <section className="content-section" id="coleccion">
-        <div className="section-heading section-heading-compact">
-          <h1>Colección, técnicas y obras destacadas</h1>
+        <div className="tecnicas-grid">
+          {collectionTechniques.map((technique) => (
+            <article className="tecnica-item" key={technique.title}>
+              <div className="tecnica-icon" aria-hidden="true">
+                <TechniqueIcon icon={technique.icon} />
+              </div>
+              <div className="tecnica-nom">{technique.title}</div>
+              <div className="tecnica-desc">{technique.description}</div>
+            </article>
+          ))}
+        </div>
+
+        <div className="artwork-grid">
+          {artworks.map((artwork) => (
+            <ArtworkCard key={artwork.id ?? `${artwork.title}-${artwork.year}`} artwork={artwork} />
+          ))}
         </div>
 
         <div className="coleccion-action">
@@ -64,24 +100,6 @@ export function ColeccionPage() {
             </span>
             Solicitar imágenes de la colección
           </button>
-        </div>
-
-        <div className="tecnicas-grid">
-          {collectionTechniques.map((technique) => (
-            <article className="tecnica-item" key={technique.title}>
-              <div className="tecnica-icon" aria-hidden="true">
-                <TechniqueIcon icon={technique.icon} />
-              </div>
-              <div className="tecnica-nom">{technique.title}</div>
-              <div className="tecnica-desc">{technique.description}</div>
-            </article>
-          ))}
-        </div>
-
-        <div className="artwork-grid">
-          {artworks.map((artwork) => (
-            <ArtworkCard key={artwork.id ?? `${artwork.title}-${artwork.year}`} artwork={artwork} />
-          ))}
         </div>
       </section>
 

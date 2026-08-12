@@ -3,13 +3,32 @@ import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import type { PortalNewsItem } from '../../data/portal/types'
 
-type HeroNewsCarouselProps = {
+type HeroCarouselAction = {
+  label: string
+  variant: 'primary' | 'ghost'
+  href?: string
+  onClick?: () => void
+}
+
+type HeroCarouselProps = {
   items: PortalNewsItem[]
+  title: string
+  kicker?: string
+  description?: string
+  actions?: HeroCarouselAction[]
+  contentAlign?: 'left' | 'center'
 }
 
 const isExternalHref = (href: string) => /^https?:\/\//i.test(href)
 
-export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
+export function HeroCarousel({
+  items,
+  title,
+  kicker,
+  description,
+  actions = [],
+  contentAlign = 'left',
+}: HeroCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const hasItems = items.length > 0
@@ -48,6 +67,8 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
     return null
   }
 
+  const contentClass = contentAlign === 'center' ? 'c-hero__content c-hero__content--center' : 'c-hero__content c-hero__content--left'
+
   return (
     <section className="c-hero" aria-label="Carrusel principal" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="c-hero__slides" aria-live="polite">
@@ -78,17 +99,48 @@ export function HeroNewsCarousel({ items }: HeroNewsCarouselProps) {
         ))}
       </div>
 
-      <div className="c-hero__content">
-        <p className="c-hero__kicker">Museo de Arte Religioso</p>
-        <h1 className="display-title c-hero__title">Museo Arquidiocesano de Popayán</h1>
-        <div className="c-hero__actions">
-          <Link className="c-button c-button--ghost c-hero__cta" to="/historia">
-            Historia
-          </Link>
-          <Link className="c-button c-button--primary c-hero__cta" to="/visitas">
-            Visitas
-          </Link>
-        </div>
+      <div className={contentClass}>
+        {kicker && <p className="c-hero__kicker">{kicker}</p>}
+        <h1 className="display-title c-hero__title">{title}</h1>
+        {description && <p className="c-hero__description">{description}</p>}
+        {actions.length > 0 && (
+          <div className="c-hero__actions">
+            {actions.map((action, index) => {
+              const className = `c-button c-button--${action.variant} c-hero__cta`
+              const key = `${action.label}-${index}`
+
+              if (action.onClick && !action.href) {
+                return (
+                  <button key={key} type="button" className={className} onClick={action.onClick}>
+                    {action.label}
+                  </button>
+                )
+              }
+
+              if (action.href && isExternalHref(action.href)) {
+                return (
+                  <a key={key} className={className} href={action.href} target="_blank" rel="noopener noreferrer">
+                    {action.label}
+                  </a>
+                )
+              }
+
+              if (action.href && action.href.startsWith('#')) {
+                return (
+                  <a key={key} className={className} href={action.href}>
+                    {action.label}
+                  </a>
+                )
+              }
+
+              return (
+                <Link key={key} className={className} to={action.href ?? '/'} onClick={action.onClick}>
+                  {action.label}
+                </Link>
+              )
+            })}
+          </div>
+        )}
       </div>
 
       <button className="c-hero__nav c-hero__nav--prev" type="button" aria-label="Imagen anterior" onClick={goToPrev}>

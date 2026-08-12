@@ -33,23 +33,23 @@ h2, h3, h4, h5, h6  {
 
 h2 {
 	font-size: x-large;
-	line-height: 1.5;
+	line-height: 1.12;
 }
 
 h3 {
 	font-size: 1.5em;
-	line-height: 2;
+	line-height: 1.2;
 }
 
 p {
 	color: #333;
 	font-size: small;
-	line-height: 1.25 !important;
+	line-height: 1.6;
 	/*font-family: "Trebuchet MS",Verdana,Helvetica,sans-serif !important;*/
 }
 
 span {
-	line-height: 1.25;
+	line-height: 1.6;
 	/*font-family: "Trebuchet MS",Verdana,Helvetica,sans-serif !important;*/
 }
 

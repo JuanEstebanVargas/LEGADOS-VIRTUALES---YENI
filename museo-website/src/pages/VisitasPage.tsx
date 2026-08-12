@@ -5,6 +5,8 @@ import {
   visitInfoSections,
   visitRegulationRows,
 } from '../data/content'
+import { HeroCarousel } from '../components/layout/HeroCarousel'
+import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
 import { usePageTitle } from './usePageTitle'
 
 type VisitasPageProps = {
@@ -13,6 +15,7 @@ type VisitasPageProps = {
 
 export function VisitasPage({ whatsappHref }: VisitasPageProps) {
   usePageTitle('Visitas')
+  const carouselItems = useGlobalCarouselItems()
 
   const scheduleSection = visitInfoSections.find((section) => section.title === 'Horarios de atención')
   const ratesSection = visitInfoSections.find((section) => section.title === 'Tarifas de ingreso')
@@ -41,11 +44,19 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
 
   return (
     <main id="main-content" className="section-page-main">
-      <section className="content-section" id="visitas">
-        <div className="section-heading section-heading-compact">
-          <h1>Horarios y planifica tu visita</h1>
-        </div>
+      <HeroCarousel
+        items={carouselItems}
+        title="Visitas"
+        kicker="Museo Arquidiocesano de Popayán"
+        description={`Horario de hoy: ${todaySchedule} · Tarifa general: ${generalRate} · ${shortAddress}`}
+        contentAlign="left"
+        actions={[
+          { label: 'Planifica tu visita', href: '#visitas', variant: 'ghost' },
+          { label: 'Escribir por WhatsApp', href: whatsappHref, variant: 'primary' },
+        ]}
+      />
 
+      <section className="content-section" id="visitas">
         <article className="visit-planner-card" aria-label="Planifica tu visita">
           <div className="visit-planner-head">
             <p className="visit-planner-kicker">Información rápida</p>

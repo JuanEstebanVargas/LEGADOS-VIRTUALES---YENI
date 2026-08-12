@@ -1,17 +1,28 @@
 import { institutionalValues, storyBlocks } from '../data/content'
+import { HeroCarousel } from '../components/layout/HeroCarousel'
+import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
 import { getPreviewText } from './sectionUtils'
 import { usePageTitle } from './usePageTitle'
 
 export function MuseoPage() {
   usePageTitle('El Museo')
+  const carouselItems = useGlobalCarouselItems()
 
   return (
     <main id="main-content" className="section-page-main">
-      <section className="content-section" id="museo">
-        <div className="section-heading section-heading-compact">
-          <h1>Identidad Institucional</h1>
-        </div>
+      <HeroCarousel
+        items={carouselItems}
+        title="El Museo"
+        kicker="Museo Arquidiocesano de Popayán"
+        description="El Museo Arquidiocesano de Arte Religioso de Popayán resguarda cuatro siglos de memoria visual del suroccidente colombiano."
+        contentAlign="left"
+        actions={[
+          { label: 'Historia', href: '/historia', variant: 'ghost' },
+          { label: 'Ver la colección', href: '/coleccion', variant: 'primary' },
+        ]}
+      />
 
+      <section className="content-section" id="museo">
         <div className="descripcion-destacada">
           <p>
             El Museo Arquidiocesano de Arte Religioso de Popayán resguarda cuatro siglos de memoria visual del suroccidente colombiano.

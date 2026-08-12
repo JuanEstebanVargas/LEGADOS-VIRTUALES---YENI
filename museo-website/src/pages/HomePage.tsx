@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AgendaList } from '../components/portal/AgendaList'
 import { ContentCard } from '../components/portal/ContentCard'
-import { HeroNewsCarousel } from '../components/portal/HeroNewsCarousel'
+import { HeroCarousel } from '../components/layout/HeroCarousel'
 import { SectionBlock } from '../components/portal/SectionBlock'
 import { fetchServerCarouselItems } from '../data/portal/carouselServerApi'
 import { fetchServerEventItems } from '../data/portal/eventsServerApi'
@@ -60,7 +60,16 @@ export function HomePage() {
 	return (
 		<main id="main-content" className="portal-main home-page">
 			<div className="home-page__inner o-container o-stack o-stack--lg">
-				<HeroNewsCarousel items={newsItems} />
+				<HeroCarousel
+					items={newsItems}
+					title="Museo Arquidiocesano de Popayán"
+					kicker="Museo de Arte Religioso"
+					contentAlign="center"
+					actions={[
+						{ label: 'Historia', href: '/historia', variant: 'ghost' },
+						{ label: 'Visitas', href: '/visitas', variant: 'primary' },
+					]}
+				/>
 
 				<SectionBlock
 					id="noticias"

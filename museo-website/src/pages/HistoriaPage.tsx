@@ -1,4 +1,6 @@
 import { custodianEntries, historyTimeline, leadershipEntries, legalMilestones } from '../data/content'
+import { HeroCarousel } from '../components/layout/HeroCarousel'
+import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
 import { usePageTitle } from './usePageTitle'
 
 type ProfileEntry = {
@@ -64,14 +66,19 @@ function ProfileItem({
 
 export function HistoriaPage() {
   usePageTitle('Historia')
+  const carouselItems = useGlobalCarouselItems()
 
   return (
     <main id="main-content" className="section-page-main historia-page">
-      <section className="content-section" id="historia">
-        <div className="section-heading section-heading-compact">
-          <h1>Historia del museo</h1>
-        </div>
+      <HeroCarousel
+        items={carouselItems}
+        title="Historia"
+        kicker="Museo Arquidiocesano de Popayán"
+        description="Cuatro siglos de arte religioso: desde los templos de la Popayán colonial hasta la casa que Marcelino Pérez de Arroyo proyectó para rescatar la memoria del suroccidente."
+        contentAlign="left"
+      />
 
+      <section className="content-section" id="historia">
         <div className="historia-resumen-grid">
           <article className="historia-mini-card">
             <h2>Origen</h2>
@@ -80,7 +87,7 @@ export function HistoriaPage() {
           <article className="historia-mini-card">
             <h2>Sede histórica</h2>
             <p>
-              La casa proyectada por Marcelino Pérez de Arroyo resume el “Estilo Popayán” y hoy es parte central de la narrativa patrimonial.
+              La casa proyectada por Marcelino Pérez de Arroyo resume el "Estilo Popayán" y hoy es parte central de la narrativa patrimonial.
             </p>
           </article>
           <article className="historia-mini-card">

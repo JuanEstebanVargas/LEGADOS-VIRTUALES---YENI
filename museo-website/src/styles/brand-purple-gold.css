@@ -156,7 +156,7 @@ a:focus-visible {
     min-height: 2.18rem;
     padding: 0.42rem 0.58rem 0.5rem;
     font-size: 0.75rem;
-    line-height: 1.08;
+    line-height: 1.2;
     white-space: nowrap;
     text-align: center;
   }
@@ -552,6 +552,37 @@ button.button:hover,
 .section-title,
 .display-title {
   color: var(--brand-purple-900);
+}
+
+/* Mantener texto del Hero en blanco dentro del tema legado. */
+.legacy-museo .c-hero,
+.legacy-museo .c-hero h1,
+.legacy-museo .c-hero p,
+.legacy-museo .c-hero span,
+.legacy-museo .c-hero a {
+  color: #ffffff !important;
+}
+
+.legacy-museo .c-hero .c-hero__title,
+.legacy-museo .c-hero .display-title,
+.legacy-museo .c-hero .c-hero__kicker,
+.legacy-museo .c-hero .c-hero__description {
+  color: #ffffff !important;
+}
+
+.legacy-museo .c-hero .c-hero__kicker,
+.legacy-museo .c-hero .c-hero__description,
+.legacy-museo .c-hero .c-hero__title,
+.legacy-museo .c-hero .display-title {
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.55),
+    0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.legacy-museo .c-hero .c-hero__cta,
+.legacy-museo .c-hero .c-hero__cta.c-button--primary,
+.legacy-museo .c-hero .c-hero__cta.c-button--ghost {
+  color: #ffffff !important;
 }
 
 :where(.badge, [class*='badge'], [class*='chip'], [class*='tag'], [class*='pill']) {
