@@ -25,7 +25,7 @@ export function ColeccionPage() {
           return
         }
 
-        setArtworks([...serverItems, ...featuredArtworks])
+        setArtworks(serverItems)
       } catch {
         if (!isMounted) {
           return

@@ -16,7 +16,7 @@ export function useGlobalCarouselItems(): PortalNewsItem[] {
           return
         }
 
-        setItems([...serverItems, ...basePortalNews])
+        setItems(serverItems)
       } catch {
         if (!isMounted) {
           return

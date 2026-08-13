@@ -5,6 +5,7 @@ type SaveServerCarouselItemInput = {
   href: string
   imageDataUrl?: string
   summary?: string
+  position?: number
 }
 
 const API_BASE = '/api/carousel'

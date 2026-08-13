@@ -38,3 +38,23 @@ export type PortalQuickLink = {
   label: string
   to: string
 }
+
+export type PortalDirectorItem = {
+  id: string
+  name: string
+  role: string
+  period: string
+  tag: string
+  description: string
+  image: string
+}
+
+export type PortalCustodianItem = {
+  id: string
+  name: string
+  role: string
+  period: string
+  tag: string
+  description: string
+  image: string
+}

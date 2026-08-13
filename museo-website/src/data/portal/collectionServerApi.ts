@@ -10,6 +10,7 @@ type SaveServerCollectionItemInput = {
   medium: string
   href: string
   imageDataUrl?: string
+  position?: number
 }
 
 const API_BASE = '/api/collection'

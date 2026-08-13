@@ -1251,6 +1251,21 @@ mark.c-search-highlight[data-active-search-match='true'] {
   gap: 0.65rem;
 }
 
+.admin-carousel__form select,
+.admin-carousel__field select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 0.5rem 0.6rem;
+  font: inherit;
+}
+
+.admin-carousel__field {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .admin-carousel__preview {
   width: min(100%, 380px);
   border: 1px solid #d0d8e6;

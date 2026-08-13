@@ -1,0 +1,29 @@
+[
+  {
+    "id": "0c4a909d-3d14-4ede-b7e6-7c91e29a260b",
+    "seedKey": "event-vuelve-al-museo",
+    "title": "Vuelve al Museo",
+    "summary": "¡Anímate a visitarnos! Te esperamos de martes a domingo desde las 9:00 a.m. hasta las 5:00 p.m.",
+    "startsAt": "2026-07-05T09:00:00-05:00",
+    "location": "Museo Nacional de Colombia",
+    "href": "/visitas"
+  },
+  {
+    "id": "14ecddfe-eb3c-45e5-992e-1e0e25b9fbf6",
+    "seedKey": "event-progratate",
+    "title": "Prográmate con el Museo",
+    "summary": "Entérate de las charlas, conciertos, talleres y demás actividades del mes entrando a este espacio.",
+    "startsAt": "2026-07-12T10:00:00-05:00",
+    "location": "Agenda mensual",
+    "href": "/programacion"
+  },
+  {
+    "id": "a9aafe10-dff2-4962-93ad-8035b2f39ae5",
+    "seedKey": "event-recorridos-comentados",
+    "title": "Recorridos comentados de exposiciones temporales",
+    "summary": "Programación de mediación cultural para públicos generales, grupos escolares y visitantes internacionales.",
+    "startsAt": "2026-07-19T11:00:00-05:00",
+    "location": "Salas del museo",
+    "href": "/coleccion"
+  }
+]

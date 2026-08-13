@@ -1,0 +1,51 @@
+[
+  {
+    "id": "2b0d271c-4e28-474a-8bf3-0f8a7709d3cc",
+    "name": "Silvia Ayerbe de Caicedo",
+    "role": "Primera directora · Fundadora",
+    "period": "1972 – 1989",
+    "tag": "Directora fundadora · 17 años al frente",
+    "description": "Asumió la dirección del Museo desde su nacimiento institucional en 1972, siendo parte del grupo fundacional que transformó la visión del Arzobispo Arce Vivas en una realidad museística. Acompañó la adquisición de la sede, la restauración del inmueble entre 1976 y 1979, y la inauguración oficial en septiembre de 1979. Vivió también el momento más crítico de la institución: el terremoto del 31 de marzo de 1983, que dejó la sede gravemente averiada. Bajo su dirección, las obras fueron rescatadas y depositadas en el Banco de la República para garantizar su salvaguarda.",
+    "imageFilename": "seed-1786654026273-c7114b42-91d6-46b9-b3f5-0dece549559b.png",
+    "seedKey": "director-silvia-ayerbe"
+  },
+  {
+    "id": "4d52cd62-f407-4d9d-8c07-94e9017924f2",
+    "name": "María Eugenia Valencia de Redondo",
+    "role": "Segunda directora",
+    "period": "1989 – 2003",
+    "tag": "Etapa de renacimiento · 14 años al frente",
+    "description": "Ingresó al Museo como secretaria de Silvia Ayerbe de Caicedo y asumió la dirección en 1989, en pleno proceso de recuperación postsísmica. Lideró la etapa más exigente de la institución: la restauración de la colección, el retorno de las obras desde el Banco de la República y la reapertura del Museo al público. Bajo su conducción, el Museo volvió a ser un espacio vivo para la comunidad payanesa, consolidando su papel cultural y patrimonial en el suroccidente colombiano. Su labor es el puente entre el Museo que fue y el Museo que es hoy.",
+    "imageFilename": "seed-1786654026273-ce8f5477-9061-4141-b420-71988a992758.png",
+    "seedKey": "director-maria-eugenia"
+  },
+  {
+    "id": "9b9e2d3a-652e-42f9-a430-47597abc79da",
+    "name": "Carmen Elisa Hernández",
+    "role": "Tercera directora",
+    "period": "2004 – 2022",
+    "tag": "Etapa de consolidación · 18 años al frente",
+    "description": "Ingresó al Museo en 1992 como secretaria, cargo desde el cual conoció a fondo cada aspecto de la institución. Nombrada Subdirectora por el Arzobispo Iván Antonio Marín en 2002, y Directora en 2004. Condujo el Museo durante 18 años, el período más extenso de dirección en su historia. Su gestión abarcó la declaratoria como Bien de Interés Cultural de la Nación (Resolución 0395 de 2006), la actualización de los estatutos institucionales (Decreto 1.306 de 2017) y el fortalecimiento de la colección. Ejerció el cargo hasta marzo de 2022.",
+    "imageFilename": "seed-1786654026273-b51b1236-1253-4220-a89e-9b30db286da7.png",
+    "seedKey": "director-carmen-elisa"
+  },
+  {
+    "id": "ec892733-3b07-4d3f-a247-d1053fe49573",
+    "name": "Yenifer Andrea Castaño Vargas",
+    "role": "Directora actual",
+    "period": "2022 - Presente",
+    "tag": "Educación patrimonial y Proyección digital",
+    "description": "Licenciada en Educación Artística y Cultural y magíster en Educación de la Universidad del Cauca. Asumió la dirección en marzo de 2022, inaugurando una nueva etapa marcada por la educación patrimonial crítica, la apertura comunitaria y la proyección digital del Museo. Impulsora del Plan Educativo institucional, el Laboratorio de Guías, el Seminario de Arte y Cultura Colonial y el proyecto VOCES DEL PATRIMONIO. Autora del libro Museos como espacios de transformación cultural: estrategias para la Educación Patrimonial (2025), publicación que recoge su investigación de maestría y posiciona al Museo como referente educativo nacional.",
+    "imageFilename": "seed-1786654026273-a43b1cc9-2a46-4c51-bce4-390b8e104bd9.png",
+    "seedKey": "director-yenifer-castano"
+  },
+  {
+    "id": "f9e1956a-ddf2-4d6c-8f82-e29271e8f2d1",
+    "name": "Sara Vargas Potes",
+    "role": "Hermana de la directora",
+    "period": "hoy y mañana",
+    "tag": "La mejor de las mejores",
+    "description": "La mejor de las mejores La mejor de las mejores La mejor de las mejores La mejor de las mejores La mejor de las mejores",
+    "imageFilename": "directora-1786654780982-beb3a6d8-ffa3-43dd-add2-1b0ddcc8adcd.jpg"
+  }
+]

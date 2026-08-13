@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react'
 import { custodianEntries, historyTimeline, leadershipEntries, legalMilestones } from '../data/content'
 import { HeroCarousel } from '../components/layout/HeroCarousel'
 import { useGlobalCarouselItems } from '../hooks/useGlobalCarouselItems'
+import { fetchServerCustodianItems } from '../data/portal/custodiansServerApi'
+import { fetchServerDirectorItems } from '../data/portal/directorsServerApi'
 import { usePageTitle } from './usePageTitle'
 
 type ProfileEntry = {
@@ -67,6 +70,42 @@ function ProfileItem({
 export function HistoriaPage() {
   usePageTitle('Historia')
   const carouselItems = useGlobalCarouselItems()
+  const [directoras, setDirectoras] = useState<ProfileEntry[]>(leadershipEntries)
+  const [custodios, setCustodios] = useState<ProfileEntry[]>(custodianEntries)
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadHistoryContent = async () => {
+      try {
+        const serverDirectors = await fetchServerDirectorItems()
+        if (isMounted) {
+          setDirectoras(serverDirectors)
+        }
+      } catch {
+        if (isMounted) {
+          setDirectoras(leadershipEntries)
+        }
+      }
+
+      try {
+        const serverCustodians = await fetchServerCustodianItems()
+        if (isMounted) {
+          setCustodios(serverCustodians)
+        }
+      } catch {
+        if (isMounted) {
+          setCustodios(custodianEntries)
+        }
+      }
+    }
+
+    void loadHistoryContent()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <main id="main-content" className="section-page-main historia-page">
@@ -112,7 +151,7 @@ export function HistoriaPage() {
             <h2>Las directoras del Museo</h2>
           </div>
           <div className="directoras-list-compact">
-            {leadershipEntries.map((entry, index) => (
+            {directoras.map((entry, index) => (
               <ProfileItem key={entry.name} variant="directora" entry={entry} defaultOpen={index === 0} />
             ))}
           </div>
@@ -136,7 +175,7 @@ export function HistoriaPage() {
             Desde su fundación en 1972, el Museo Arquidiocesano de Arte Religioso ha estado bajo el cuidado pastoral y la representación legal de los Arzobispos de Popayán.
           </p>
           <div className="custodios-list">
-            {custodianEntries.map((item, index) => (
+            {custodios.map((item, index) => (
               <ProfileItem key={item.name} variant="custodio" entry={item} defaultOpen={index === 0} />
             ))}
           </div>

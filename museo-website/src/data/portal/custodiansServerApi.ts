@@ -1,34 +1,36 @@
-import type { PortalEventItem } from './types'
+import type { PortalCustodianItem } from './types'
 
-type SaveServerEventItemInput = {
-  title: string
-  summary: string
-  startsAt: string
-  location: string
-  href: string
+export type SaveServerCustodianItemInput = {
+  name: string
+  role: string
+  period: string
+  tag: string
+  description: string
+  imageDataUrl?: string
   position?: number
 }
 
-const API_BASE = '/api/events'
+const API_BASE = '/api/custodians'
 
-const parseItemsPayload = (payload: unknown): PortalEventItem[] => {
+const parseItemsPayload = (payload: unknown): PortalCustodianItem[] => {
   if (!Array.isArray(payload)) {
     return []
   }
 
-  return payload.filter((item): item is PortalEventItem => {
+  return payload.filter((item): item is PortalCustodianItem => {
     if (typeof item !== 'object' || item === null) {
       return false
     }
 
-    const candidate = item as Partial<PortalEventItem>
+    const candidate = item as Partial<PortalCustodianItem>
     return (
       typeof candidate.id === 'string' &&
-      typeof candidate.title === 'string' &&
-      typeof candidate.summary === 'string' &&
-      typeof candidate.startsAt === 'string' &&
-      typeof candidate.location === 'string' &&
-      typeof candidate.href === 'string'
+      typeof candidate.name === 'string' &&
+      typeof candidate.role === 'string' &&
+      typeof candidate.period === 'string' &&
+      typeof candidate.tag === 'string' &&
+      typeof candidate.description === 'string' &&
+      typeof candidate.image === 'string'
     )
   })
 }
@@ -42,7 +44,7 @@ const readErrorMessage = async (response: Response) => {
   }
 }
 
-export const fetchServerEventItems = async () => {
+export const fetchServerCustodianItems = async () => {
   const response = await fetch(`${API_BASE}/items`, {
     method: 'GET',
     credentials: 'same-origin',
@@ -56,7 +58,7 @@ export const fetchServerEventItems = async () => {
   return parseItemsPayload(parsed.items)
 }
 
-export const saveServerEventItem = async (input: SaveServerEventItemInput) => {
+export const saveServerCustodianItem = async (input: SaveServerCustodianItemInput) => {
   const response = await fetch(`${API_BASE}/items`, {
     method: 'POST',
     credentials: 'same-origin',
@@ -70,15 +72,15 @@ export const saveServerEventItem = async (input: SaveServerEventItemInput) => {
     throw new Error(await readErrorMessage(response))
   }
 
-  const parsed = (await response.json()) as { item?: PortalEventItem }
+  const parsed = (await response.json()) as { item?: PortalCustodianItem }
   if (!parsed.item) {
-    throw new Error('El servidor no devolvió el evento guardado.')
+    throw new Error('El servidor no devolvió el custodio guardado.')
   }
 
   return parsed.item
 }
 
-export const removeServerEventItem = async (id: string) => {
+export const removeServerCustodianItem = async (id: string) => {
   const response = await fetch(`${API_BASE}/items/${encodeURIComponent(id)}`, {
     method: 'DELETE',
     credentials: 'same-origin',
@@ -89,7 +91,7 @@ export const removeServerEventItem = async (id: string) => {
   }
 }
 
-export const updateServerEventItem = async (id: string, input: SaveServerEventItemInput) => {
+export const updateServerCustodianItem = async (id: string, input: SaveServerCustodianItemInput) => {
   const response = await fetch(`${API_BASE}/items/${encodeURIComponent(id)}`, {
     method: 'PUT',
     credentials: 'same-origin',
@@ -103,9 +105,9 @@ export const updateServerEventItem = async (id: string, input: SaveServerEventIt
     throw new Error(await readErrorMessage(response))
   }
 
-  const parsed = (await response.json()) as { item?: PortalEventItem }
+  const parsed = (await response.json()) as { item?: PortalCustodianItem }
   if (!parsed.item) {
-    throw new Error('El servidor no devolvió el evento actualizado.')
+    throw new Error('El servidor no devolvió el custodio actualizado.')
   }
 
   return parsed.item

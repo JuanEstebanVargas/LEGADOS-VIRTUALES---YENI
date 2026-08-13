@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a83cb081-9ef8-49de-8f78-d659ed849eff",
+    "seedKey": "carousel-reapertura-ocana",
+    "title": "El Museo de la ciudad de Ocaña Antón García de Bonilla reabrió sus puertas con sus salas renovadas",
+    "summary": "El museo regional reabrió oficialmente al público como parte de los museos de la nación, con una propuesta renovada para públicos diversos.",
+    "href": "/programacion",
+    "imageFilename": "seed-1786654026272-7afb0ae3-8c81-47b1-92cb-b6f3677e38e3.jpg"
+  },
+  {
+    "id": "72fa87af-ff09-4a1c-a569-2b363bef018e",
+    "seedKey": "carousel-beatriz-gonzalez",
+    "title": "Dos obras de Beatriz González presentes en el Astrup Fearnley Museet de Oslo",
+    "summary": "Los suicidas del Sisga III y Retratos mudos, piezas de la colección del museo, participan en una exposición internacional.",
+    "href": "/investigacion",
+    "imageFilename": "seed-1786654026272-706fb9f4-6a9f-4aff-8602-06f87801441c.jpg"
+  },
+  {
+    "id": "ae51312d-1733-4711-8104-6253c77d4460",
+    "seedKey": "carousel-pasados-retorno",
+    "title": "Pasados en retorno: nuevas lecturas curatoriales en diálogo con la memoria nacional",
+    "summary": "Una propuesta expositiva y editorial que activa conversaciones entre patrimonio, ciudadanía y narrativas del presente.",
+    "href": "/coleccion",
+    "imageFilename": "seed-1786654026272-58bfdcfc-93c7-472c-9587-3fc036324039.jpg"
+  }
+]

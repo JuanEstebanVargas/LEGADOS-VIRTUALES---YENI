@@ -1,5 +1,38 @@
 [
   {
+    "id": "a111f81a-292e-442d-afc5-8414a335376a",
+    "seedKey": "collection-gloria-celestial",
+    "title": "La Gloria Celestial",
+    "artist": "Maestro anónimo barroco",
+    "year": "1680-1690",
+    "period": "Barroco",
+    "medium": "Fresco",
+    "href": "/coleccion",
+    "imageFilename": "collection-seed-1786654026272-3c72a615-c148-45d3-a512-6d4613d715c3.jpg"
+  },
+  {
+    "id": "bd8eb65a-8e8d-487c-b483-568951723d80",
+    "seedKey": "collection-madonna-nino",
+    "title": "Madonna con el Niño",
+    "artist": "Escuela renacentista",
+    "year": "1520",
+    "period": "Renacentista",
+    "medium": "Óleo sobre tabla",
+    "href": "/coleccion",
+    "imageFilename": "collection-seed-1786654026272-c437df53-cc42-4fa5-b993-99b867603a57.jpg"
+  },
+  {
+    "id": "9827d7b9-e619-46be-beb3-0e4899e70380",
+    "seedKey": "collection-cartografia-memoria",
+    "title": "Cartografía de la memoria",
+    "artist": "Colectivo contemporáneo",
+    "year": "2026",
+    "period": "Contemporáneo",
+    "medium": "Instalación mixta",
+    "href": "/coleccion",
+    "imageFilename": "collection-seed-1786654026272-8850a656-d3b1-495d-bdee-2139c4caa9c5.jpg"
+  },
+  {
     "id": "da943478-2293-4de2-b528-a941fcc4ad0c",
     "title": "111",
     "artist": "11",

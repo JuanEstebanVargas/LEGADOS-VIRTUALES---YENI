@@ -25,7 +25,7 @@ export function HomePage() {
 					return
 				}
 
-				setNewsItems([...serverItems, ...basePortalNews])
+				setNewsItems(serverItems)
 			} catch {
 				if (!isMounted) {
 					return
@@ -40,7 +40,7 @@ export function HomePage() {
 					return
 				}
 
-				setEventsItems([...serverEvents, ...basePortalEvents])
+				setEventsItems(serverEvents)
 			} catch {
 				if (!isMounted) {
 					return
