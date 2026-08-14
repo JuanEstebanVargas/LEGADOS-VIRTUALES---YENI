@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
-export const SITE_TITLE_SUFFIX = 'Museo Arquidiocesano'
+export const SITE_TITLE = 'Museo Arquidiocesano de Popayán'
 
-export function usePageTitle(title: string) {
+export function usePageTitle(_title: string) {
   useEffect(() => {
-    document.title = `${title} | ${SITE_TITLE_SUFFIX}`
-  }, [title])
+    document.title = SITE_TITLE
+  }, [])
 }
