@@ -48,7 +48,7 @@ export function VisitasPage({ whatsappHref }: VisitasPageProps) {
         items={carouselItems}
         title="Visitas"
         kicker="Museo Arquidiocesano de Popayán"
-        description={`Horario de hoy: ${todaySchedule} · Tarifa general: ${generalRate} · ${shortAddress}`}
+        description="Organiza tu visita y déjate sorprender por el legado cultural de Popayán."
         contentAlign="left"
         actions={[
           { label: 'Planifica tu visita', href: '#visitas', variant: 'ghost' },

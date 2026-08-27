@@ -14,7 +14,7 @@ export function MuseoPage() {
         items={carouselItems}
         title="El Museo"
         kicker="Museo Arquidiocesano de Popayán"
-        description="El Museo Arquidiocesano de Arte Religioso de Popayán resguarda cuatro siglos de memoria visual del suroccidente colombiano."
+        description="Arte, patrimonio y memoria histórica en el corazón de Popayán."
         contentAlign="left"
         actions={[
           { label: 'Historia', href: '/historia', variant: 'ghost' },

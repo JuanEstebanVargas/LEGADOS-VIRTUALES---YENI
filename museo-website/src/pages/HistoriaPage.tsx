@@ -113,7 +113,7 @@ export function HistoriaPage() {
         items={carouselItems}
         title="Historia"
         kicker="Museo Arquidiocesano de Popayán"
-        description="Cuatro siglos de arte religioso: desde los templos de la Popayán colonial hasta la casa que Marcelino Pérez de Arroyo proyectó para rescatar la memoria del suroccidente."
+        description="Explora nuestra trayectoria y el valor histórico de nuestra sede."
         contentAlign="left"
       />
 

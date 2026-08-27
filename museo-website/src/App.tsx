@@ -180,7 +180,7 @@ function App() {
 
           <div className="descripcion-destacada">
             <p>
-              El Museo Arquidiocesano de Arte Religioso de Popayán resguarda cuatro siglos de memoria visual del suroccidente colombiano.
+              Arte, patrimonio y memoria histórica en el corazón de Popayán.
             </p>
             <p>
               La colección habita una casona del siglo XVIII, proyectada por Marcelino Pérez de Arroyo y declarada Bien de Interés Cultural de la Nación.

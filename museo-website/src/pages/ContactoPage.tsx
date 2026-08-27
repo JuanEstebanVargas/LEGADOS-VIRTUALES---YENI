@@ -16,7 +16,7 @@ export function ContactoPage({ whatsappHref }: ContactoPageProps) {
         items={carouselItems}
         title="Contacto"
         kicker="Museo Arquidiocesano de Popayán"
-        description="Canales digitales, redes sociales y atención institucional del Museo Arquidiocesano de Arte Religioso de Popayán."
+        description="Canales de atención directa, redes sociales e información institucional."
         contentAlign="left"
         actions={[{ label: 'Escribir por WhatsApp', href: whatsappHref, variant: 'primary' }]}
       />

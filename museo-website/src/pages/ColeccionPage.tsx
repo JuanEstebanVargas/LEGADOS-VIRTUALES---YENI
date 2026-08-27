@@ -52,7 +52,7 @@ export function ColeccionPage() {
         items={carouselItems}
         title="Colección"
         kicker="Museo Arquidiocesano de Popayán"
-        description="Técnicas, obras destacadas y patrimonios que reúnen cuatro siglos de arte religioso del suroccidente colombiano."
+        description="Técnicas, obras destacadas y patrimonios que reúnen cuatro siglos de historia."
         contentAlign="left"
         actions={[
           {
